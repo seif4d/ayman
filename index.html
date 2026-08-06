@@ -1,0 +1,1750 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth" data-theme="emerald">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ayman Atta | Creative Graphic & UI/UX Designer</title>
+  <meta name="description" content="Interactive Portfolio of Ayman Atta, Mid-Level Graphic Designer & UI/UX Designer specializing in Branding, UI/UX Systems, and Digital Products.">
+  <meta name="author" content="Ayman Atta">
+  
+  <!-- OpenGraph Metadata -->
+  <meta property="og:title" content="Ayman Atta | Creative Graphic & UI/UX Designer">
+  <meta property="og:description" content="Crafting impactful visual identities & human-centered digital products.">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2310b981' stroke-width='2.5'><path d='M12 2l3.5 5H20l-8 15L4 7h4.5L12 2z'/></svg>">
+
+  <!-- Google Fonts: Outfit + Space Grotesk + Playfair Display + Alexandria (Arabic) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@1,600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       DYNAMIC THEME SYSTEM (4 Accent Palettes)
+       ========================================================================== */
+    :root {
+      --bg: #07090e;
+      --bg-surface: #0d121d;
+      --bg-card: rgba(15, 22, 35, 0.65);
+      --bg-card-hover: rgba(23, 33, 51, 0.85);
+      
+      --border: rgba(255, 255, 255, 0.08);
+      --border-accent: rgba(var(--accent-rgb), 0.3);
+      
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      
+      --font-main: 'Outfit', sans-serif;
+      --font-code: 'Space Grotesk', monospace;
+      --font-serif: 'Playfair Display', serif;
+      
+      --maxw: 1220px;
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Theme Accent Colors Overrides */
+    [data-theme="emerald"] {
+      --accent: #10b981;
+      --accent-hover: #34d399;
+      --accent-glow: rgba(16, 185, 129, 0.25);
+      --accent-subtle: rgba(16, 185, 129, 0.08);
+      --accent-rgb: 16, 185, 129;
+    }
+    [data-theme="cyan"] {
+      --accent: #06b6d4;
+      --accent-hover: #38bdf8;
+      --accent-glow: rgba(6, 182, 212, 0.25);
+      --accent-subtle: rgba(6, 182, 212, 0.08);
+      --accent-rgb: 6, 182, 212;
+    }
+    [data-theme="purple"] {
+      --accent: #a855f7;
+      --accent-hover: #c084fc;
+      --accent-glow: rgba(168, 85, 247, 0.25);
+      --accent-subtle: rgba(168, 85, 247, 0.08);
+      --accent-rgb: 168, 85, 247;
+    }
+    [data-theme="amber"] {
+      --accent: #f59e0b;
+      --accent-hover: #fbbf24;
+      --accent-glow: rgba(245, 158, 11, 0.25);
+      --accent-subtle: rgba(245, 158, 11, 0.08);
+      --accent-rgb: 245, 158, 11;
+    }
+
+    /* Reset & Base */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-main);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; border: 1px solid var(--border); }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+    ::selection { background: var(--accent); color: #000; }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; position: relative; z-index: 2; }
+    section { padding: 110px 0; position: relative; }
+
+    /* Canvas Background */
+    #interactive-canvas {
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      pointer-events: none; z-index: 0; opacity: 0.5;
+    }
+
+    /* Progress Line */
+    #scroll-progress {
+      position: fixed; top: 0; left: 0; height: 3px;
+      background: var(--accent); z-index: 1000; width: 0%;
+      box-shadow: 0 0 12px var(--accent); transition: width 0.1s ease-out;
+    }
+
+    /* Typography & Utilities */
+    .center { text-align: center; max-width: 660px; margin: 0 auto 60px; }
+    .center h2 { font-size: clamp(32px, 4vw, 44px); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 12px; }
+    .center p { color: var(--text-muted); font-size: 16.5px; }
+    
+    .serif-accent { font-family: var(--font-serif); font-style: italic; font-weight: 600; color: var(--accent); }
+    .accent-text { color: var(--accent); }
+    .gradient-text {
+      background: linear-gradient(135deg, #ffffff 30%, var(--accent) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+
+    /* Card Glow Base Style */
+    .glossy-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      position: relative; overflow: hidden;
+      transition: var(--transition);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    }
+    .glossy-card::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(350px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(var(--accent-rgb), 0.12), transparent 40%);
+      pointer-events: none; opacity: 0; transition: opacity 0.3s;
+    }
+    .glossy-card:hover::before { opacity: 1; }
+    .glossy-card:hover {
+      border-color: var(--border-accent);
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.45), 0 0 22px var(--accent-glow);
+      transform: translateY(-4px);
+    }
+
+    /* ==========================================================================
+       HEADER & LIVE THEME SWITCHER
+       ========================================================================== */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(7, 9, 14, 0.85);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border); transition: var(--transition);
+    }
+    header .wrap { display: flex; align-items: center; justify-content: space-between; height: 78px; }
+    
+    .logo { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 19px; color: #fff; }
+    .logo-box {
+      width: 36px; height: 36px; border-radius: var(--radius-sm);
+      background: var(--accent-subtle); border: 1px solid var(--border-accent);
+      display: flex; align-items: center; justify-content: center; color: var(--accent);
+      transition: var(--transition);
+    }
+    .logo:hover .logo-box { transform: rotate(8deg) scale(1.08); background: var(--accent); color: #000; }
+    
+    nav ul { display: flex; gap: 30px; }
+    nav a {
+      font-size: 14px; font-weight: 500; color: var(--text-muted); position: relative;
+      padding: 6px 0; transition: var(--transition);
+    }
+    nav a::after {
+      content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px;
+      background: var(--accent); transition: var(--transition);
+    }
+    nav a:hover, nav a.active { color: var(--text); }
+    nav a:hover::after, nav a.active::after { width: 100%; }
+
+    /* Interactive Theme Color Picker Bar */
+    .header-actions { display: flex; align-items: center; gap: 16px; }
+    .theme-picker {
+      display: flex; gap: 6px; padding: 4px 8px; border-radius: 20px;
+      background: rgba(255, 255, 255, 0.04); border: 1px solid var(--border);
+    }
+    .dot-btn {
+      width: 14px; height: 14px; border-radius: 50%; cursor: pointer; border: 2px solid transparent;
+      transition: var(--transition);
+    }
+    .dot-btn:hover, .dot-btn.active { transform: scale(1.25); border-color: #fff; }
+    .dot-emerald { background: #10b981; }
+    .dot-cyan { background: #06b6d4; }
+    .dot-purple { background: #a855f7; }
+    .dot-amber { background: #f59e0b; }
+
+    .menu-btn {
+      display: none; background: none; border: 0; color: var(--text); font-size: 22px; cursor: pointer;
+      width: 40px; height: 40px; border-radius: var(--radius-sm); border: 1px solid var(--border);
+      align-items: center; justify-content: center;
+    }
+
+    .mobile-drawer {
+      position: fixed; top: 78px; left: 0; width: 100%; background: rgba(13, 18, 29, 0.98);
+      backdrop-filter: blur(20px); border-bottom: 1px solid var(--border);
+      padding: 24px 32px; display: flex; flex-direction: column; gap: 18px;
+      transform: translateY(-150%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); z-index: 99;
+    }
+    .mobile-drawer.open { transform: translateY(0); }
+    .mobile-drawer a { font-size: 16px; font-weight: 600; color: var(--text-muted); }
+    .mobile-drawer a:hover { color: var(--accent); }
+
+    /* Buttons */
+    .btn {
+      font-family: var(--font-main); font-weight: 600; font-size: 14.5px; padding: 13px 26px;
+      border-radius: var(--radius-sm); cursor: pointer; border: 1px solid transparent;
+      display: inline-flex; align-items: center; gap: 10px; transition: var(--transition);
+    }
+    .btn-primary {
+      background: var(--accent); color: #040806; font-weight: 700;
+      box-shadow: 0 0 22px var(--accent-glow);
+    }
+    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 0 30px var(--accent-glow); }
+    
+    .btn-ghost {
+      background: rgba(255, 255, 255, 0.03); color: var(--text); border-color: var(--border);
+    }
+    .btn-ghost:hover {
+      border-color: var(--border-accent); color: var(--accent);
+      background: var(--accent-subtle); transform: translateY(-2px);
+    }
+
+    /* ==========================================================================
+       HERO SECTION (Creative Asymmetric Layout)
+       ========================================================================== */
+       
+    .hero { padding: 120px 0 80px; }
+    .hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 48px; align-items: center; }
+    
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;                          /* حشو أرتب ومريح للنص من الأطراف */
+  border-radius: 100px;                       /* انحناء كبسولة متكيف بمرونة مع ارتفاع النص */
+  background: var(--accent-subtle);
+  border: 1px solid var(--border-accent);
+  font-size: clamp(11.5px, 2.5vw, 13px);      /* يتصغر الخط تلقائياً في الشاشات الصغيرة لتفادي الخروج */
+  line-height: 1.4;                           /* ارتفاع السطر يمنع خروج الأحرف من الأعلى والأسفل */
+  font-weight: 500;
+  color: var(--accent);
+  margin-bottom: 24px;
+  max-width: 100%;                            /* يمنع التمدد خارج حدود الشاشة */
+  width: fit-content;                         /* يلتف الإطار حول النص بضبط عالي */
+  box-sizing: border-box;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+  animation: pulse 2s infinite;
+  flex-shrink: 0;                             /* يمنع انكماش النقطة عند نزول النص على سطرين */
+}
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.4); opacity: 0.5; }
+    }
+    
+    .hero h1 { font-size: clamp(38px, 5.2vw, 64px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.12; margin-bottom: 18px; }
+    .hero-sub { color: var(--text-muted); font-size: 16.5px; line-height: 1.7; max-width: 580px; }
+    .hero-actions { display: flex; gap: 16px; margin-top: 36px; flex-wrap: wrap; }
+
+    /* Interactive Hero Right Widget Card */
+    .hero-widget {
+      padding: 28px; display: flex; flex-direction: column; gap: 20px;
+      border: 1px solid var(--border-accent);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    }
+    .widget-header { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); padding-bottom: 16px; }
+    .widget-title { font-family: var(--font-code); font-size: 12.5px; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
+    
+    .stats-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .stat-box { padding: 16px; background: rgba(255, 255, 255, 0.02); border-radius: var(--radius-sm); border: 1px solid var(--border); }
+    .stat-num { font-size: 26px; font-weight: 800; color: #fff; font-family: var(--font-code); }
+    .stat-label { font-size: 12.5px; color: var(--text-dim); margin-top: 2px; }
+
+    .widget-preview {
+      padding: 16px; border-radius: var(--radius-sm); background: var(--bg-surface);
+      border: 1px dashed var(--border-accent); font-size: 13px; color: var(--text-muted);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .preview-icon { width: 36px; height: 36px; border-radius: 8px; background: var(--accent-subtle); color: var(--accent); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+
+    /* MARQUEE TICKER */
+    .marquee-wrap {
+      width: 100%; overflow: hidden; background: rgba(13, 18, 29, 0.6); border-y: 1px solid var(--border);
+      padding: 18px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin: 40px 0 0;
+    }
+    .marquee-track { display: flex; gap: 40px; width: max-content; animation: scrollMarquee 25s linear infinite; }
+    .marquee-item { font-family: var(--font-code); font-size: 13px; font-weight: 700; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.15em; display: flex; align-items: center; gap: 16px; }
+    .marquee-item span { color: var(--accent); }
+    @keyframes scrollMarquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* ==========================================================================
+       ABOUT SECTION
+       ========================================================================== */
+    .about-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 56px; align-items: center; }
+    .about-photo-wrapper {
+      position: relative; border-radius: var(--radius-lg); padding: 8px;
+      background: linear-gradient(135deg, var(--border-accent), transparent, var(--border));
+    }
+    .about-photo { border-radius: var(--radius-md); overflow: hidden; aspect-ratio: 4/5; background: #0f172a; }
+    .about-photo img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
+    .about-photo-wrapper:hover img { transform: scale(1.03); }
+    
+    .about-text h2 { font-size: 34px; font-weight: 800; margin-bottom: 18px; }
+    .about-text p.bio { color: var(--text-muted); font-size: 16px; margin-bottom: 26px; line-height: 1.75; }
+    .core-label { color: var(--accent); font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 10px; }
+    .tag {
+      background: var(--accent-subtle); border: 1px solid var(--border);
+      padding: 8px 16px; border-radius: var(--radius-sm); font-size: 13.5px; font-weight: 500; color: var(--text);
+      transition: var(--transition);
+    }
+    .tag:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+    /* ==========================================================================
+       SERVICES SECTION
+       ========================================================================== */
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .service-card { padding: 32px 28px; display: flex; flex-direction: column; gap: 14px; }
+    .service-icon {
+      width: 46px; height: 46px; border-radius: var(--radius-sm); background: var(--accent-subtle);
+      border: 1px solid var(--border-accent); color: var(--accent); display: flex;
+      align-items: center; justify-content: center; transition: var(--transition);
+    }
+    .service-card:hover .service-icon { background: var(--accent); color: #000; transform: scale(1.08); }
+    .service-card h3 { font-size: 19px; font-weight: 700; color: #fff; }
+    .service-card p { font-size: 14.5px; color: var(--text-muted); line-height: 1.65; }
+
+    /* ==========================================================================
+       CAPABILITIES & TOOLS
+       ========================================================================== */
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .skill-box { padding: 30px; }
+    .skill-box h3 { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+    .skill-box h3 svg { color: var(--accent); }
+    .skill-list { display: flex; flex-wrap: wrap; gap: 10px; }
+    .skill-pill {
+      font-size: 13px; font-weight: 500; padding: 6px 14px; border-radius: 6px;
+      background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); color: var(--text-muted);
+    }
+    .skill-pill.highlight { border-color: var(--border-accent); color: var(--accent); background: var(--accent-subtle); }
+
+    /* ==========================================================================
+       PROCESS FRAMEWORK
+       ========================================================================== */
+    .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .process-card { padding: 32px 24px; display: flex; flex-direction: column; gap: 12px; }
+    .process-num { font-family: var(--font-code); font-size: 32px; font-weight: 700; color: var(--accent); line-height: 1; }
+    .process-card h3 { font-size: 18px; font-weight: 700; color: #fff; }
+    .process-card p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+
+    /* ==========================================================================
+       TIMELINE
+       ========================================================================== */
+    .timeline { position: relative; max-width: 840px; margin: 0 auto; }
+    .timeline::before {
+      content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px;
+      background: linear-gradient(180deg, var(--accent), var(--border)); transform: translateX(-50%);
+    }
+    .t-item { position: relative; width: 50%; padding: 0 40px 48px; opacity: 0; transform: translateY(20px); transition: all 0.5s ease-out; }
+    .t-item.visible { opacity: 1; transform: translateY(0); }
+    .t-item:nth-child(odd) { left: 0; text-align: right; }
+    .t-item:nth-child(even) { left: 50%; text-align: left; }
+    .t-item::after {
+      content: ''; position: absolute; top: 8px; width: 12px; height: 12px; border-radius: 50%; background: var(--accent);
+      box-shadow: 0 0 12px var(--accent); z-index: 3;
+    }
+    .t-item:nth-child(odd)::after { right: -6px; }
+    .t-item:nth-child(even)::after { left: -6px; }
+    .t-card { display: inline-block; padding: 22px 26px; text-align: left; width: 100%; }
+    .t-tag {
+      display: inline-block; font-size: 11px; font-weight: 700; background: var(--accent-subtle); color: var(--accent);
+      padding: 3px 8px; border-radius: 4px; text-transform: uppercase; margin-left: 8px; border: 1px solid var(--border-accent);
+    }
+    .t-card h3 { font-size: 17px; font-weight: 700; color: #fff; display: inline; }
+    .t-card .role { font-size: 14px; color: var(--text); font-weight: 500; margin-top: 6px; }
+    .t-card .dates { font-family: var(--font-code); font-size: 12.5px; color: var(--text-muted); margin-top: 4px; }
+
+    /* ==========================================================================
+       WORK / PROJECTS SECTION
+       ========================================================================== */
+    .filters { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 44px; }
+    .filter-btn {
+      font-family: var(--font-main); font-size: 13.5px; font-weight: 600; padding: 9px 22px; border-radius: 30px;
+      border: 1px solid var(--border); background: var(--bg-card); color: var(--text-muted); cursor: pointer;
+      transition: var(--transition);
+    }
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--accent); color: #000; border-color: var(--accent);
+      box-shadow: 0 0 18px var(--accent-glow); transform: translateY(-1px);
+    }
+    
+    .proj-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+    .proj-card { cursor: pointer; display: flex; flex-direction: column; }
+    .proj-media { position: relative; aspect-ratio: 16/10; background: #0f172a; overflow: hidden; border-radius: var(--radius-md) var(--radius-md) 0 0; }
+    .proj-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+    .proj-card:hover .proj-media img { transform: scale(1.06); }
+    
+    .proj-details { padding: 20px 22px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
+    .proj-cat { font-family: var(--font-code); font-size: 12px; color: var(--accent); font-weight: 600; text-transform: uppercase; }
+    .proj-title { font-size: 17px; font-weight: 700; margin-top: 4px; color: #fff; }
+    .proj-impact { font-size: 13.5px; color: var(--text-muted); margin-top: 8px; line-height: 1.5; }
+
+    /* Modal / Lightbox */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 1000; background: rgba(7, 9, 14, 0.9);
+      backdrop-filter: blur(14px); display: flex; align-items: center; justify-content: center; padding: 20px;
+      opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+    }
+    .modal-overlay.active { opacity: 1; pointer-events: auto; }
+    .modal-content {
+      background: #0d121d; border: 1px solid var(--border-accent); border-radius: var(--radius-lg);
+      max-width: 760px; width: 100%; overflow: hidden; box-shadow: 0 0 40px rgba(0, 0, 0, 0.7);
+      transform: scale(0.95); transition: transform 0.3s ease; position: relative; max-height: 90vh;
+      display: flex; flex-direction: column;
+    }
+    .modal-overlay.active .modal-content { transform: scale(1); }
+    .modal-close {
+      position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(0,0,0,0.6); border: 1px solid var(--border); color: #fff; font-size: 20px;
+      cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10;
+    }
+    .modal-close:hover { background: var(--accent); color: #000; }
+    .modal-img-wrap { width: 100%; max-height: 420px; overflow: hidden; background: #000; }
+    .modal-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+    .modal-body { padding: 28px; }
+    .modal-body h3 { font-size: 22px; font-weight: 800; color: #fff; margin-bottom: 6px; }
+    .modal-body .cat { font-family: var(--font-code); color: var(--accent); font-size: 13px; font-weight: 600; margin-bottom: 14px; }
+    .modal-body p { color: var(--text-muted); font-size: 15px; margin-bottom: 24px; line-height: 1.6; }
+
+    /* ==========================================================================
+       CONTACT SECTION (With Interactive Scope Pills & Copy Email)
+       ========================================================================== */
+    .contact-form { max-width: 640px; margin: 0 auto; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 18px; }
+    label { display: block; font-size: 12.5px; font-weight: 600; color: var(--text-muted); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em; }
+    
+    /* Interactive Project Scope Chips */
+    .scope-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+    .chip {
+      font-size: 12.5px; font-weight: 600; padding: 7px 15px; border-radius: 20px;
+      background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); color: var(--text-muted);
+      cursor: pointer; transition: var(--transition);
+    }
+    .chip:hover, .chip.selected { border-color: var(--accent); color: var(--accent); background: var(--accent-subtle); }
+
+    input, textarea {
+      width: 100%; background: rgba(13, 18, 29, 0.8); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px 16px;
+      color: #fff; font-family: var(--font-main); font-size: 14.5px; transition: var(--transition);
+    }
+    input:focus, textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 15px var(--accent-glow); background: #0d121d; }
+    textarea { resize: vertical; min-height: 120px; margin-bottom: 20px; }
+    
+    .form-actions-row { display: flex; gap: 14px; align-items: center; }
+    .submit-btn {
+      flex: 1; background: var(--accent); color: #000; border: 0; border-radius: var(--radius-sm); padding: 16px;
+      font-family: var(--font-main); font-weight: 700; font-size: 15.5px; cursor: pointer; transition: var(--transition);
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+    }
+    .submit-btn:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 0 25px var(--accent-glow); }
+
+    .copy-email-btn {
+      padding: 16px; border-radius: var(--radius-sm); background: var(--bg-card); border: 1px solid var(--border);
+      color: var(--text-muted); cursor: pointer; transition: var(--transition); display: flex; align-items: center; justify-content: center;
+    }
+    .copy-email-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed; bottom: 30px; right: 30px; z-index: 1001;
+      background: #0d121d; border: 1px solid var(--accent); border-radius: var(--radius-md);
+      padding: 14px 22px; color: #fff; font-weight: 600; font-size: 14px;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.6); display: flex; align-items: center; gap: 10px;
+      transform: translateY(100px); opacity: 0; transition: all 0.4s ease;
+    }
+    .toast.show { transform: translateY(0); opacity: 1; }
+
+    #back-to-top {
+      position: fixed; bottom: 30px; left: 30px; width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(13, 18, 29, 0.85); border: 1px solid var(--border-accent); color: var(--accent);
+      font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center;
+      z-index: 90; opacity: 0; pointer-events: none; transition: var(--transition); backdrop-filter: blur(8px);
+    }
+    #back-to-top.show { opacity: 1; pointer-events: auto; }
+    #back-to-top:hover { background: var(--accent); color: #000; }
+
+    /* Footer */
+    footer { border-top: 1px solid var(--border); padding: 36px 0; background: #040609; position: relative; z-index: 2; }
+    footer .wrap { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+    .foot-logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 16px; }
+    .social-row { display: flex; gap: 12px; }
+    .social-row a {
+      width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--border); background: var(--bg-card);
+      display: flex; align-items: center; justify-content: center; color: var(--text-muted); transition: var(--transition);
+    }
+    .social-row a:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+    footer .copy { font-size: 13px; color: var(--text-dim); font-family: var(--font-code); }
+
+    /* Mobile Drawer Tools Bar */
+    .mobile-drawer-tools {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-top: 16px; border-top: 1px solid var(--border); margin-top: 8px;
+    }
+    .mobile-drawer-tools span { font-size: 13px; color: var(--text-muted); font-weight: 600; }
+
+    /* Language Switcher Button */
+    .lang-btn {
+      font-family: var(--font-code); font-size: 12.5px; font-weight: 700;
+      padding: 5px 12px; border-radius: 20px; cursor: pointer;
+      background: var(--accent-subtle); border: 1px solid var(--border-accent);
+      color: var(--accent); transition: var(--transition);
+      display: inline-flex; align-items: center; gap: 4px; flex-shrink: 0;
+    }
+    .lang-btn:hover { background: var(--accent); color: #000; transform: translateY(-1px); }
+
+    /* ==========================================================================
+       RESPONSIVE BREAKPOINTS & MOBILE OPTIMIZATIONS
+       ========================================================================== */
+    @media (max-width: 1024px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+      .services-grid, .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .process-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    }
+    
+    @media (max-width: 768px) {
+      nav { display: none; }
+      .menu-btn { display: flex; width: 38px; height: 38px; font-size: 19px; }
+      
+      /* Keep theme dots visible in top header bar on mobile, hide lang btn from top bar */
+      header .header-actions .header-lang-btn { display: none; }
+      header .header-actions .theme-picker { display: flex; gap: 4px; padding: 4px 6px; }
+      header .header-actions .theme-picker .dot-btn { width: 12px; height: 12px; }
+      header .wrap { height: 68px; padding: 0 18px; }
+      .header-actions { gap: 8px; }
+      .logo { font-size: 16.5px; gap: 8px; }
+      .logo-box { width: 32px; height: 32px; }
+
+      .hero { padding: 48px 0 36px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 28px; }
+      .hero h1 { font-size: clamp(26px, 7vw, 38px); line-height: 1.22; margin-bottom: 14px; }
+      .hero-sub { font-size: 14.5px; line-height: 1.6; }
+      .hero-actions { width: 100%; gap: 10px; flex-direction: column; }
+      .hero-actions .btn { width: 100%; justify-content: center; padding: 12px 20px; font-size: 14px; }
+      
+      .status-pill {
+        font-size: 11.5px; padding: 6px 14px; margin-bottom: 18px;
+        white-space: normal; line-height: 1.45; max-width: 100%; width: fit-content;
+      }
+
+      .glossy-card.hero-widget { padding: 20px 16px; gap: 16px; }
+      .stats-row { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .stat-box { padding: 12px; }
+      .stat-num { font-size: 22px; }
+      .stat-label { font-size: 11.5px; }
+
+      .marquee-wrap { padding: 12px 0; margin-top: 28px; }
+      .marquee-item { font-size: 11.5px; gap: 10px; }
+
+      section { padding: 60px 0; }
+      .center { margin-bottom: 36px; }
+      .center h2 { font-size: 26px; margin-bottom: 8px; }
+      .center p { font-size: 14px; }
+
+      .about-grid { grid-template-columns: 1fr; gap: 28px; }
+      .about-photo { max-width: 260px; aspect-ratio: 1/1; margin: 0 auto; }
+      .about-text h2 { font-size: 24px; margin-bottom: 12px; }
+      .about-text p.bio { font-size: 14.5px; line-height: 1.65; margin-bottom: 20px; }
+      .tag-row { gap: 8px; }
+      .tag { padding: 6px 12px; font-size: 12px; }
+
+      .services-grid, .skills-grid, .process-grid, .proj-grid { grid-template-columns: 1fr; gap: 16px; }
+      .service-card { padding: 22px 18px; gap: 10px; }
+      .service-card h3 { font-size: 17px; }
+      .service-card p { font-size: 13.5px; }
+
+      .skill-box { padding: 20px 16px; }
+      .skill-box h3 { font-size: 16px; }
+      .skill-pill { font-size: 12px; padding: 5px 10px; }
+
+      .process-card { padding: 22px 18px; }
+      .process-num { font-size: 26px; }
+      .process-card h3 { font-size: 16px; }
+
+      .timeline { max-width: 100%; }
+      .t-item, .t-item:nth-child(even) { width: 100%; left: 0; text-align: left; padding: 0 0 28px 36px; }
+      .t-item::after, .t-item:nth-child(even)::after { left: 10px; right: auto; }
+      .timeline::before { left: 16px; }
+      .t-card { padding: 16px 18px; display: block; }
+      .t-card h3 { font-size: 15.5px; }
+      .t-card .role { font-size: 13px; }
+      .t-card .dates { font-size: 11.5px; }
+
+      .contact-form { width: 100%; }
+      .form-row { grid-template-columns: 1fr; gap: 12px; margin-bottom: 12px; }
+      input, textarea { padding: 12px 14px; font-size: 13.5px; }
+      .scope-chips { gap: 6px; margin-bottom: 16px; }
+      .chip { font-size: 11.5px; padding: 6px 12px; }
+      .form-actions-row { flex-direction: row; gap: 10px; }
+      .submit-btn { padding: 14px; font-size: 14px; }
+      .copy-email-btn { padding: 14px; }
+
+      .modal-content { max-width: 94%; max-height: 88vh; }
+      .modal-img-wrap { max-height: 240px; }
+      .modal-body { padding: 20px 16px; }
+      .modal-body h3 { font-size: 18px; }
+      .modal-body p { font-size: 13.5px; margin-bottom: 18px; }
+      .modal-actions { flex-direction: column; width: 100%; gap: 8px; }
+      .modal-actions .btn { width: 100%; justify-content: center; padding: 12px 16px; font-size: 13.5px; }
+
+      footer { padding: 24px 0; }
+      footer .wrap { flex-direction: column; text-align: center; gap: 12px; }
+    }
+
+    @media (max-width: 480px) {
+      .wrap { padding: 0 16px; }
+      .status-pill { font-size: 11px; padding: 5px 10px; }
+      .hero h1 { font-size: 25px; }
+    }
+
+    /* RTL Layout Overrides */
+    [dir="rtl"] body {
+      font-family: 'Alexandria', var(--font-main);
+    }
+    [dir="rtl"] .serif-accent {
+      font-style: normal; font-weight: 800; font-family: 'Alexandria', sans-serif;
+    }
+    [dir="rtl"] .logo-box { transform: none; }
+    [dir="rtl"] .hero-sub { max-width: 640px; }
+    [dir="rtl"] .status-pill { direction: rtl; }
+    [dir="rtl"] .marquee-track { animation-direction: reverse; }
+    [dir="rtl"] .timeline::before { right: 50%; left: auto; transform: translateX(50%); }
+    [dir="rtl"] .t-item { width: 50%; padding: 0 40px 48px; }
+    [dir="rtl"] .t-item:nth-child(odd) { right: 0; left: auto; text-align: left; }
+    [dir="rtl"] .t-item:nth-child(even) { right: 50%; left: auto; text-align: right; }
+    [dir="rtl"] .t-card { text-align: right; direction: rtl; }
+    [dir="rtl"] .t-item:nth-child(odd)::after { left: -6px; right: auto; }
+    [dir="rtl"] .t-item:nth-child(even)::after { right: -6px; left: auto; }
+    [dir="rtl"] .t-tag { margin-right: 8px; margin-left: 0; }
+    [dir="rtl"] .contact-form { direction: rtl; }
+    [dir="rtl"] .about-text { text-align: right; }
+    [dir="rtl"] .service-card, [dir="rtl"] .skill-box, [dir="rtl"] .process-card { text-align: right; }
+    [dir="rtl"] .modal-body { text-align: right; }
+    [dir="rtl"] .modal-close { left: 16px; right: auto; }
+    
+    @media (max-width: 768px) {
+      [dir="rtl"] .timeline::before { right: 16px; left: auto; }
+      [dir="rtl"] .t-item, [dir="rtl"] .t-item:nth-child(even) { width: 100%; right: 0; left: auto; padding: 0 34px 28px 0; text-align: right; }
+      [dir="rtl"] .t-item::after, [dir="rtl"] .t-item:nth-child(even)::after { right: 10px; left: auto; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="scroll-progress"></div>
+<canvas id="interactive-canvas"></canvas>
+
+<header>
+  <div class="wrap">
+    <a href="#home" class="logo">
+      <div class="logo-box">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2l3.5 5H20l-8 15L4 7h4.5L12 2z"/></svg>
+      </div>
+      <span>Ayman <span class="accent-text">Atta</span></span>
+    </a>
+    
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#capabilities">Capabilities</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Work</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <!-- Language Switcher (Desktop Header) -->
+      <button class="lang-btn header-lang-btn" id="lang-toggle" onclick="toggleLanguage()" title="Switch Language">
+        🌐 <span>AR</span>
+      </button>
+
+      <!-- Live Interactive Color Theme Switcher -->
+      <div class="theme-picker" title="Switch Theme Color">
+        <div class="dot-btn dot-emerald active" onclick="setTheme('emerald')"></div>
+        <div class="dot-btn dot-cyan" onclick="setTheme('cyan')"></div>
+        <div class="dot-btn dot-purple" onclick="setTheme('purple')"></div>
+        <div class="dot-btn dot-amber" onclick="setTheme('amber')"></div>
+      </div>
+      <button class="menu-btn" id="menu-toggle" aria-label="Toggle Navigation">&#9776;</button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-drawer" id="mobile-drawer">
+  <a href="#about" onclick="toggleMobileMenu()">About</a>
+  <a href="#services" onclick="toggleMobileMenu()">Services</a>
+  <a href="#capabilities" onclick="toggleMobileMenu()">Capabilities</a>
+  <a href="#process" onclick="toggleMobileMenu()">Process</a>
+  <a href="#experience" onclick="toggleMobileMenu()">Experience</a>
+  <a href="#projects" onclick="toggleMobileMenu()">Work</a>
+  <a href="#contact" onclick="toggleMobileMenu()">Contact</a>
+  <div class="mobile-drawer-tools">
+    <span id="mobile-lang-label">Language</span>
+    <button class="lang-btn" id="mobile-lang-toggle" onclick="toggleLanguage()" title="Switch Language">
+      🌐 <span>AR</span>
+    </button>
+  </div>
+</div>
+
+<section class="hero" id="home">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="status-pill">
+        <span class="status-dot"></span> Available for freelance & product roles
+      </div>
+      <h1>Architecting <span class="serif-accent">aesthetic</span> &amp; human-centered <span class="gradient-text">digital products.</span></h1>
+      <p class="hero-sub">Combining strategic design systems, user intuition, and AI-accelerated workflows to build memorable visual identities &amp; high-converting mobile/web user experiences.</p>
+
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">
+          <span>Explore Case Studies</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="assets/CV-Ayman-Atta.pdf" target="_blank" rel="noopener" class="btn btn-ghost">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span>Download CV</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Interactive Hero Right Widget Card -->
+    <div class="glossy-card hero-widget">
+      <div class="widget-header">
+        <span class="widget-title">Live Creative Metrics</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      </div>
+      
+      <div class="stats-row">
+        <div class="stat-box">
+          <div class="stat-num">3+</div>
+          <div class="stat-label">Years Exp.</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">30+</div>
+          <div class="stat-label">Projects Delivered</div>
+        </div>
+      </div>
+
+      <div class="widget-preview">
+        <div class="preview-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div>
+          <strong style="color: #fff; display: block;">Design Philosophy</strong>
+          <span>Pixel-perfect precision meets functional business ROI.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Marquee Ticker -->
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <div class="marquee-item">UI/UX App Design <span>•</span></div>
+      <div class="marquee-item">Visual Identity Systems <span>•</span></div>
+      <div class="marquee-item">Figma Design Systems <span>•</span></div>
+      <div class="marquee-item">Generative AI Workflows <span>•</span></div>
+      <div class="marquee-item">Social Campaign Art <span>•</span></div>
+      <div class="marquee-item">Wireframing &amp; Prototyping <span>•</span></div>
+      <div class="marquee-item">UI/UX App Design <span>•</span></div>
+      <div class="marquee-item">Visual Identity Systems <span>•</span></div>
+      <div class="marquee-item">Figma Design Systems <span>•</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="about-photo-wrapper">
+      <div class="about-photo">
+        <img src="assets/ayman.jpg" alt="Ayman Atta" loading="lazy" onerror="this.src='assets/ayman.jpg'">
+      </div>
+    </div>
+    <div class="about-text">
+      <div class="core-label">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+        About Me
+      </div>
+      <h2>Driven by Strategic Purpose, Refined by <span class="serif-accent">Artistry</span></h2>
+      <p class="bio">I am a Mid-Level Graphic Designer and UI/UX Designer based in Cairo, Egypt, with over 3 years of hands-on experience bridging human psychology, digital interface design, and brand strategy. My mission is to translate complex business requirements into elegant, effortless, and conversion-focused user interfaces.</p>
+      <div class="core-label">Core Competencies</div>
+      <div class="tag-row">
+        <span class="tag">Visual Identity Systems</span>
+        <span class="tag">UI/UX &amp; Mobile Apps</span>
+        <span class="tag">Figma Design Systems</span>
+        <span class="tag">Social Media Campaigns</span>
+        <span class="tag">Print Artwork &amp; Packaging</span>
+        <span class="tag">AI Creative Exploration</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="center">
+      <h2>Specialized Services</h2>
+      <p>High-impact creative &amp; product design solutions engineered for modern growth.</p>
+    </div>
+    <div class="services-grid">
+      <div class="glossy-card service-card">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <h3>Brand Identity Systems</h3>
+        <p>Complete logo architectures, visual guidelines, typography rules, and brand collateral manuals built for scale.</p>
+      </div>
+      <div class="glossy-card service-card">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+        </div>
+        <h3>UI/UX &amp; Product Design</h3>
+        <p>User-centered interface designs, interactive wireframes, user journeys, and seamless digital product architectures.</p>
+      </div>
+      <div class="glossy-card service-card">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        </div>
+        <h3>Mobile Application Design</h3>
+        <p>Native iOS and Android mobile app interfaces, Figma design kits, micro-interactions, and developer specs.</p>
+      </div>
+      <div class="glossy-card service-card">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </div>
+        <h3>Social Media Marketing Art</h3>
+        <p>Data-informed campaign visuals, high-engagement template systems, and performance marketing creatives.</p>
+      </div>
+      <div class="glossy-card service-card">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        </div>
+        <h3>Print &amp; Packaging Dielines</h3>
+        <p>High-resolution posters, packaging artwork, corporate brochures, and print prepress production files.</p>
+      </div>
+      <div class="glossy-card service-card">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+        </div>
+        <h3>Generative AI Visual Pipelines</h3>
+        <p>Leveraging cutting-edge AI prompt workflows to deliver 3x faster visual concept exploration and assets.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="capabilities">
+  <div class="wrap">
+    <div class="center">
+      <h2>Capabilities &amp; Tool Stack</h2>
+      <p>A disciplined tech stack organized by creative capability rather than arbitrary percentages.</p>
+    </div>
+    <div class="skills-grid">
+      <div class="glossy-card skill-box">
+        <h3>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          UI/UX &amp; Product Design
+        </h3>
+        <div class="skill-list">
+          <span class="skill-pill highlight">Figma</span>
+          <span class="skill-pill highlight">Adobe XD</span>
+          <span class="skill-pill">Wireframing</span>
+          <span class="skill-pill">Design Systems</span>
+          <span class="skill-pill">Micro-interactions</span>
+        </div>
+      </div>
+      <div class="glossy-card skill-box">
+        <h3>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          Visual Design &amp; Editing
+        </h3>
+        <div class="skill-list">
+          <span class="skill-pill highlight">Photoshop</span>
+          <span class="skill-pill highlight">Illustrator</span>
+          <span class="skill-pill">Midjourney AI</span>
+          <span class="skill-pill">Photo Manipulation</span>
+          <span class="skill-pill">Vector Branding</span>
+        </div>
+      </div>
+      <div class="glossy-card skill-box">
+        <h3>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          Layout &amp; Animation
+        </h3>
+        <div class="skill-list">
+          <span class="skill-pill highlight">InDesign</span>
+          <span class="skill-pill highlight">After Effects</span>
+          <span class="skill-pill">Packaging Dielines</span>
+          <span class="skill-pill">Grid Systems</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <div class="center">
+      <h2>Design Process Framework</h2>
+      <p>A structured 4-phase methodology ensuring strategic alignment from idea to launch.</p>
+    </div>
+    <div class="process-grid">
+      <div class="glossy-card process-card">
+        <div class="process-num">01</div>
+        <h3>Discover</h3>
+        <p>Business goal alignment, target persona analysis, and requirement mapping.</p>
+      </div>
+      <div class="glossy-card process-card">
+        <div class="process-num">02</div>
+        <h3>Analyze</h3>
+        <p>Competitor analysis, moodboarding, visual strategy, and user journey mapping.</p>
+      </div>
+      <div class="glossy-card process-card">
+        <div class="process-num">03</div>
+        <h3>Design</h3>
+        <p>Figma wireframing, high-fidelity UI visual design, prototyping, and component kits.</p>
+      </div>
+      <div class="glossy-card process-card">
+        <div class="process-num">04</div>
+        <h3>Deliver</h3>
+        <p>Developer handoff specs, print production dielines, and brand asset manuals.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="center">
+      <h2>Professional Timeline</h2>
+      <p>A record of delivering impactful design across agencies, products, and brands.</p>
+    </div>
+    <div class="timeline" id="timeline"></div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="center">
+      <h2>Selected Case Studies</h2>
+      <p>A curated showcase of visual identity systems, mobile apps, and marketing art.</p>
+    </div>
+    <div class="filters" id="filters"></div>
+    <div class="proj-grid" id="proj-grid"></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="center">
+      <h2>Let's Build Something <span class="serif-accent">Extraordinary</span></h2>
+      <p>Have a project in mind or interested in collaboration? Select a scope and reach out!</p>
+    </div>
+    <form class="contact-form" id="contact-form">
+      <label>Project Scope (Click to Select)</label>
+      <div class="scope-chips" id="scope-chips">
+        <div class="chip selected" onclick="toggleChip(this)">UI/UX App Design</div>
+        <div class="chip" onclick="toggleChip(this)">Visual Identity / Branding</div>
+        <div class="chip" onclick="toggleChip(this)">Figma Design System</div>
+        <div class="chip" onclick="toggleChip(this)">Social Campaign Art</div>
+      </div>
+
+      <div class="form-row">
+        <div>
+          <label for="c-name">Your Name</label>
+          <input type="text" placeholder="John Doe" id="c-name" required>
+        </div>
+        <div>
+          <label for="c-email">Your Email</label>
+          <input type="email" placeholder="john@example.com" id="c-email" required>
+        </div>
+      </div>
+      <label for="c-message">Project Scope &amp; Details</label>
+      <textarea placeholder="Tell me about your project goals, scope, and estimated timeline..." id="c-message" required></textarea>
+      
+      <div class="form-actions-row">
+        <button type="submit" class="submit-btn">
+          <span>Send Project Inquiry</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+        <button type="button" class="copy-email-btn" id="copy-email" title="Copy Email Address">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- Lightbox Modal -->
+<div class="modal-overlay" id="proj-modal" role="dialog" aria-modal="true">
+  <div class="modal-content">
+    <button class="modal-close" id="modal-close" aria-label="Close modal">&times;</button>
+    <div class="modal-img-wrap">
+      <img id="modal-img" src="" alt="Project Preview">
+    </div>
+    <div class="modal-body">
+      <div class="cat" id="modal-cat"></div>
+      <h3 id="modal-title"></h3>
+      <p id="modal-desc"></p>
+      <div class="modal-actions" style="display: flex; gap: 12px; flex-wrap: wrap;">
+        <a id="modal-internal-link" href="#" class="btn btn-primary" style="display: none;">
+          <span id="modal-internal-text">View Full Interactive Case Study</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a id="modal-link" href="#" target="_blank" rel="noopener" class="btn btn-ghost">
+          <span id="modal-behance-text">View Case Study on Behance</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast Feedback -->
+<div id="toast" class="toast">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+  <span id="toast-msg">Opening inquiry client...</span>
+</div>
+
+<button id="back-to-top" aria-label="Back to top">↑</button>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-logo">
+      <span>Ayman Atta</span>
+    </div>
+    <div class="social-row">
+      <a href="tel:+201020953662" aria-label="Phone"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.7a2 2 0 01-.4 2.1L8 9.9a16 16 0 006 6l1.5-1.3a2 2 0 012.1-.4c.9.3 1.8.5 2.7.6a2 2 0 011.7 2.1z"/></svg></a>
+      <a href="https://wa.me/201020953662" target="_blank" aria-label="WhatsApp"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21a9 9 0 100-18 9 9 0 000 18zm-6.5-2.5L4 21l2.6-1.4"/><path d="M8.5 8.5c-.3.6-.5 1.7 0 2.6.6 1.2 1.4 2.3 2.4 3.3 1 1 2.1 1.8 3.3 2.4.9.5 2 .3 2.6 0"/></svg></a>
+      <a href="https://behance.net/ayman3tta" target="_blank" aria-label="Behance"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h6a2.5 2.5 0 010 5H3zM3 13h6.5a2.7 2.7 0 010 5.4H3z"/><path d="M15 15.5a3.5 3.5 0 006.7-1.3H14.9a3.6 3.6 0 003.6 3.3 3.4 3.4 0 002.9-1.5"/><path d="M15 12.7a3.5 3.5 0 016.6-.4h-6.5"/></svg></a>
+      <a href="https://linkedin.com/in/ayman3tta" target="_blank" aria-label="LinkedIn"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="7" y1="10" x2="7" y2="17"/><circle cx="7" cy="7" r="0.6" fill="currentColor"/><path d="M11 17v-4a2 2 0 014 0v4M11 10v7"/></svg></a>
+    </div>
+    <div class="copy">&copy; 2026 Ayman Atta. Built with Strategic Precision.</div>
+  </div>
+</footer>
+
+<script>
+// --- Theme Switcher Feature ---
+function setTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  document.querySelectorAll('.dot-btn').forEach(btn => btn.classList.remove('active'));
+  document.querySelector(`.dot-${theme}`).classList.add('active');
+}
+
+// --- Multi-Language i18n System ---
+let currentLang = 'en';
+
+const i18nData = {
+  en: {
+    nav: ["About", "Services", "Capabilities", "Process", "Experience", "Work", "Contact"],
+    statusPill: "Available for freelance & product roles",
+    heroTitle: 'Architecting <span class="serif-accent">aesthetic</span> &amp; human-centered <span class="gradient-text">digital products.</span>',
+    heroSub: "Combining strategic design systems, user intuition, and AI-accelerated workflows to build memorable visual identities &amp; high-converting mobile/web user experiences.",
+    exploreBtn: "Explore Case Studies",
+    downloadCvBtn: "Download CV",
+    metricsTitle: "Live Creative Metrics",
+    expYearsLabel: "Years Exp.",
+    projDeliveredLabel: "Projects Delivered",
+    philosophyTitle: "Design Philosophy",
+    philosophyDesc: "Pixel-perfect precision meets functional business ROI.",
+    marquee: [
+      "UI/UX App Design", "Visual Identity Systems", "Figma Design Systems", 
+      "Generative AI Workflows", "Social Campaign Art", "Wireframing & Prototyping",
+      "UI/UX App Design", "Visual Identity Systems", "Figma Design Systems"
+    ],
+    aboutLabel: "About Me",
+    aboutTitle: 'Driven by Strategic Purpose, Refined by <span class="serif-accent">Artistry</span>',
+    aboutBio: "I am a Mid-Level Graphic Designer and UI/UX Designer based in Cairo, Egypt, with over 3 years of hands-on experience bridging human psychology, digital interface design, and brand strategy. My mission is to translate complex business requirements into elegant, effortless, and conversion-focused user interfaces.",
+    coreLabel: "Core Competencies",
+    coreTags: ["Visual Identity Systems", "UI/UX & Mobile Apps", "Figma Design Systems", "Social Media Campaigns", "Print Artwork & Packaging", "AI Creative Exploration"],
+    servicesTitle: "Specialized Services",
+    servicesSub: "High-impact creative & product design solutions engineered for modern growth.",
+    services: [
+      { title: "Brand Identity Systems", desc: "Complete logo architectures, visual guidelines, typography rules, and brand collateral manuals built for scale." },
+      { title: "UI/UX & Product Design", desc: "User-centered interface designs, interactive wireframes, user journeys, and seamless digital product architectures." },
+      { title: "Mobile Application Design", desc: "Native iOS and Android mobile app interfaces, Figma design kits, micro-interactions, and developer specs." },
+      { title: "Social Media Marketing Art", desc: "Data-informed campaign visuals, high-engagement template systems, and performance marketing creatives." },
+      { title: "Print & Packaging Dielines", desc: "High-resolution posters, packaging artwork, corporate brochures, and print prepress production files." },
+      { title: "Generative AI Visual Pipelines", desc: "Leveraging cutting-edge AI prompt workflows to deliver 3x faster visual concept exploration and assets." }
+    ],
+    capabilitiesTitle: "Capabilities & Tool Stack",
+    capabilitiesSub: "A disciplined tech stack organized by creative capability rather than arbitrary percentages.",
+    capabilities: [
+      { title: "UI/UX & Product Design", pills: ["Figma", "Adobe XD", "Wireframing", "Design Systems", "Micro-interactions"] },
+      { title: "Visual Design & Editing", pills: ["Photoshop", "Illustrator", "Midjourney AI", "Photo Manipulation", "Vector Branding"] },
+      { title: "Layout & Animation", pills: ["InDesign", "After Effects", "Packaging Dielines", "Grid Systems"] }
+    ],
+    processTitle: "Design Process Framework",
+    processSub: "A structured 4-phase methodology ensuring strategic alignment from idea to launch.",
+    process: [
+      { num: "01", title: "Discover", desc: "Business goal alignment, target persona analysis, and requirement mapping." },
+      { num: "02", title: "Analyze", desc: "Competitor analysis, moodboarding, visual strategy, and user journey mapping." },
+      { num: "03", title: "Design", desc: "Figma wireframing, high-fidelity UI visual design, prototyping, and component kits." },
+      { num: "04", title: "Deliver", desc: "Developer handoff specs, print production dielines, and brand asset manuals." }
+    ],
+    expTitle: "Professional Timeline",
+    expSub: "A record of delivering impactful design across agencies, products, and brands.",
+    expItems: [
+      { role: "Mid-Level Graphic Designer", org: "LUXE Events & Exhibitions", type: "Remote", dates: "Jun 2026 - Present" },
+      { role: "Mid-Level Graphic Designer", org: "SUTRA", type: "Full Time", dates: "Jan 2026 – Jun 2026" },
+      { role: "UI/UX Designer", org: "Mulhem Digital Creativity", type: "Part Time", dates: "Apr 2025 – May 2026" },
+      { role: "Graphic Designer", org: "Transition Agency", type: "Full Time", dates: "Mar 2025 – Jan 2026" },
+      { role: "Graphic Designer", org: "Nile Academy", type: "Remote", dates: "May 2022 – Dec 2023" },
+      { role: "Graphic Designer & UI/UX Specialist", org: "Freelance", type: "Freelance", dates: "Jan 2021 – Present" }
+    ],
+    workTitle: "Selected Case Studies",
+    workSub: "A curated showcase of visual identity systems, mobile apps, and marketing art.",
+    categories: ["All", "UI/UX Design", "Branding", "Social Media", "Print Design", "Presentations"],
+    contactTitle: 'Let\'s Build Something <span class="serif-accent">Extraordinary</span>',
+    contactSub: "Have a project in mind or interested in collaboration? Select a scope and reach out!",
+    scopeLabel: "Project Scope (Click to Select)",
+    scopeChips: ["UI/UX App Design", "Visual Identity / Branding", "Figma Design System", "Social Campaign Art"],
+    nameLabel: "Your Name",
+    emailLabel: "Your Email",
+    msgLabel: "Project Scope & Details",
+    namePlaceholder: "John Doe",
+    emailPlaceholder: "john@example.com",
+    msgPlaceholder: "Tell me about your project goals, scope, and estimated timeline...",
+    submitBtn: "Send Project Inquiry",
+    copyToast: "Email copied to clipboard! 📋",
+    sendToast: "Thank you, {name}! Opening mail client...",
+    modalInternalBtn: "View Live Interactive Case Study",
+    modalBehanceBtn: "View Case Study on Behance"
+  },
+  ar: {
+    nav: ["عنّي", "الخدمات", "المهارات", "منهجية العمل", "الخبرات", "الأعمال", "تواصل معي"],
+    statusPill: "متاح حالياً للمشاريع الحرة وأدوار UI/UX والتصميم",
+    heroTitle: 'تصميم <span class="serif-accent">تجارب رقمية</span> متميزة وتطبيقات <span class="gradient-text">تركز على المستخدم.</span>',
+    heroSub: "أجمع بين نظم التصميم الاستراتيجية، وفهم سلوك المستخدم، وسير العمل المعزز بالذكاء الاصطناعي لبناء هويات بصرية متميزة وتجارب مستخدم عالية التحويل.",
+    exploreBtn: "استكشف دراسات الحالة",
+    downloadCvBtn: "تحميل السيرة الذاتية",
+    metricsTitle: "مؤشرات الإبداع المباشرة",
+    expYearsLabel: "سنوات خبرة",
+    projDeliveredLabel: "مشروع منجز",
+    philosophyTitle: "فلسفة التصميم",
+    philosophyDesc: "دقة التصميم متناهية البكسل تلتقي مع العائد الاستثماري الحقيقي للعمل.",
+    marquee: [
+      "تصميم واجهات وتطبيقات UI/UX", "أنظمة الهوية البصرية", "أنظمة تصميم Figma", 
+      "سير العمل بذكاء الاصطناعي", "تصاميم الحملات الإعلانية", "النماذج التفاعلية Wireframing",
+      "تصميم واجهات وتطبيقات UI/UX", "أنظمة الهوية البصرية", "أنظمة تصميم Figma"
+    ],
+    aboutLabel: "نبذة عني",
+    aboutTitle: 'مدفوع بـ الهدف الاستراتيجي ومصقول بـ <span class="serif-accent">الفن والإبداع</span>',
+    aboutBio: "أنا مصمم جرافيك وواجهات مستخدم (UI/UX) مقيم في القاهرة، مصر، بخبرة تزيد عن 3 سنوات في الربط بين علم نفس المستخدم، وتصميم الواجهات الرقمية، واستراتيجيات العلامات التجارية. مهمتي تحويل متطلبات الأعمال المعقدة إلى واجهات مستخدم ممتعة، سهلة، ومحفزة للنمو.",
+    coreLabel: "الكفاءات الأساسية",
+    coreTags: ["أنظمة الهويات البصرية", "تصميم تطبيقات Mobile & UI/UX", "أنظمة تصميم Figma", "حملات السوشيال ميديا", "المطبوعات والتغليف", "استكشاف الذكاء الاصطناعي"],
+    servicesTitle: "الخدمات المتخصصة",
+    servicesSub: "حلول تصميم إبداعية ومنتجات رقمية مجهزة لنمو العلامات التجارية الحديثة.",
+    services: [
+      { title: "أنظمة الهوية البصرية", desc: "بناء أدلة الهوية البصرية الكاملة، معايير التايبوجرافي، قواعد الشعار، وتطبيقات العلامة التجارية القابلة للتوسع." },
+      { title: "تصميم واجهات وتجربة المستخدم UI/UX", desc: "تصميم واجهات تتمحور حول المستخدم، رحلات مستخدم سلسة، ونماذج هيكلية متكاملة للمنتجات الرقمية." },
+      { title: "تصميم تطبيقات الموبايل", desc: "واجهات تطبيقات iOS و Android الأصلية، مجموعات مكونات Figma، والتفاعلات الدقيقة المجهزة للمطورين." },
+      { title: "تصاميم السوشيال ميديا والتسويق", desc: "محتوى بصري مدعوم بالبيانات، أنظمة قوالب عالية التفاعل، وتصاميم إعلانية موجهة لتحقيق نتائج." },
+      { title: "خطوط قطع المطبوعات والتغليف", desc: "بوسترات عالية الدقة، تصاميم خطوط القطع للتغليف، بروشورات الشركات، وملفات الطباعة الجاهزة للمطابع." },
+      { title: "خطوط إنتاج البصريات بالذكاء الاصطناعي", desc: "استغلال سير العمل المتقدم بالذكاء الاصطناعي لتسريع استكشاف الأفكار والتصاميم البصرية بنسبة 3x." }
+    ],
+    capabilitiesTitle: "المهارات والأدوات",
+    capabilitiesSub: "مجموعة أدوات احترافية منظمة حسب الكفاءة الإبداعية لتلبية احتياجات المشروع.",
+    capabilities: [
+      { title: "تصميم الـ UI/UX والمنتجات الرقمية", pills: ["Figma", "Adobe XD", "Wireframing", "Design Systems", "Micro-interactions"] },
+      { title: "التصميم البصري والتحرير", pills: ["Photoshop", "Illustrator", "Midjourney AI", "Photo Manipulation", "Vector Branding"] },
+      { title: "التنسيق والتحريك", pills: ["InDesign", "After Effects", "Packaging Dielines", "Grid Systems"] }
+    ],
+    processTitle: "منهجية إطار العمل",
+    processSub: "منهجية منظمة من 4 مراحل تضمن التوافق الاستراتيجي من الفكرة حتى الإطلاق.",
+    process: [
+      { num: "01", title: "الاستكشاف (Discover)", desc: "تحديد أهداف العمل، تحليل شخصية المستخدم المستهدف، ورسم المتطلبات." },
+      { num: "02", title: "التحليل (Analyze)", desc: "تحليل المنافسين، لوحات الإلهام البصري Moodboards، ورسم رحلات المستخدم." },
+      { num: "03", title: "التصميم (Design)", desc: "بناء النماذج الأولية Wireframes، تصاميم UI عالية الدقة، وتطوير أنظمة المكونات." },
+      { num: "04", title: "التسليم (Deliver)", desc: "ملفات تسليم المطورين Specs، خطوط قطع الطباعة والتغليف، وأدلة العلامة التجارية." }
+    ],
+    expTitle: "الخبرات المهنية",
+    expSub: "سجل من تقديم تصاميم مؤثرة عبر الوكالات الإعلانية، المنتجات الرقمية، والعلامات التجارية.",
+    expItems: [
+      { role: "مصمم جرافيك رئيسي (Mid-Level)", org: "LUXE Events & Exhibitions", type: "عن بُعد", dates: "يونيو 2026 – الحالي" },
+      { role: "مصمم جرافيك (Mid-Level)", org: "SUTRA", type: "دوام كامل", dates: "يناير 2026 – يونيو 2026" },
+      { role: "مصمم واجهات UI/UX", org: "Mulhem Digital Creativity", type: "دوام جزئي", dates: "أبريل 2025 – مايو 2026" },
+      { role: "مصمم جرافيك", org: "Transition Agency", type: "دوام كامل", dates: "مارس 2025 – يناير 2026" },
+      { role: "مصمم جرافيك", org: "Nile Academy", type: "عن بُعد", dates: "مايو 2022 – ديسمبر 2023" },
+      { role: "مصمم جرافيك ومتخصص UI/UX", org: "عمل حر (Freelance)", type: "فريلانس", dates: "يناير 2021 – الحالي" }
+    ],
+    workTitle: "دراسات حالة مختارة",
+    workSub: "معرض مخصص لأنظمة الهوية البصرية، تطبيقات الموبايل، والتصاميم التسويقية.",
+    categories: ["الكل", "UI/UX Design", "Branding", "Social Media", "Print Design", "Presentations"],
+    contactTitle: 'دعنا نبني شيئاً <span class="serif-accent">استثنائياً</span>',
+    contactSub: "هل لديك مشروع في الذهن أو ترغب في التعاون؟ حدد نطاق العمل وتواصل معي!",
+    scopeLabel: "نطاق المشروع (اضغط للاختيار)",
+    scopeChips: ["تصميم تطبيق Mobile UI/UX", "هوية بصرية / Branding", "نظام تصميم Figma", "تصاميم حملة إعلانية"],
+    nameLabel: "الاسم",
+    emailLabel: "البريد الإلكتروني",
+    msgLabel: "تفاصيل ونطاق المشروع",
+    namePlaceholder: "أحمد علي",
+    emailPlaceholder: "name@example.com",
+    msgPlaceholder: "اكتب لي عن أهداف مشروعك، نطاق العمل، والمدى الزمني المتوقع...",
+    submitBtn: "إرسال طلب المشروع",
+    copyToast: "تم نسخ البريد الإلكتروني للحافظة! 📋",
+    sendToast: "شكراً لك يا {name}! جاري فتح تطبيق البريد...",
+    modalInternalBtn: "عرض دراسة الحالة التفاعلية المباشرة",
+    modalBehanceBtn: "عرض دراسة الحالة على Behance"
+  }
+};
+
+const projectsData = {
+  en: [
+    {
+      title: "SUTRA — Eid Mystery Box Campaign",
+      cat: "Social Media",
+      img: "https://mir-s3-cdn-cf.behance.net/projects/404/fbeba5251835225.Y3JvcCw4MDgsNjMyLDAsMA.jpg",
+      link: "https://www.behance.net/gallery/251835225/SUTRA-Eid-Mystery-Box-Campaign-2026",
+      impact: "Created seasonal visual assets resulting in 40%+ boost in social engagement.",
+      desc: "A high-impact seasonal campaign for SUTRA featuring creative mystery box visuals, engaging digital marketing collateral, and promotional assets."
+    },
+    {
+      title: "NUMRAH — Mobile App UI/UX Design",
+      cat: "UI/UX Design",
+      img: "https://mir-s3-cdn-cf.behance.net/projects/404/04f1ca246701515.Y3JvcCw4MDgsNjMyLDAsMg.jpg",
+      link: "https://www.behance.net/gallery/246701515/NUMRAH-MOBILE-APP-UI-UX-DESIGN",
+      internalLink: "projects/NUMRAH.html",
+      impact: "Architected intuitive user flows and dark-mode UI design systems.",
+      desc: "User-centric mobile application UI/UX design focusing on seamless navigation, sleek dark interface components, and fluid micro-interactions."
+    },
+    {
+      title: "Darbak Sale — Brand Identity Guideline",
+      cat: "Branding",
+      img: "https://mir-s3-cdn-cf.behance.net/projects/404/066403231799977.Y3JvcCw4MDgsNjMyLDAsMA.jpg",
+      link: "https://www.behance.net/gallery/231799977/Darbak-Sale-Brand-Guideline",
+      impact: "Established unified visual rules across digital & print touchpoints.",
+      desc: "Complete brand identity guidelines for Darbak Sale, including typography hierarchy, color rules, logo usage, and brand collateral layout."
+    },
+    {
+      title: "Numrah Brand Guidelines Manual",
+      cat: "Branding",
+      img: "https://mir-s3-cdn-cf.behance.net/projects/404/51c0bd232561629.Y3JvcCw4MDgsNjMyLDAsMA.jpg",
+      link: "https://www.behance.net/gallery/232561629/Numrah-Brand-Guidelines",
+      impact: "Designed comprehensive visual application guidelines for brand scaling.",
+      desc: "Visual identity system and brand application manual designed to maintain visual consistency across digital and print applications."
+    },
+    {
+      title: "Sahlah — Food Delivery App (UI/UX)",
+      cat: "UI/UX Design",
+      img: "https://mir-s3-cdn-cf.behance.net/projects/404/f2af61158574229.Y3JvcCwxMzk5LDEwOTUsMCww.png",
+      link: "https://www.behance.net/gallery/158574229/Sahlah-Food-Delivery-App-(UIUX)-Free-Template",
+      impact: "Optimized checkout flow reducing friction points for food ordering.",
+      desc: "Modern food ordering UI design featuring fast checkout workflows, interactive menu browsing, and custom iconography."
+    },
+    {
+      title: "Medad — Digital Reader Mobile UI/UX",
+      cat: "UI/UX Design",
+      img: "https://mir-s3-cdn-cf.behance.net/projects/404/c4ce56229634631.Y3JvcCw4MDgsNjMyLDAsMA.jpg",
+      link: "https://www.behance.net/gallery/229634631/Medad-Mobile-Application-UIX-Design-(Free-Template)",
+      impact: "Focused on typography readability and distraction-free reading modes.",
+      desc: "Sleek mobile app experience tailored for digital publishing, featuring clean typography, custom night mode, and fluid user journeys."
+    },
+    {
+      title: "Creative Print & Packaging Series",
+      cat: "Print Design",
+      img: "https://mir-s3-cdn-cf.behance.net/projects/404/066403231799977.Y3JvcCw4MDgsNjMyLDAsMA.jpg",
+      link: "https://www.behance.net/ayman3tta",
+      impact: "Prepress ready dielines engineered for high-precision print production.",
+      desc: "High-resolution print production artwork including posters, packaging dielines, and corporate marketing collateral."
+    },
+    {
+      title: "Corporate Pitch Deck & Presentation",
+      cat: "Presentations",
+      img: "https://mir-s3-cdn-cf.behance.net/projects/404/51c0bd232561629.Y3JvcCw4MDgsNjMyLDAsMA.jpg",
+      link: "https://www.behance.net/ayman3tta",
+      impact: "Executive storytelling slides built for corporate investor pitches.",
+      desc: "Modern, high-converting presentation slides and pitch deck design built for business storytelling."
+    }
+  ],
+  ar: [
+    {
+      title: "حملة صندوق المفاجآت — SUTRA",
+      cat: "Social Media",
+      img: "https://mir-s3-cdn-cf.behance.net/projects/404/fbeba5251835225.Y3JvcCw4MDgsNjMyLDAsMA.jpg",
+      link: "https://www.behance.net/gallery/251835225/SUTRA-Eid-Mystery-Box-Campaign-2026",
+      impact: "تصميم أصول بصرية موسمية أدت لزيادة التفاعل بنسبة +40% على منصات التواصل.",
+      desc: "حملة إعلانية موسمية عالية التأثير لعلامة SUTRA تتضمن تصاميم مبتكرة لصندوق الهدايا، ومحتوى تسويقي رقمي تفاعلي."
+    },
+    {
+      title: "تطبيق نومرة NUMRAH — تصميم UI/UX",
+      cat: "UI/UX Design",
+      img: "https://mir-s3-cdn-cf.behance.net/projects/404/04f1ca246701515.Y3JvcCw4MDgsNjMyLDAsMg.jpg",
+      link: "https://www.behance.net/gallery/246701515/NUMRAH-MOBILE-APP-UI-UX-DESIGN",
+      internalLink: "projects/NUMRAH.html",
+      impact: "بناء مسارات مستخدم سلسة ونظام تصميم واجهات المود الداكن high-contrast.",
+      desc: "تصميم واجهات وتجربة مستخدم لتطبيق موبايل يركز على تصفح سلس بدون تشتيت، ومكونات واجهة مظلمة متناسقة."
+    },
+    {
+      title: "دليل الهوية البصرية — دربك سيل Darbak Sale",
+      cat: "Branding",
+      img: "https://mir-s3-cdn-cf.behance.net/projects/404/066403231799977.Y3JvcCw4MDgsNjMyLDAsMA.jpg",
+      link: "https://www.behance.net/gallery/231799977/Darbak-Sale-Brand-Guideline",
+      impact: "تأسيس قواعد بصرية موحدة عبر جميع قنوات التواصل الرقمية والمطبوعة.",
+      desc: "دليل هوية بصرية متكامل لـ Darbak Sale يشمل التسلسل الهرمي للخطوط، قواعد الألوان، استخدامات الشعار، وتطبيقات المطبوعات."
+    },
+    {
+      title: "دليل المعايير البصرية لعلامة نومرة Numrah",
+      cat: "Branding",
+      img: "https://mir-s3-cdn-cf.behance.net/projects/404/51c0bd232561629.Y3JvcCw4MDgsNjMyLDAsMA.jpg",
+      link: "https://www.behance.net/gallery/232561629/Numrah-Brand-Guidelines",
+      impact: "تصميم دليل إرشادي شاملاً لتطبيقات العلامة التجارية وتوسعها.",
+      desc: "نظام هوية بصرية ودليل تطبيقات مصمم للحفاظ على الاتساق البصري عبر المطبوعات والواجهات الرقمية."
+    },
+    {
+      title: "تطبيق سهلة Sahlah — طلب الطعام (UI/UX)",
+      cat: "UI/UX Design",
+      img: "https://mir-s3-cdn-cf.behance.net/projects/404/f2af61158574229.Y3JvcCwxMzk5LDEwOTUsMCww.png",
+      link: "https://www.behance.net/gallery/158574229/Sahlah-Food-Delivery-App-(UIUX)-Free-Template",
+      impact: "تحسين خطوات الشراء وإتمام الطلب وتقليل نقاط الاحتكاك بالعميل.",
+      desc: "تصميم واجهات عصري لتطبيق طلب الطعام يتميز بدورة إنهاء طلب سريعة، تصفح المنيو تفاعلي، وأيقونات مخصصة."
+    },
+    {
+      title: "تطبيق مداد Medad — القراءة الرقمية (UI/UX)",
+      cat: "UI/UX Design",
+      img: "https://mir-s3-cdn-cf.behance.net/projects/404/c4ce56229634631.Y3JvcCw4MDgsNjMyLDAsMA.jpg",
+      link: "https://www.behance.net/gallery/229634631/Medad-Mobile-Application-UIX-Design-(Free-Template)",
+      impact: "التركيز على وضوح الخطوط وتجربة قراءة مريحة بدون تشتيت.",
+      desc: "تجربة تطبيق موبايل راقية مخصصة للنشر والقراءة الرقمية، بوضع ليلي مريح ورحلة مستخدم انسيابية."
+    },
+    {
+      title: "سلسلة تصميم المطبوعات والتغليف الإبداعية",
+      cat: "Print Design",
+      img: "https://mir-s3-cdn-cf.behance.net/projects/404/066403231799977.Y3JvcCw4MDgsNjMyLDAsMA.jpg",
+      link: "https://www.behance.net/ayman3tta",
+      impact: "خطوط قطع مجهزة للمطابع عالية الدقة بدقة متناهية.",
+      desc: "أعمال مطبوعات عالية الجودة تشمل البوسترات، خطوط قطع العلب والتغليف، وبروشورات الشركات."
+    },
+    {
+      title: "عروض التقديم والملفات الاستثمارية للشركات",
+      cat: "Presentations",
+      img: "https://mir-s3-cdn-cf.behance.net/projects/404/51c0bd232561629.Y3JvcCw4MDgsNjMyLDAsMA.jpg",
+      link: "https://www.behance.net/ayman3tta",
+      impact: "شرائح عرض سينمائية مصممة لخطابات المستثمرين واجتماعات الإدارة.",
+      desc: "عروض تقديمية Pitch Decks حديثة وعالية التحويل مجهزة لسرد قصص نجاح الأعمال."
+    }
+  ]
+};
+
+function toggleLanguage() {
+  currentLang = currentLang === 'en' ? 'ar' : 'en';
+  document.documentElement.setAttribute('lang', currentLang);
+  document.documentElement.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+  
+  applyTranslations();
+}
+
+function applyTranslations() {
+  const t = i18nData[currentLang];
+
+  document.querySelectorAll('.lang-btn span').forEach(span => {
+    span.textContent = currentLang === 'ar' ? 'EN' : 'AR';
+  });
+
+  const mobileLangLabel = document.getElementById('mobile-lang-label');
+  if (mobileLangLabel) {
+    mobileLangLabel.textContent = currentLang === 'ar' ? 'اللغة' : 'Language';
+  }
+  
+  // Navigation
+  const navLinks = document.querySelectorAll('nav ul li a, .mobile-drawer a');
+  navLinks.forEach((link, idx) => {
+    const navIndex = idx % 7;
+    link.textContent = t.nav[navIndex];
+  });
+
+  // Hero Section
+  document.querySelector('.status-pill').childNodes[2].nodeValue = " " + t.statusPill;
+  document.querySelector('.hero h1').innerHTML = t.heroTitle;
+  document.querySelector('.hero-sub').textContent = t.heroSub;
+  document.querySelector('.hero-actions .btn-primary span').textContent = t.exploreBtn;
+  document.querySelector('.hero-actions .btn-ghost span').textContent = t.downloadCvBtn;
+  document.querySelector('.widget-title').textContent = t.metricsTitle;
+  
+  const statLabels = document.querySelectorAll('.stat-label');
+  if (statLabels.length >= 2) {
+    statLabels[0].textContent = t.expYearsLabel;
+    statLabels[1].textContent = t.projDeliveredLabel;
+  }
+  document.querySelector('.widget-preview strong').textContent = t.philosophyTitle;
+  document.querySelector('.widget-preview span').textContent = t.philosophyDesc;
+
+  // Marquee
+  const marqueeItems = document.querySelectorAll('.marquee-item');
+  marqueeItems.forEach((item, idx) => {
+    item.innerHTML = `${t.marquee[idx % t.marquee.length]} <span>•</span>`;
+  });
+
+  // About Section
+  const aboutCoreLabels = document.querySelectorAll('.about-text .core-label');
+  if (aboutCoreLabels.length >= 2) {
+    aboutCoreLabels[0].childNodes[2].nodeValue = " " + t.aboutLabel;
+    aboutCoreLabels[1].textContent = t.coreLabel;
+  }
+  document.querySelector('.about-text h2').innerHTML = t.aboutTitle;
+  document.querySelector('.about-text p.bio').textContent = t.aboutBio;
+
+  const tagRow = document.querySelector('.tag-row');
+  if (tagRow) {
+    tagRow.innerHTML = t.coreTags.map(tag => `<span class="tag">${tag}</span>`).join('');
+  }
+
+  // Services Section
+  document.querySelector('#services .center h2').textContent = t.servicesTitle;
+  document.querySelector('#services .center p').textContent = t.servicesSub;
+  
+  const serviceCards = document.querySelectorAll('.service-card');
+  serviceCards.forEach((card, idx) => {
+    if (t.services[idx]) {
+      card.querySelector('h3').textContent = t.services[idx].title;
+      card.querySelector('p').textContent = t.services[idx].desc;
+    }
+  });
+
+  // Capabilities Section
+  document.querySelector('#capabilities .center h2').textContent = t.capabilitiesTitle;
+  document.querySelector('#capabilities .center p').textContent = t.capabilitiesSub;
+
+  const skillBoxes = document.querySelectorAll('.skill-box');
+  skillBoxes.forEach((box, idx) => {
+    if (t.capabilities[idx]) {
+      const h3 = box.querySelector('h3');
+      const svg = h3.querySelector('svg').outerHTML;
+      h3.innerHTML = svg + " " + t.capabilities[idx].title;
+      
+      const skillList = box.querySelector('.skill-list');
+      skillList.innerHTML = t.capabilities[idx].pills.map((pill, pIdx) => {
+        const isHighlight = pIdx < 2 ? ' highlight' : '';
+        return `<span class="skill-pill${isHighlight}">${pill}</span>`;
+      }).join('');
+    }
+  });
+
+  // Process Section
+  document.querySelector('#process .center h2').textContent = t.processTitle;
+  document.querySelector('#process .center p').textContent = t.processSub;
+  
+  const processCards = document.querySelectorAll('.process-card');
+  processCards.forEach((card, idx) => {
+    if (t.process[idx]) {
+      card.querySelector('.process-num').textContent = t.process[idx].num;
+      card.querySelector('h3').textContent = t.process[idx].title;
+      card.querySelector('p').textContent = t.process[idx].desc;
+    }
+  });
+
+  // Experience Timeline Section
+  document.querySelector('#experience .center h2').textContent = t.expTitle;
+  document.querySelector('#experience .center p').textContent = t.expSub;
+  renderTimeline();
+
+  // Projects Section
+  document.querySelector('#projects .center h2').textContent = t.workTitle;
+  document.querySelector('#projects .center p').textContent = t.workSub;
+  renderFilters();
+  renderProjects("All");
+
+  // Contact Section
+  document.querySelector('#contact .center h2').innerHTML = t.contactTitle;
+  document.querySelector('#contact .center p').textContent = t.contactSub;
+  document.querySelector('#contact-form label:first-child').textContent = t.scopeLabel;
+  
+  const scopeChips = document.getElementById('scope-chips');
+  if (scopeChips) {
+    scopeChips.innerHTML = t.scopeChips.map((chip, idx) => {
+      const selected = idx === 0 ? ' selected' : '';
+      return `<div class="chip${selected}" onclick="toggleChip(this)">${chip}</div>`;
+    }).join('');
+  }
+
+  document.querySelector('label[for="c-name"]').textContent = t.nameLabel;
+  document.querySelector('label[for="c-email"]').textContent = t.emailLabel;
+  document.querySelector('label[for="c-message"]').textContent = t.msgLabel;
+  
+  document.getElementById('c-name').placeholder = t.namePlaceholder;
+  document.getElementById('c-email').placeholder = t.emailPlaceholder;
+  document.getElementById('c-message').placeholder = t.msgPlaceholder;
+  document.querySelector('.submit-btn span').textContent = t.submitBtn;
+
+  // Modal Text
+  document.getElementById('modal-behance-text').textContent = t.modalBehanceBtn;
+  document.getElementById('modal-internal-text').textContent = t.modalInternalBtn;
+}
+
+// --- Interactive Background Canvas ---
+const canvas = document.getElementById('interactive-canvas');
+const ctx = canvas.getContext('2d');
+let width, height, particles = [];
+const particleCount = 26;
+let animId = null;
+
+function resizeCanvas() {
+  width = canvas.width = window.innerWidth;
+  height = canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+class Particle {
+  constructor() { this.reset(); }
+  reset() {
+    this.x = Math.random() * width;
+    this.y = Math.random() * height;
+    this.vx = (Math.random() - 0.5) * 0.4;
+    this.vy = (Math.random() - 0.5) * 0.4;
+    this.radius = Math.random() * 1.5 + 1;
+    this.alpha = Math.random() * 0.35 + 0.1;
+  }
+  update() {
+    this.x += this.vx; this.y += this.vy;
+    if (this.x < 0 || this.x > width) this.vx *= -1;
+    if (this.y < 0 || this.y > height) this.vy *= -1;
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha})`;
+    ctx.fill();
+  }
+}
+
+for (let i = 0; i < particleCount; i++) particles.push(new Particle());
+
+function animateCanvas() {
+  ctx.clearRect(0, 0, width, height);
+  for (let i = 0; i < particles.length; i++) {
+    particles[i].update();
+    particles[i].draw();
+  }
+  animId = requestAnimationFrame(animateCanvas);
+}
+
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) cancelAnimationFrame(animId);
+  else animateCanvas();
+});
+animateCanvas();
+
+// --- Scroll Progress & Back to top ---
+const progressBar = document.getElementById('scroll-progress');
+const backToTopBtn = document.getElementById('back-to-top');
+
+window.addEventListener('scroll', () => {
+  const winScroll = document.documentElement.scrollTop;
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  progressBar.style.width = (winScroll / height) * 100 + '%';
+
+  if (winScroll > 300) backToTopBtn.classList.add('show');
+  else backToTopBtn.classList.remove('show');
+});
+
+backToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+// --- Cursor Spotlight Effect ---
+document.addEventListener('mousemove', (e) => {
+  const cards = document.querySelectorAll('.glossy-card');
+  cards.forEach(card => {
+    const rect = card.getBoundingClientRect();
+    card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+    card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+  });
+});
+
+// --- Timeline Rendering ---
+const tl = document.getElementById('timeline');
+function renderTimeline() {
+  tl.innerHTML = "";
+  const items = i18nData[currentLang].expItems;
+  items.forEach((e) => {
+    const item = document.createElement('div');
+    item.className = 't-item';
+    item.innerHTML = `
+      <div class="glossy-card t-card">
+        <h3>${e.org}</h3><span class="t-tag">${e.type}</span>
+        <div class="role">${e.role}</div>
+        <div class="dates">${e.dates}</div>
+      </div>`;
+    tl.appendChild(item);
+  });
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.t-item').forEach(i => observer.observe(i));
+}
+renderTimeline();
+
+// --- Projects & Case Studies ---
+const filtersEl = document.getElementById('filters');
+const gridEl = document.getElementById('proj-grid');
+
+function renderFilters() {
+  filtersEl.innerHTML = "";
+  const cats = i18nData[currentLang].categories;
+  cats.forEach((c, idx) => {
+    const b = document.createElement('button');
+    b.className = "filter-btn" + (idx === 0 ? " active" : "");
+    b.textContent = c;
+    b.onclick = () => {
+      document.querySelectorAll('.filter-btn').forEach(x => x.classList.remove('active'));
+      b.classList.add('active');
+      renderProjects(c);
+    };
+    filtersEl.appendChild(b);
+  });
+}
+
+function renderProjects(filter) {
+  gridEl.innerHTML = "";
+  const currentProjects = projectsData[currentLang];
+  const allCats = i18nData[currentLang].categories;
+  
+  const filtered = currentProjects.filter(p => {
+    if (filter === "All" || filter === "الكل") return true;
+    return p.cat === filter;
+  });
+
+  filtered.forEach((p) => {
+    const card = document.createElement('div');
+    card.className = "proj-card glossy-card";
+    card.innerHTML = `
+      <div class="proj-media">
+        <img src="${p.img}" alt="${p.title}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80'">
+      </div>
+      <div class="proj-details">
+        <div>
+          <div class="proj-cat">${p.cat}</div>
+          <div class="proj-title">${p.title}</div>
+          <div class="proj-impact">${p.impact}</div>
+        </div>
+      </div>`;
+    card.onclick = () => openModal(p);
+    gridEl.appendChild(card);
+  });
+}
+
+renderFilters();
+renderProjects("All");
+
+// --- Modal Logic ---
+const modal = document.getElementById('proj-modal');
+const modalImg = document.getElementById('modal-img');
+const modalCat = document.getElementById('modal-cat');
+const modalTitle = document.getElementById('modal-title');
+const modalDesc = document.getElementById('modal-desc');
+const modalLink = document.getElementById('modal-link');
+const modalInternalLink = document.getElementById('modal-internal-link');
+const modalClose = document.getElementById('modal-close');
+
+function openModal(proj) {
+  modalImg.src = proj.img;
+  modalCat.textContent = proj.cat;
+  modalTitle.textContent = proj.title;
+  modalDesc.textContent = proj.desc;
+  modalLink.href = proj.link;
+  
+  if (proj.internalLink) {
+    modalInternalLink.href = proj.internalLink;
+    modalInternalLink.style.display = 'inline-flex';
+  } else {
+    modalInternalLink.style.display = 'none';
+  }
+
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  modal.classList.remove('active');
+  document.body.style.overflow = 'auto';
+}
+
+modalClose.addEventListener('click', closeModal);
+modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('active')) closeModal(); });
+
+// --- Mobile Navigation ---
+const menuToggle = document.getElementById('menu-toggle');
+const mobileDrawer = document.getElementById('mobile-drawer');
+function toggleMobileMenu() { mobileDrawer.classList.toggle('open'); }
+menuToggle.addEventListener('click', toggleMobileMenu);
+
+// --- Interactive Contact Form & Copy Email ---
+function toggleChip(chip) {
+  chip.classList.toggle('selected');
+}
+
+const toast = document.getElementById('toast');
+const toastMsg = document.getElementById('toast-msg');
+
+function showToast(msg) {
+  toastMsg.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 3500);
+}
+
+document.getElementById('copy-email').addEventListener('click', () => {
+  navigator.clipboard.writeText('aymanatta71@gmail.com');
+  showToast(i18nData[currentLang].copyToast);
+});
+
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const name = document.getElementById('c-name').value;
+  const email = document.getElementById('c-email').value;
+  const msg = document.getElementById('c-message').value;
+
+  const msgText = i18nData[currentLang].sendToast.replace('{name}', name);
+  showToast(msgText);
+  
+  setTimeout(() => {
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${msg}`);
+    window.location.href = `mailto:aymanatta71@gmail.com?subject=New Portfolio Inquiry from ${name}&body=${body}`;
+  }, 800);
+});
+</script>
+
+</body>
+</html>
