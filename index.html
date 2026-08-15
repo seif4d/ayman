@@ -494,8 +494,8 @@
 
     .footer-top {
       display: grid;
-      grid-template-columns: 1.5fr 0.9fr 1.1fr 1.3fr;
-      gap: 40px;
+      grid-template-columns: 1.6fr 1fr 1.4fr;
+      gap: 48px;
       padding-bottom: 48px;
       border-bottom: 1px solid var(--border);
     }
@@ -559,8 +559,7 @@
       box-shadow: 0 0 8px var(--accent);
     }
 
-    .footer-nav-col ul,
-    .footer-specialties-col ul {
+    .footer-nav-col ul {
       list-style: none;
       display: flex;
       flex-direction: column;
@@ -577,16 +576,6 @@
     .footer-nav-col a:hover {
       color: var(--accent);
       transform: translateX(4px);
-    }
-
-    .footer-specialties-col span {
-      color: var(--text-dim);
-      font-size: 13.5px;
-      font-weight: 500;
-      transition: var(--transition);
-    }
-    .footer-specialties-col li:hover span {
-      color: var(--text);
     }
 
     .footer-contact-list {
@@ -1334,19 +1323,6 @@
           <li><a href="#process" id="foot-nav-process">Process</a></li>
           <li><a href="#experience" id="foot-nav-exp">Experience</a></li>
           <li><a href="#projects" id="foot-nav-work">Selected Work</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-specialties-col">
-        <h4 id="footer-spec-title">Specialties</h4>
-        <ul>
-          <li><span>Brand Identity Systems</span></li>
-          <li><span>Social Media Campaigns</span></li>
-          <li><span>Print & Packaging Design</span></li>
-          <li><span>Marketing Creatives</span></li>
-          <li><span>UI/UX Interface Design</span></li>
-          <li><span>AI-Assisted Art</span></li>
-        </ul>
       </div>
 
       <div class="footer-contact-col">
@@ -1877,8 +1853,6 @@ function applyTranslations() {
   if (footStatus) footStatus.textContent = t.footerStatus;
   const footNavTitle = document.getElementById('footer-nav-title');
   if (footNavTitle) footNavTitle.textContent = t.footerNavTitle;
-  const footSpecTitle = document.getElementById('footer-spec-title');
-  if (footSpecTitle) footSpecTitle.textContent = t.footerSpecTitle;
   const footContactTitle = document.getElementById('footer-contact-title');
   if (footContactTitle) footContactTitle.textContent = t.footerContactTitle;
   const footCopy = document.getElementById('footer-copy');
