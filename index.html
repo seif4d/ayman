@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth" data-theme="emerald">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +13,7 @@
   <meta property="og:type" content="website">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2310b981' stroke-width='2.5'><path d='M12 2l3.5 5H20l-8 15L4 7h4.5L12 2z'/></svg>">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a855f7' stroke-width='2.5'><path d='M12 2l3.5 5H20l-8 15L4 7h4.5L12 2z'/></svg>">
 
   <!-- Google Fonts: Outfit + Space Grotesk + Playfair Display + Alexandria (Arabic) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,13 +22,19 @@
 
   <style>
     /* ==========================================================================
-       DYNAMIC THEME SYSTEM (4 Accent Palettes)
+       DESIGN SYSTEM (Purple Accent Theme)
        ========================================================================== */
     :root {
       --bg: #07090e;
       --bg-surface: #0d121d;
       --bg-card: rgba(15, 22, 35, 0.65);
       --bg-card-hover: rgba(23, 33, 51, 0.85);
+      
+      --accent: #a855f7;
+      --accent-hover: #c084fc;
+      --accent-glow: rgba(168, 85, 247, 0.25);
+      --accent-subtle: rgba(168, 85, 247, 0.08);
+      --accent-rgb: 168, 85, 247;
       
       --border: rgba(255, 255, 255, 0.08);
       --border-accent: rgba(var(--accent-rgb), 0.3);
@@ -46,36 +52,6 @@
       --radius-md: 16px;
       --radius-lg: 24px;
       --transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    /* Theme Accent Colors Overrides */
-    [data-theme="emerald"] {
-      --accent: #10b981;
-      --accent-hover: #34d399;
-      --accent-glow: rgba(16, 185, 129, 0.25);
-      --accent-subtle: rgba(16, 185, 129, 0.08);
-      --accent-rgb: 16, 185, 129;
-    }
-    [data-theme="cyan"] {
-      --accent: #06b6d4;
-      --accent-hover: #38bdf8;
-      --accent-glow: rgba(6, 182, 212, 0.25);
-      --accent-subtle: rgba(6, 182, 212, 0.08);
-      --accent-rgb: 6, 182, 212;
-    }
-    [data-theme="purple"] {
-      --accent: #a855f7;
-      --accent-hover: #c084fc;
-      --accent-glow: rgba(168, 85, 247, 0.25);
-      --accent-subtle: rgba(168, 85, 247, 0.08);
-      --accent-rgb: 168, 85, 247;
-    }
-    [data-theme="amber"] {
-      --accent: #f59e0b;
-      --accent-hover: #fbbf24;
-      --accent-glow: rgba(245, 158, 11, 0.25);
-      --accent-subtle: rgba(245, 158, 11, 0.08);
-      --accent-rgb: 245, 158, 11;
     }
 
     /* Reset & Base */
@@ -180,21 +156,8 @@
     nav a:hover, nav a.active { color: var(--text); }
     nav a:hover::after, nav a.active::after { width: 100%; }
 
-    /* Interactive Theme Color Picker Bar */
+    /* Header Actions */
     .header-actions { display: flex; align-items: center; gap: 16px; }
-    .theme-picker {
-      display: flex; gap: 6px; padding: 4px 8px; border-radius: 20px;
-      background: rgba(255, 255, 255, 0.04); border: 1px solid var(--border);
-    }
-    .dot-btn {
-      width: 14px; height: 14px; border-radius: 50%; cursor: pointer; border: 2px solid transparent;
-      transition: var(--transition);
-    }
-    .dot-btn:hover, .dot-btn.active { transform: scale(1.25); border-color: #fff; }
-    .dot-emerald { background: #10b981; }
-    .dot-cyan { background: #06b6d4; }
-    .dot-purple { background: #a855f7; }
-    .dot-amber { background: #f59e0b; }
 
     .menu-btn {
       display: none; background: none; border: 0; color: var(--text); font-size: 22px; cursor: pointer;
@@ -543,12 +506,8 @@
       nav { display: none; }
       .menu-btn { display: flex; width: 38px; height: 38px; font-size: 19px; }
       
-      /* Keep theme dots visible in top header bar on mobile, hide lang btn from top bar */
-      header .header-actions .header-lang-btn { display: none; }
-      header .header-actions .theme-picker { display: flex; gap: 4px; padding: 4px 6px; }
-      header .header-actions .theme-picker .dot-btn { width: 12px; height: 12px; }
       header .wrap { height: 68px; padding: 0 18px; }
-      .header-actions { gap: 8px; }
+      .header-actions { gap: 10px; }
       .logo { font-size: 16.5px; gap: 8px; }
       .logo-box { width: 32px; height: 32px; }
 
@@ -693,18 +652,11 @@
     </nav>
 
     <div class="header-actions">
-      <!-- Language Switcher (Desktop Header) -->
+      <!-- Language Switcher (Desktop & Mobile Header) -->
       <button class="lang-btn header-lang-btn" id="lang-toggle" onclick="toggleLanguage()" title="Switch Language">
         🌐 <span>AR</span>
       </button>
 
-      <!-- Live Interactive Color Theme Switcher -->
-      <div class="theme-picker" title="Switch Theme Color">
-        <div class="dot-btn dot-emerald active" onclick="setTheme('emerald')"></div>
-        <div class="dot-btn dot-cyan" onclick="setTheme('cyan')"></div>
-        <div class="dot-btn dot-purple" onclick="setTheme('purple')"></div>
-        <div class="dot-btn dot-amber" onclick="setTheme('amber')"></div>
-      </div>
       <button class="menu-btn" id="menu-toggle" aria-label="Toggle Navigation">&#9776;</button>
     </div>
   </div>
@@ -1064,13 +1016,6 @@
 </footer>
 
 <script>
-// --- Theme Switcher Feature ---
-function setTheme(theme) {
-  document.documentElement.setAttribute('data-theme', theme);
-  document.querySelectorAll('.dot-btn').forEach(btn => btn.classList.remove('active'));
-  document.querySelector(`.dot-${theme}`).classList.add('active');
-}
-
 // --- Multi-Language i18n System ---
 let currentLang = 'en';
 

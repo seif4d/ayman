@@ -111,12 +111,8 @@ npx serve .
 }
 ```
 
-### تغيير الثيم الافتراضي:
-قم بتعديل وسم الـ `html` في أعلى الصفحة:
-```html
-<html lang="en" class="scroll-smooth" data-theme="emerald">
-<!-- الخيارات: emerald | cyan | purple | amber -->
-```
+### نظام الألوان (Color Theme):
+تم اعتماد اللون البنفسجي الأساسي (`#a855f7`) كلون رئيسي للهوية والتصميم (Accent Theme).
 
 ---
 

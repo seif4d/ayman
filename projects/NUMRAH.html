@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth" data-theme="emerald">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +7,7 @@
   <meta name="description" content="UI/UX Case Study for NUMRAH Mobile App — Architecture, dark mode interface system, and user experience optimization by Ayman Atta.">
   
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2310b981' stroke-width='2.5'><path d='M12 2l3.5 5H20l-8 15L4 7h4.5L12 2z'/></svg>">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a855f7' stroke-width='2.5'><path d='M12 2l3.5 5H20l-8 15L4 7h4.5L12 2z'/></svg>">
 
   <!-- OpenGraph Metadata -->
   <meta property="og:title" content="NUMRAH Mobile App Case Study | Ayman Atta">
@@ -27,6 +27,13 @@
       --bg: #07090e;
       --bg-surface: #0d121d;
       --bg-card: rgba(15, 22, 35, 0.7);
+      
+      --accent: #a855f7;
+      --accent-hover: #c084fc;
+      --accent-glow: rgba(168, 85, 247, 0.25);
+      --accent-subtle: rgba(168, 85, 247, 0.08);
+      --accent-rgb: 168, 85, 247;
+      
       --border: rgba(255, 255, 255, 0.08);
       --border-accent: rgba(var(--accent-rgb), 0.3);
       --text: #f8fafc;
@@ -40,35 +47,6 @@
       --radius-md: 16px;
       --radius-lg: 24px;
       --transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    [data-theme="emerald"] {
-      --accent: #10b981;
-      --accent-hover: #34d399;
-      --accent-glow: rgba(16, 185, 129, 0.25);
-      --accent-subtle: rgba(16, 185, 129, 0.08);
-      --accent-rgb: 16, 185, 129;
-    }
-    [data-theme="cyan"] {
-      --accent: #06b6d4;
-      --accent-hover: #38bdf8;
-      --accent-glow: rgba(6, 182, 212, 0.25);
-      --accent-subtle: rgba(6, 182, 212, 0.08);
-      --accent-rgb: 6, 182, 212;
-    }
-    [data-theme="purple"] {
-      --accent: #a855f7;
-      --accent-hover: #c084fc;
-      --accent-glow: rgba(168, 85, 247, 0.25);
-      --accent-subtle: rgba(168, 85, 247, 0.08);
-      --accent-rgb: 168, 85, 247;
-    }
-    [data-theme="amber"] {
-      --accent: #f59e0b;
-      --accent-hover: #fbbf24;
-      --accent-glow: rgba(245, 158, 11, 0.25);
-      --accent-subtle: rgba(245, 158, 11, 0.08);
-      --accent-rgb: 245, 158, 11;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -112,13 +90,7 @@
     }
     .back-btn:hover { color: var(--accent); border-color: var(--border-accent); background: var(--accent-subtle); transform: translateX(-3px); }
 
-    .theme-picker { display: flex; gap: 6px; padding: 4px 8px; border-radius: 20px; background: rgba(255, 255, 255, 0.04); border: 1px solid var(--border); }
-    .dot-btn { width: 14px; height: 14px; border-radius: 50%; cursor: pointer; border: 2px solid transparent; transition: var(--transition); }
-    .dot-btn:hover, .dot-btn.active { transform: scale(1.25); border-color: #fff; }
-    .dot-emerald { background: #10b981; }
-    .dot-cyan { background: #06b6d4; }
-    .dot-purple { background: #a855f7; }
-    .dot-amber { background: #f59e0b; }
+
 
     /* ==========================================================================
        CASE STUDY HERO & META SECTION
@@ -248,13 +220,6 @@
       <a href="../index.html#projects" class="back-btn">
         <span>← Back to All Work</span>
       </a>
-
-      <div class="theme-picker" title="Switch Theme Color">
-        <button class="dot-btn dot-emerald active" onclick="setTheme('emerald')" aria-label="Emerald Theme"></button>
-        <button class="dot-btn dot-cyan" onclick="setTheme('cyan')" aria-label="Cyan Theme"></button>
-        <button class="dot-btn dot-purple" onclick="setTheme('purple')" aria-label="Purple Theme"></button>
-        <button class="dot-btn dot-amber" onclick="setTheme('amber')" aria-label="Amber Theme"></button>
-      </div>
     </div>
   </header>
 
@@ -397,12 +362,5 @@
     </div>
   </footer>
 
-  <script>
-    function setTheme(theme) {
-      document.documentElement.setAttribute('data-theme', theme);
-      document.querySelectorAll('.dot-btn').forEach(btn => btn.classList.remove('active'));
-      document.querySelector(`.dot-${theme}`).classList.add('active');
-    }
-  </script>
 </body>
 </html>
