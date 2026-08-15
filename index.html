@@ -818,32 +818,19 @@
       transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .footer-contact-details {
-      display: flex;
-      flex-direction: column;
-      gap: 1px;
-      min-width: 0;
-      flex-grow: 1;
-    }
-
-    .footer-contact-details .f-contact-label {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--text-dim);
-      transition: color 0.3s ease;
-    }
-
-    .footer-contact-details .f-contact-val {
-      font-size: 12.5px;
+    .footer-contact-item .f-contact-val {
+      font-size: 13px;
       font-weight: 500;
-      color: var(--text);
+      color: var(--text-muted);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      font-family: var(--font-code);
+      flex-grow: 1;
       transition: color 0.3s ease;
+    }
+
+    .footer-contact-item:hover .f-contact-val {
+      color: #ffffff;
     }
 
     .footer-contact-item .f-contact-arrow {
@@ -886,7 +873,6 @@
       box-shadow: 0 0 16px rgba(234, 67, 53, 0.55);
       transform: scale(1.05);
     }
-    .f-item-mail:hover .f-contact-label { color: #ff7675; }
 
     /* WhatsApp Brand */
     .f-item-whatsapp .f-icon {
@@ -910,7 +896,6 @@
       box-shadow: 0 0 16px rgba(37, 211, 102, 0.55);
       transform: scale(1.05);
     }
-    .f-item-whatsapp:hover .f-contact-label { color: #25d366; }
 
     /* Behance Brand */
     .f-item-behance .f-icon {
@@ -934,7 +919,6 @@
       box-shadow: 0 0 16px rgba(0, 87, 255, 0.55);
       transform: scale(1.05);
     }
-    .f-item-behance:hover .f-contact-label { color: #60a5fa; }
 
     /* LinkedIn Brand */
     .f-item-linkedin .f-icon {
@@ -958,7 +942,6 @@
       box-shadow: 0 0 16px rgba(10, 102, 194, 0.55);
       transform: scale(1.05);
     }
-    .f-item-linkedin:hover .f-contact-label { color: #38bdf8; }
 
     .footer-contact-item:hover .f-contact-arrow {
       background: rgba(255, 255, 255, 0.12);
@@ -1706,10 +1689,7 @@
                 <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
               </svg>
             </div>
-            <div class="footer-contact-details">
-              <span class="f-contact-label" id="f-label-mail">Email</span>
-              <span class="f-contact-val">aymanatta71@gmail.com</span>
-            </div>
+            <span class="f-contact-val">aymanatta71@gmail.com</span>
             <div class="f-contact-arrow">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M7 17L17 7M17 7H7M17 7V17"/>
@@ -1723,10 +1703,7 @@
                 <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01C17.18 3.03 14.69 2 12.04 2zm0 18.15c-1.49 0-2.95-.4-4.23-1.16l-.3-.18-3.14.82.84-3.06-.2-.31c-.83-1.33-1.28-2.87-1.28-4.46 0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42s2.42 3.63 2.42 5.83c0 4.55-3.7 8.24-8.24 8.24zm4.52-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.15.17-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42h-.47c-.16 0-.43.06-.65.3-.23.25-.87.85-.87 2.07s.89 2.4 1.02 2.57c.12.16 1.75 2.67 4.24 3.75.59.26 1.06.41 1.42.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.59.21-1.09.15-1.19-.06-.11-.22-.17-.47-.3z"/>
               </svg>
             </div>
-            <div class="footer-contact-details">
-              <span class="f-contact-label" id="f-label-wa">WhatsApp</span>
-              <span class="f-contact-val">+20 102 095 3662</span>
-            </div>
+            <span class="f-contact-val">+20 102 095 3662</span>
             <div class="f-contact-arrow">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M7 17L17 7M17 7H7M17 7V17"/>
@@ -1740,10 +1717,7 @@
                 <path d="M6.5 6.5h3.2c1.25 0 2.2.35 2.8 1.02.55.62.8 1.4.8 2.3 0 .8-.25 1.5-.75 2.05.7.45 1.15 1.25 1.15 2.25 0 1.2-.45 2.15-1.3 2.8-.75.6-1.8.88-3.15.88H6.5V6.5zm2.1 4.25h1.2c.6 0 1.05-.12 1.35-.38.3-.25.45-.62.45-1.08 0-.48-.15-.85-.45-1.1-.3-.24-.75-.37-1.35-.37H8.6v2.93zm0 4.85h1.45c.7 0 1.22-.15 1.55-.45.35-.3.5-.72.5-1.25 0-.52-.16-.93-.5-1.22-.32-.3-.85-.45-1.55-.45H8.6v3.37zm7.5-6.6h3.4v1.1h-3.4V9zm-.1 3.5c.8-.8 1.8-1.2 3.1-1.2 1.25 0 2.25.4 3 1.2.75.8 1.1 1.85 1.1 3.15v.6h-5.9c.1 1.6 1.1 2.45 2.65 2.45.9 0 1.65-.3 2.1-.9l1.1.9c-.8 1-1.9 1.5-3.3 1.5-1.4 0-2.5-.42-3.35-1.28-.85-.85-1.28-1.95-1.28-3.3 0-1.35.43-2.45 1.28-3.3zm4.9 2.6c-.05-.55-.25-1-.6-1.35-.35-.35-.8-.55-1.35-.55-.6 0-1.08.2-1.45.55-.35.35-.55.8-.58 1.35h3.98z"/>
               </svg>
             </div>
-            <div class="footer-contact-details">
-              <span class="f-contact-label" id="f-label-be">Behance</span>
-              <span class="f-contact-val">behance.net/ayman3tta</span>
-            </div>
+            <span class="f-contact-val">behance.net/ayman3tta</span>
             <div class="f-contact-arrow">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M7 17L17 7M17 7H7M17 7V17"/>
@@ -1757,10 +1731,7 @@
                 <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
               </svg>
             </div>
-            <div class="footer-contact-details">
-              <span class="f-contact-label" id="f-label-li">LinkedIn</span>
-              <span class="f-contact-val">linkedin.com/in/ayman3tta</span>
-            </div>
+            <span class="f-contact-val">linkedin.com/in/ayman3tta</span>
             <div class="f-contact-arrow">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M7 17L17 7M17 7H7M17 7V17"/>
@@ -2320,14 +2291,6 @@ function applyTranslations() {
   if (footNavTitle) footNavTitle.textContent = t.footerNavTitle;
   const footContactTitle = document.getElementById('footer-contact-title');
   if (footContactTitle) footContactTitle.textContent = t.footerContactTitle;
-  const flMail = document.getElementById('f-label-mail');
-  if (flMail) flMail.textContent = t.footerContactMail;
-  const flWa = document.getElementById('f-label-wa');
-  if (flWa) flWa.textContent = t.footerContactWa;
-  const flBe = document.getElementById('f-label-be');
-  if (flBe) flBe.textContent = t.footerContactBe;
-  const flLi = document.getElementById('f-label-li');
-  if (flLi) flLi.textContent = t.footerContactLi;
   const footCopy = document.getElementById('footer-copy');
   if (footCopy) footCopy.innerHTML = t.footerCopy;
   const footScrollTop = document.getElementById('footer-scroll-top-text');
