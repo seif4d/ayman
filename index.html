@@ -196,68 +196,74 @@
     }
 
     /* ==========================================================================
-       HERO SECTION (Creative Asymmetric Layout)
+       HERO SECTION (Creative Centered Layout)
        ========================================================================== */
        
-    .hero { padding: 120px 0 80px; }
-    .hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 48px; align-items: center; }
+    .hero { padding: 130px 0 80px; text-align: center; }
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      max-width: 920px;
+      margin: 0 auto;
+    }
     
-.status-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 18px;                          /* حشو أرتب ومريح للنص من الأطراف */
-  border-radius: 100px;                       /* انحناء كبسولة متكيف بمرونة مع ارتفاع النص */
-  background: var(--accent-subtle);
-  border: 1px solid var(--border-accent);
-  font-size: clamp(11.5px, 2.5vw, 13px);      /* يتصغر الخط تلقائياً في الشاشات الصغيرة لتفادي الخروج */
-  line-height: 1.4;                           /* ارتفاع السطر يمنع خروج الأحرف من الأعلى والأسفل */
-  font-weight: 500;
-  color: var(--accent);
-  margin-bottom: 24px;
-  max-width: 100%;                            /* يمنع التمدد خارج حدود الشاشة */
-  width: fit-content;                         /* يلتف الإطار حول النص بضبط عالي */
-  box-sizing: border-box;
-}
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      border-radius: 100px;
+      background: var(--accent-subtle);
+      border: 1px solid var(--border-accent);
+      font-size: clamp(11.5px, 2.5vw, 13px);
+      line-height: 1.4;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 24px;
+      max-width: 100%;
+      width: fit-content;
+      box-sizing: border-box;
+    }
 
-.status-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 10px var(--accent);
-  animation: pulse 2s infinite;
-  flex-shrink: 0;                             /* يمنع انكماش النقطة عند نزول النص على سطرين */
-}
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 10px var(--accent);
+      animation: pulse 2s infinite;
+      flex-shrink: 0;
+    }
     @keyframes pulse {
       0%, 100% { transform: scale(1); opacity: 1; }
       50% { transform: scale(1.4); opacity: 0.5; }
     }
     
-    .hero h1 { font-size: clamp(38px, 5.2vw, 64px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.12; margin-bottom: 18px; }
-    .hero-sub { color: var(--text-muted); font-size: 16.5px; line-height: 1.7; max-width: 580px; }
-    .hero-actions { display: flex; gap: 16px; margin-top: 36px; flex-wrap: wrap; }
-
-    /* Interactive Hero Right Widget Card */
-    .hero-widget {
-      padding: 28px; display: flex; flex-direction: column; gap: 20px;
-      border: 1px solid var(--border-accent);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    .hero h1 { 
+      font-size: clamp(38px, 5.4vw, 66px); 
+      font-weight: 800; 
+      letter-spacing: -0.03em; 
+      line-height: 1.15; 
+      margin-bottom: 20px; 
+      max-width: 880px;
     }
-    .widget-header { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); padding-bottom: 16px; }
-    .widget-title { font-family: var(--font-code); font-size: 12.5px; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
-    
-    .stats-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
-    .stat-box { padding: 16px; background: rgba(255, 255, 255, 0.02); border-radius: var(--radius-sm); border: 1px solid var(--border); }
-    .stat-num { font-size: 26px; font-weight: 800; color: #fff; font-family: var(--font-code); }
-    .stat-label { font-size: 12.5px; color: var(--text-dim); margin-top: 2px; }
-
-    .widget-preview {
-      padding: 16px; border-radius: var(--radius-sm); background: var(--bg-surface);
-      border: 1px dashed var(--border-accent); font-size: 13px; color: var(--text-muted);
-      display: flex; align-items: center; gap: 12px;
+    .hero-sub { 
+      color: var(--text-muted); 
+      font-size: 17px; 
+      line-height: 1.75; 
+      max-width: 680px; 
+      margin: 0 auto;
     }
-    .preview-icon { width: 36px; height: 36px; border-radius: 8px; background: var(--accent-subtle); color: var(--accent); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .hero-actions { 
+      display: flex; 
+      gap: 16px; 
+      margin-top: 36px; 
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap; 
+    }
 
     /* MARQUEE TICKER */
     .marquee-wrap {
@@ -511,23 +517,16 @@
       .logo { font-size: 16.5px; gap: 8px; }
       .logo-box { width: 32px; height: 32px; }
 
-      .hero { padding: 48px 0 36px; }
-      .hero-grid { grid-template-columns: 1fr; gap: 28px; }
-      .hero h1 { font-size: clamp(26px, 7vw, 38px); line-height: 1.22; margin-bottom: 14px; }
-      .hero-sub { font-size: 14.5px; line-height: 1.6; }
-      .hero-actions { width: 100%; gap: 10px; flex-direction: column; }
-      .hero-actions .btn { width: 100%; justify-content: center; padding: 12px 20px; font-size: 14px; }
+      .hero { padding: 56px 0 36px; }
+      .hero h1 { font-size: clamp(28px, 7.5vw, 42px); line-height: 1.22; margin-bottom: 16px; }
+      .hero-sub { font-size: 15px; line-height: 1.65; }
+      .hero-actions { width: 100%; gap: 12px; flex-direction: column; }
+      .hero-actions .btn { width: 100%; justify-content: center; padding: 13px 20px; font-size: 14.5px; }
       
       .status-pill {
         font-size: 11.5px; padding: 6px 14px; margin-bottom: 18px;
         white-space: normal; line-height: 1.45; max-width: 100%; width: fit-content;
       }
-
-      .glossy-card.hero-widget { padding: 20px 16px; gap: 16px; }
-      .stats-row { grid-template-columns: 1fr 1fr; gap: 10px; }
-      .stat-box { padding: 12px; }
-      .stat-num { font-size: 22px; }
-      .stat-label { font-size: 11.5px; }
 
       .marquee-wrap { padding: 12px 0; margin-top: 28px; }
       .marquee-item { font-size: 11.5px; gap: 10px; }
@@ -830,53 +829,22 @@
 </div>
 
 <section class="hero" id="home">
-  <div class="wrap hero-grid">
-    <div>
-      <div class="status-pill">
-        <span class="status-dot"></span> Available for freelance
-      </div>
-      <h1>Building <span class="serif-accent">bold brands</span> &amp; visual stories that <span class="gradient-text">leave a mark.</span></h1>
-      <p class="hero-sub">Mid-Level Graphic Designer with 3+ years crafting visual identities, social campaigns, print artwork, and marketing creatives — plus hands-on UI/UX design experience.</p>
-
-      <div class="hero-actions">
-        <a href="#projects" class="btn btn-primary">
-          <span>Explore Case Studies</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
-        <a href="assets/Ayman%20Atta%20Graphic%20Designer.pdf" download="Ayman Atta Graphic Designer.pdf" target="_blank" rel="noopener" class="btn btn-ghost">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          <span>Download CV</span>
-        </a>
-      </div>
+  <div class="wrap hero-content">
+    <div class="status-pill">
+      <span class="status-dot"></span> Available for freelance
     </div>
+    <h1>Building <span class="serif-accent">bold brands</span> &amp; visual stories that <span class="gradient-text">leave a mark.</span></h1>
+    <p class="hero-sub">Mid-Level Graphic Designer with 3+ years crafting visual identities, social campaigns, print artwork, and marketing creatives — plus hands-on UI/UX design experience.</p>
 
-    <!-- Interactive Hero Right Widget Card -->
-    <div class="glossy-card hero-widget">
-      <div class="widget-header">
-        <span class="widget-title">Live Creative Metrics</span>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-      </div>
-      
-      <div class="stats-row">
-        <div class="stat-box">
-          <div class="stat-num">3+</div>
-          <div class="stat-label">Years Exp.</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-num">30+</div>
-          <div class="stat-label">Projects Delivered</div>
-        </div>
-      </div>
-
-      <div class="widget-preview">
-        <div class="preview-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        </div>
-        <div>
-          <strong style="color: #fff; display: block;">Design Philosophy</strong>
-          <span>Great design is felt before it's understood.</span>
-        </div>
-      </div>
+    <div class="hero-actions">
+      <a href="#projects" class="btn btn-primary">
+        <span>View My Work</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a href="assets/Ayman%20Atta%20Graphic%20Designer.pdf" download="Ayman Atta Graphic Designer.pdf" target="_blank" rel="noopener" class="btn btn-ghost">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span>Download CV</span>
+      </a>
     </div>
   </div>
 
@@ -1490,20 +1458,18 @@ function applyTranslations() {
   });
 
   // Hero Section
-  document.querySelector('.status-pill').childNodes[2].nodeValue = " " + t.statusPill;
-  document.querySelector('.hero h1').innerHTML = t.heroTitle;
-  document.querySelector('.hero-sub').textContent = t.heroSub;
-  document.querySelector('.hero-actions .btn-primary span').textContent = t.exploreBtn;
-  document.querySelector('.hero-actions .btn-ghost span').textContent = t.downloadCvBtn;
-  document.querySelector('.widget-title').textContent = t.metricsTitle;
-  
-  const statLabels = document.querySelectorAll('.stat-label');
-  if (statLabels.length >= 2) {
-    statLabels[0].textContent = t.expYearsLabel;
-    statLabels[1].textContent = t.projDeliveredLabel;
+  const statusPill = document.querySelector('.status-pill');
+  if (statusPill && statusPill.childNodes[2]) {
+    statusPill.childNodes[2].nodeValue = " " + t.statusPill;
   }
-  document.querySelector('.widget-preview strong').textContent = t.philosophyTitle;
-  document.querySelector('.widget-preview span').textContent = t.philosophyDesc;
+  const heroH1 = document.querySelector('.hero h1');
+  if (heroH1) heroH1.innerHTML = t.heroTitle;
+  const heroSub = document.querySelector('.hero-sub');
+  if (heroSub) heroSub.textContent = t.heroSub;
+  const heroPrimarySpan = document.querySelector('.hero-actions .btn-primary span');
+  if (heroPrimarySpan) heroPrimarySpan.textContent = t.exploreBtn;
+  const heroGhostSpan = document.querySelector('.hero-actions .btn-ghost span');
+  if (heroGhostSpan) heroGhostSpan.textContent = t.downloadCvBtn;
 
   // Marquee
   const marqueeItems = document.querySelectorAll('.marquee-item');
