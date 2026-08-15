@@ -618,14 +618,168 @@
     [dir="rtl"] .modal-body { text-align: right; }
     [dir="rtl"] .modal-close { left: 16px; right: auto; }
     
-    @media (max-width: 768px) {
-      [dir="rtl"] .timeline::before { right: 16px; left: auto; }
-      [dir="rtl"] .t-item, [dir="rtl"] .t-item:nth-child(even) { width: 100%; right: 0; left: auto; padding: 0 34px 28px 0; text-align: right; }
-      [dir="rtl"] .t-item::after, [dir="rtl"] .t-item:nth-child(even)::after { right: 10px; left: auto; }
+    /* ==========================================================================
+       PREMIUM PORTFOLIO LOADING SCREEN
+       ========================================================================== */
+    #portfolio-loader {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: var(--bg, #07090e);
+      z-index: 999999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      overflow: hidden;
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                  visibility 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    #portfolio-loader.loaded {
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(1.025);
+      pointer-events: none;
+    }
+
+    .loader-bg-glow {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.18) 0%, rgba(7, 9, 14, 0) 70%);
+      filter: blur(40px);
+      pointer-events: none;
+      animation: loaderGlowPulse 2.8s ease-in-out infinite alternate;
+    }
+
+    @keyframes loaderGlowPulse {
+      0% { transform: scale(0.85); opacity: 0.45; }
+      100% { transform: scale(1.15); opacity: 0.95; }
+    }
+
+    .loader-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 24px;
+    }
+
+    .loader-brand {
+      margin-bottom: 26px;
+    }
+
+    .loader-title {
+      font-size: clamp(28px, 4.5vw, 38px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      line-height: 1.2;
+    }
+
+    .loader-subtitle {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.28em;
+      color: var(--text-muted);
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .loader-subtitle::before,
+    .loader-subtitle::after {
+      content: '';
+      width: 18px;
+      height: 1px;
+      background: var(--border-accent);
+    }
+
+    .loader-track {
+      width: 220px;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 99px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .loader-bar {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #a855f7, #c084fc, #e879f9);
+      border-radius: 99px;
+      box-shadow: 0 0 16px rgba(168, 85, 247, 0.9);
+      transition: width 0.16s ease-out;
+    }
+
+    .loader-bar::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: -2px;
+      bottom: -2px;
+      width: 6px;
+      border-radius: 50%;
+      background: #ffffff;
+      box-shadow: 0 0 10px #ffffff, 0 0 18px var(--accent);
+    }
+
+    .loader-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 220px;
+      margin-top: 12px;
+      font-family: var(--font-code);
+      font-size: 11px;
+      color: var(--text-dim);
+      letter-spacing: 0.05em;
+    }
+
+    .loader-status {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .loader-percent {
+      font-weight: 700;
+      color: var(--accent);
     }
   </style>
 </head>
 <body>
+
+<!-- Premium Portfolio Loading Screen -->
+<div id="portfolio-loader" aria-hidden="true">
+  <div class="loader-bg-glow"></div>
+  <div class="loader-content">
+    <div class="loader-brand">
+      <div class="loader-title">Ayman <span class="accent-text">Atta</span></div>
+      <div class="loader-subtitle">Creative UI/UX & Brand Designer</div>
+    </div>
+    <div class="loader-track">
+      <div class="loader-bar" id="loader-bar"></div>
+    </div>
+    <div class="loader-meta">
+      <span class="loader-status" id="loader-status">Initializing...</span>
+      <span class="loader-percent" id="loader-percent">0%</span>
+    </div>
+  </div>
+</div>
 
 <div id="scroll-progress"></div>
 <canvas id="interactive-canvas"></canvas>
@@ -1686,6 +1840,105 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
     window.location.href = `mailto:aymanatta71@gmail.com?subject=New Portfolio Inquiry from ${name}&body=${body}`;
   }, 800);
 });
+
+// --- Portfolio Loading Screen Controller ---
+(function() {
+  const loader = document.getElementById('portfolio-loader');
+  const bar = document.getElementById('loader-bar');
+  const percentEl = document.getElementById('loader-percent');
+  const statusEl = document.getElementById('loader-status');
+  
+  if (!loader || !bar || !percentEl) return;
+
+  // Prevent scroll while loading screen is active
+  document.body.style.overflow = 'hidden';
+
+  let currentPercent = 0;
+  let targetPercent = 18;
+  let isPageLoaded = false;
+  let hasFinished = false;
+  const startTime = Date.now();
+  const minDisplayTime = 900; // ensures polished, non-jarring entrance
+
+  const statusMessages = [
+    { at: 0, text: "Initializing..." },
+    { at: 35, text: "Loading visual assets..." },
+    { at: 70, text: "Configuring layout..." },
+    { at: 90, text: "Preparing experience..." },
+    { at: 100, text: "Welcome" }
+  ];
+
+  function updateStatus(val) {
+    if (!statusEl) return;
+    for (let i = statusMessages.length - 1; i >= 0; i--) {
+      if (val >= statusMessages[i].at) {
+        statusEl.textContent = statusMessages[i].text;
+        break;
+      }
+    }
+  }
+
+  const stepTimer = setInterval(() => {
+    if (hasFinished) return;
+
+    const elapsed = Date.now() - startTime;
+
+    if (!isPageLoaded) {
+      if (currentPercent < targetPercent) {
+        currentPercent += 1;
+      } else if (targetPercent === 18 && elapsed > 180) {
+        targetPercent = 48;
+      } else if (targetPercent === 48 && elapsed > 450) {
+        targetPercent = 78;
+      } else if (targetPercent === 78 && elapsed > 750) {
+        targetPercent = 90;
+      }
+    } else {
+      // Once page is loaded and minimum time elapsed, finish smoothly
+      if (elapsed >= minDisplayTime || currentPercent >= 90) {
+        const step = Math.max(2, Math.ceil((100 - currentPercent) * 0.25));
+        currentPercent += step;
+      } else {
+        currentPercent += 1;
+      }
+    }
+
+    if (currentPercent > 100) currentPercent = 100;
+
+    bar.style.width = currentPercent + '%';
+    percentEl.textContent = currentPercent + '%';
+    updateStatus(currentPercent);
+
+    if (currentPercent >= 100) {
+      hasFinished = true;
+      clearInterval(stepTimer);
+
+      setTimeout(() => {
+        loader.classList.add('loaded');
+        document.body.style.overflow = '';
+        
+        setTimeout(() => {
+          loader.style.display = 'none';
+        }, 750);
+      }, 240);
+    }
+  }, 20);
+
+  // Full page load event
+  if (document.readyState === 'complete') {
+    isPageLoaded = true;
+  } else {
+    window.addEventListener('load', () => {
+      isPageLoaded = true;
+    });
+  }
+
+  // Safety fallback
+  setTimeout(() => {
+    isPageLoaded = true;
+    targetPercent = 100;
+  }, 3000);
+})();
 </script>
 
 </body>
