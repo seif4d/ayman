@@ -652,13 +652,89 @@
     .toast.show { transform: translateY(0); opacity: 1; }
 
     #back-to-top {
-      position: fixed; bottom: 30px; left: 30px; width: 44px; height: 44px; border-radius: 50%;
-      background: rgba(13, 18, 29, 0.85); border: 1px solid var(--border-accent); color: var(--accent);
-      font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center;
-      z-index: 90; opacity: 0; pointer-events: none; transition: var(--transition); backdrop-filter: blur(8px);
+      position: fixed;
+      bottom: 28px;
+      left: 28px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(11, 15, 25, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--accent);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 99;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(16px) scale(0.9);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+      padding: 0;
+      overflow: visible;
     }
-    #back-to-top.show { opacity: 1; pointer-events: auto; }
-    #back-to-top:hover { background: var(--gradient-main); color: #fff; }
+    #back-to-top.show {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0) scale(1);
+    }
+    #back-to-top .btt-progress-svg {
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      width: calc(100% + 4px);
+      height: calc(100% + 4px);
+      transform: rotate(-90deg);
+      pointer-events: none;
+    }
+    #back-to-top .btt-progress-track {
+      fill: none;
+      stroke: rgba(255, 255, 255, 0.08);
+      stroke-width: 2.2;
+    }
+    #back-to-top .btt-progress-bar {
+      fill: none;
+      stroke: url(#btt-gradient);
+      stroke-width: 2.5;
+      stroke-dasharray: 144.51;
+      stroke-dashoffset: 144.51;
+      stroke-linecap: round;
+      transition: stroke-dashoffset 0.1s linear;
+    }
+    #back-to-top .btt-icon {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      color: var(--text-muted);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
+    }
+    #back-to-top .btt-icon svg {
+      width: 18px;
+      height: 18px;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    #back-to-top:hover {
+      background: rgba(18, 24, 38, 0.95);
+      border-color: rgba(168, 85, 247, 0.4);
+      transform: translateY(-4px) scale(1.06);
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.6), 0 0 25px rgba(139, 92, 246, 0.35);
+    }
+    #back-to-top:hover .btt-icon {
+      color: #ffffff;
+    }
+    #back-to-top:hover .btt-icon svg {
+      transform: translateY(-3px);
+    }
+    #back-to-top:active {
+      transform: translateY(-1px) scale(0.98);
+    }
 
     /* ==========================================================================
        PREMIUM FOOTER STYLES
@@ -1652,7 +1728,23 @@
   <span id="toast-msg">Opening inquiry client...</span>
 </div>
 
-<button id="back-to-top" aria-label="Back to top">↑</button>
+<button id="back-to-top" aria-label="Back to top" title="Back to Top">
+  <svg class="btt-progress-svg" viewBox="0 0 52 52">
+    <defs>
+      <linearGradient id="btt-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#8b5cf6"/>
+        <stop offset="100%" stop-color="#ec4899"/>
+      </linearGradient>
+    </defs>
+    <circle class="btt-progress-track" cx="26" cy="26" r="23"/>
+    <circle id="scroll-progress-circle" class="btt-progress-bar" cx="26" cy="26" r="23"/>
+  </svg>
+  <div class="btt-icon">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 19V5M5 12l7-7 7 7"/>
+    </svg>
+  </div>
+</button>
 
 <footer class="site-footer">
   <div class="wrap">
@@ -2356,11 +2448,19 @@ animateCanvas();
 // --- Scroll Progress & Back to top ---
 const progressBar = document.getElementById('scroll-progress');
 const backToTopBtn = document.getElementById('back-to-top');
+const bttProgressCircle = document.getElementById('scroll-progress-circle');
+const bttCircumference = 144.51;
 
 window.addEventListener('scroll', () => {
   const winScroll = document.documentElement.scrollTop;
   const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  progressBar.style.width = (winScroll / height) * 100 + '%';
+  const progressRatio = height > 0 ? (winScroll / height) : 0;
+
+  if (progressBar) progressBar.style.width = (progressRatio * 100) + '%';
+  if (bttProgressCircle) {
+    const offset = bttCircumference - (progressRatio * bttCircumference);
+    bttProgressCircle.style.strokeDashoffset = Math.max(0, offset);
+  }
 
   if (winScroll > 300) backToTopBtn.classList.add('show');
   else backToTopBtn.classList.remove('show');
