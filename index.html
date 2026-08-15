@@ -313,150 +313,84 @@
     .service-card p { font-size: 14.5px; color: var(--text-muted); line-height: 1.65; }
 
     /* ==========================================================================
-       CAPABILITIES & TOOLS (Upgraded Rich Cards)
+       TOOLS & SOFTWARE GRID (Clean & Minimalist)
        ========================================================================== */
-    .skills-grid {
+    .tools-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-    .skill-box {
-      padding: 32px 28px;
-      display: flex;
-      flex-direction: column;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
       gap: 16px;
-      position: relative;
+      max-width: 1060px;
+      margin: 0 auto;
     }
-    .skill-box-primary {
-      border-color: rgba(var(--accent-rgb), 0.35);
-      background: linear-gradient(180deg, rgba(var(--accent-rgb), 0.07) 0%, var(--bg-card) 55%);
-    }
-    .skill-header {
+
+    .tool-card {
+      padding: 18px 20px;
       display: flex;
-      align-items: flex-start;
-      gap: 14px;
+      align-items: center;
+      gap: 16px;
+      border-radius: var(--radius-md);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      transition: var(--transition);
+      cursor: default;
     }
-    .skill-icon-badge {
-      width: 44px;
-      height: 44px;
-      border-radius: var(--radius-sm);
-      background: var(--accent-subtle);
-      border: 1px solid var(--border-accent);
-      color: var(--accent);
+
+    .tool-card:hover {
+      border-color: var(--border-accent);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4), 0 0 20px var(--accent-glow);
+      background: var(--bg-card-hover);
+    }
+
+    .tool-badge {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
+      font-family: var(--font-code);
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: -0.03em;
       flex-shrink: 0;
       transition: var(--transition);
     }
-    .skill-box:hover .skill-icon-badge {
-      background: var(--accent);
-      color: #040806;
-      transform: scale(1.06);
+
+    .tool-card:hover .tool-badge {
+      transform: scale(1.08);
     }
-    .skill-badge {
-      display: inline-block;
-      font-family: var(--font-code);
-      font-size: 10.5px;
+
+    .tool-badge.ps { background: rgba(49, 168, 255, 0.12); color: #31a8ff; border: 1px solid rgba(49, 168, 255, 0.3); }
+    .tool-badge.ai { background: rgba(255, 154, 0, 0.12); color: #ff9a00; border: 1px solid rgba(255, 154, 0, 0.3); }
+    .tool-badge.id { background: rgba(255, 51, 102, 0.12); color: #ff3366; border: 1px solid rgba(255, 51, 102, 0.3); }
+    .tool-badge.ae { background: rgba(153, 153, 255, 0.12); color: #9999ff; border: 1px solid rgba(153, 153, 255, 0.3); }
+    .tool-badge.figma { background: rgba(168, 85, 247, 0.12); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); }
+    .tool-badge.xd { background: rgba(255, 97, 222, 0.12); color: #ff61de; border: 1px solid rgba(255, 97, 222, 0.3); }
+    .tool-badge.mj { background: rgba(52, 211, 153, 0.12); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.3); }
+
+    .tool-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      text-align: left;
+    }
+
+    .tool-info h3 {
+      font-size: 15.5px;
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      padding: 2px 8px;
-      border-radius: 4px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border);
-      color: var(--text-dim);
-      margin-bottom: 4px;
-    }
-    .skill-badge-core {
-      background: var(--accent-subtle);
-      border-color: var(--border-accent);
-      color: var(--accent);
-    }
-    .skill-header h3 {
-      font-size: 18.5px;
-      font-weight: 800;
       color: #fff;
-      line-height: 1.25;
+      margin: 0;
     }
-    .skill-desc {
-      font-size: 13.5px;
+
+    .tool-info span {
+      font-size: 12px;
       color: var(--text-muted);
-      line-height: 1.65;
-    }
-    .skill-group-label {
-      font-family: var(--font-code);
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--text-dim);
-      margin-top: 4px;
-    }
-    .skill-tools-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    .tool-tag {
-      font-family: var(--font-code);
-      font-size: 12px;
-      font-weight: 700;
-      padding: 6px 12px;
-      border-radius: 6px;
-      background: rgba(13, 18, 29, 0.9);
-      border: 1px solid var(--border);
-      color: #fff;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: var(--transition);
-    }
-    .tool-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-    }
-    .tool-ps .tool-dot { background: #31a8ff; }
-    .tool-ai .tool-dot { background: #ff9a00; }
-    .tool-id .tool-dot { background: #ff3366; }
-    .tool-ae .tool-dot { background: #9999ff; }
-    .tool-figma .tool-dot { background: #a259ff; }
-    .tool-xd .tool-dot { background: #ff61f6; }
-    .tool-ai-gen .tool-dot { background: #00f2fe; }
-    .tool-firefly .tool-dot { background: #f9cb28; }
-    .tool-prompt .tool-dot { background: #a855f7; }
-    
-    .tool-tag:hover {
-      border-color: var(--border-accent);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-    }
-    .skill-deliverables-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-    }
-    .skill-pill {
-      font-size: 12px;
       font-weight: 500;
-      padding: 5px 11px;
-      border-radius: 6px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-      transition: var(--transition);
     }
-    .skill-pill.highlight {
-      border-color: rgba(var(--accent-rgb), 0.25);
-      color: var(--text);
-      background: rgba(var(--accent-rgb), 0.06);
-    }
-    .skill-pill:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      transform: translateY(-1px);
+
+    [dir="rtl"] .tool-info {
+      text-align: right;
     }
 
     /* ==========================================================================
@@ -1309,96 +1243,61 @@
 <section id="capabilities">
   <div class="wrap">
     <div class="center">
-      <h2>Tools &amp; Skills</h2>
-      <p>A clear, disciplined breakdown of my daily creative toolkit and core deliverables.</p>
+      <h2>Tools &amp; Software</h2>
+      <p>The core creative software and design tools I work with daily.</p>
     </div>
-    <div class="skills-grid">
-      <!-- Card 1: Core Graphic Design -->
-      <div class="glossy-card skill-box skill-box-primary">
-        <div class="skill-header">
-          <div class="skill-icon-badge">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-          </div>
-          <div>
-            <span class="skill-badge skill-badge-core">Primary Expertise</span>
-            <h3>Graphic &amp; Brand Design</h3>
-          </div>
-        </div>
-        <p class="skill-desc">The foundation of my daily work — from complete visual identities and packaging dielines to large-scale print production and marketing collateral.</p>
-        
-        <div class="skill-group-label">Software &amp; Tools</div>
-        <div class="skill-tools-row">
-          <span class="tool-tag tool-ps"><span class="tool-dot"></span>Photoshop</span>
-          <span class="tool-tag tool-ai"><span class="tool-dot"></span>Illustrator</span>
-          <span class="tool-tag tool-id"><span class="tool-dot"></span>InDesign</span>
-          <span class="tool-tag tool-ae"><span class="tool-dot"></span>After Effects</span>
-        </div>
-
-        <div class="skill-group-label">Core Deliverables</div>
-        <div class="skill-deliverables-row">
-          <span class="skill-pill highlight">Brand Identity Guidelines</span>
-          <span class="skill-pill highlight">Print &amp; Packaging Dielines</span>
-          <span class="skill-pill">Social Media Campaigns</span>
-          <span class="skill-pill">Typography &amp; Vectors</span>
-          <span class="skill-pill">Photo Retouching</span>
+    <div class="tools-grid" id="tools-grid">
+      <div class="tool-card glossy-card">
+        <div class="tool-badge ps"><span>Ps</span></div>
+        <div class="tool-info">
+          <h3>Adobe Photoshop</h3>
+          <span>Image Editing &amp; Manipulation</span>
         </div>
       </div>
-
-      <!-- Card 2: UI/UX Design -->
-      <div class="glossy-card skill-box">
-        <div class="skill-header">
-          <div class="skill-icon-badge">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
-          </div>
-          <div>
-            <span class="skill-badge">Complementary Skill</span>
-            <h3>UI/UX &amp; App Design</h3>
-          </div>
-        </div>
-        <p class="skill-desc">Hands-on interface design for digital products — crafting clean wireframes, mobile app screens, and interactive user journeys.</p>
-        
-        <div class="skill-group-label">Software &amp; Tools</div>
-        <div class="skill-tools-row">
-          <span class="tool-tag tool-figma"><span class="tool-dot"></span>Figma</span>
-          <span class="tool-tag tool-xd"><span class="tool-dot"></span>Adobe XD</span>
-        </div>
-
-        <div class="skill-group-label">Core Deliverables</div>
-        <div class="skill-deliverables-row">
-          <span class="skill-pill highlight">Mobile App UI Design</span>
-          <span class="skill-pill highlight">Wireframing &amp; Flow</span>
-          <span class="skill-pill">Component Design Systems</span>
-          <span class="skill-pill">Interactive Prototypes</span>
-          <span class="skill-pill">Developer Handoff</span>
+      <div class="tool-card glossy-card">
+        <div class="tool-badge ai"><span>Ai</span></div>
+        <div class="tool-info">
+          <h3>Adobe Illustrator</h3>
+          <span>Vector &amp; Brand Identity</span>
         </div>
       </div>
-
-      <!-- Card 3: Modern Creative & AI Workflows -->
-      <div class="glossy-card skill-box">
-        <div class="skill-header">
-          <div class="skill-icon-badge">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
-          </div>
-          <div>
-            <span class="skill-badge">Accelerated Workflow</span>
-            <h3>Creative AI &amp; Visual Art</h3>
-          </div>
+      <div class="tool-card glossy-card">
+        <div class="tool-badge id"><span>Id</span></div>
+        <div class="tool-info">
+          <h3>Adobe InDesign</h3>
+          <span>Editorial &amp; Print Layout</span>
         </div>
-        <p class="skill-desc">Combining cutting-edge generative tools with manual artistry to speed up concept ideation, moodboarding, and creative exploration 3x faster.</p>
-        
-        <div class="skill-group-label">Software &amp; Tools</div>
-        <div class="skill-tools-row">
-          <span class="tool-tag tool-ai-gen"><span class="tool-dot"></span>Midjourney AI</span>
-          <span class="tool-tag tool-firefly"><span class="tool-dot"></span>Generative Fill</span>
-          <span class="tool-tag tool-prompt"><span class="tool-dot"></span>Prompt Engineering</span>
+      </div>
+      <div class="tool-card glossy-card">
+        <div class="tool-badge ae"><span>Ae</span></div>
+        <div class="tool-info">
+          <h3>Adobe After Effects</h3>
+          <span>Motion &amp; Animation</span>
         </div>
-
-        <div class="skill-group-label">Core Deliverables</div>
-        <div class="skill-deliverables-row">
-          <span class="skill-pill highlight">Rapid Concept Exploration</span>
-          <span class="skill-pill highlight">Complex Photo Composites</span>
-          <span class="skill-pill">Campaign Moodboards</span>
-          <span class="skill-pill">Digital Art Generation</span>
+      </div>
+      <div class="tool-card glossy-card">
+        <div class="tool-badge figma">
+          <svg width="20" height="20" viewBox="0 0 38 57" fill="none"><path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z" fill="#1ABCFE"/><path d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z" fill="#0ACF83"/><path d="M19 0V19H28.5C33.7467 19 38 14.7467 38 9.5C38 4.25329 33.7467 0 28.5 0H19Z" fill="#FF7262"/><path d="M0 9.5C0 14.7467 4.25329 19 9.5 19H19V0H9.5C4.25329 0 0 4.25329 0 9.5Z" fill="#F24E1E"/><path d="M0 28.5C0 33.7467 4.25329 38 9.5 38H19V19H9.5C4.25329 19 0 23.2533 0 28.5Z" fill="#A259FF"/></svg>
+        </div>
+        <div class="tool-info">
+          <h3>Figma</h3>
+          <span>UI/UX &amp; Prototyping</span>
+        </div>
+      </div>
+      <div class="tool-card glossy-card">
+        <div class="tool-badge xd"><span>Xd</span></div>
+        <div class="tool-info">
+          <h3>Adobe XD</h3>
+          <span>Wireframing &amp; App Design</span>
+        </div>
+      </div>
+      <div class="tool-card glossy-card">
+        <div class="tool-badge mj">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+        </div>
+        <div class="tool-info">
+          <h3>Midjourney AI</h3>
+          <span>Generative Art &amp; Exploration</span>
         </div>
       </div>
     </div>
@@ -1630,27 +1529,16 @@ const i18nData = {
       { title: "Presentations & Pitch Decks", desc: "Corporate pitch decks, business presentations, and sales slide designs crafted for impact and clarity." },
       { title: "AI-Assisted Creative Work", desc: "Using AI tools to speed up concept exploration, image generation, and creative production without sacrificing quality." }
     ],
-    capabilitiesTitle: "Tools & Skills",
-    capabilitiesSub: "A clear, disciplined breakdown of my daily creative toolkit and core deliverables.",
-    capabilities: [
-      {
-        badge: "Primary Expertise",
-        title: "Graphic & Brand Design",
-        desc: "The foundation of my daily work — from complete visual identities and packaging dielines to print production and marketing collateral.",
-        deliverables: ["Brand Identity Guidelines", "Print & Packaging Dielines", "Social Media Campaigns", "Typography & Vectors", "Photo Retouching"]
-      },
-      {
-        badge: "Complementary Skill",
-        title: "UI/UX & App Design",
-        desc: "Hands-on interface design for digital products — crafting clean wireframes, mobile app screens, and interactive user journeys.",
-        deliverables: ["Mobile App UI Design", "Wireframing & Flow", "Component Design Systems", "Interactive Prototypes", "Developer Handoff"]
-      },
-      {
-        badge: "Accelerated Workflow",
-        title: "Creative AI & Visual Art",
-        desc: "Combining cutting-edge generative tools with manual artistry to speed up concept ideation, moodboarding, and creative exploration 3x faster.",
-        deliverables: ["Rapid Concept Exploration", "Complex Photo Composites", "Campaign Moodboards", "Digital Art Generation"]
-      }
+    toolsTitle: "Tools & Software",
+    toolsSub: "The core creative software and design tools I work with daily.",
+    tools: [
+      { name: "Adobe Photoshop", badge: "Ps", class: "ps", role: "Image Editing & Manipulation" },
+      { name: "Adobe Illustrator", badge: "Ai", class: "ai", role: "Vector & Brand Identity" },
+      { name: "Adobe InDesign", badge: "Id", class: "id", role: "Editorial & Print Layout" },
+      { name: "Adobe After Effects", badge: "Ae", class: "ae", role: "Motion & Animation" },
+      { name: "Figma", isFigma: true, class: "figma", role: "UI/UX & Prototyping" },
+      { name: "Adobe XD", badge: "Xd", class: "xd", role: "Wireframing & App Design" },
+      { name: "Midjourney AI", isAi: true, class: "mj", role: "Generative Art & Exploration" }
     ],
     processTitle: "How I Work",
     processSub: "A simple, honest process that keeps projects on track from first brief to final delivery.",
@@ -1728,27 +1616,16 @@ const i18nData = {
       { title: "العروض التقديمية", desc: "عروض تقديمية للشركات، Pitch Decks، وشرائح مبيعات مصممة للتأثير والوضوح." },
       { title: "تصاميم بمساعدة الذكاء الاصطناعي", desc: "استخدام أدوات الذكاء الاصطناعي لتسريع استكشاف الأفكار، توليد الصور، والإنتاج الإبداعي من غير تقليل في الجودة." }
     ],
-    capabilitiesTitle: "الأدوات والمهارات",
-    capabilitiesSub: "توزيع دقيق ومفصل لمجموعة أدواتي الإبداعية اليومية وأبرز ما أقدمه.",
-    capabilities: [
-      {
-        badge: "التخصص الأساسي",
-        title: "تصميم الجرافيك والهوية البصرية",
-        desc: "الركيزة الأساسية في شغلي اليومي — من أدلة الهوية البصرية الكاملة وخطوط قطع التغليف إلى المطبوعات والتصاميم التسويقية.",
-        deliverables: ["أدلة الهوية البصرية", "خطوط قطع المطبوعات والتغليف", "حملات السوشيال ميديا", "التايبوجرافي والفيكتور", "الدمج والمعالجة الرقمية"]
-      },
-      {
-        badge: "مهارة جانبية وتكميلية",
-        title: "تصميم واجهات وتطبيقات UI/UX",
-        desc: "تصميم واجهات وتجربة مستخدم للمواقع والتطبيقات — نماذج Wireframes أولية وشاشات تفاعلية وأنظمة مكونات Figma.",
-        deliverables: ["تصميم واجهات تطبيقات الموبايل", "الهيكلة ورسم المسارات Wireframes", "أنظمة مكونات التصميم", "النماذج التفاعلية Prototypes", "ملفات تسليم المطورين"]
-      },
-      {
-        badge: "سير عمل معزز بالذكاء الاصطناعي",
-        title: "الفن الرقمي والذكاء الاصطناعي",
-        desc: "دمج أدوات التوليد بالذكاء الاصطناعي مع اللمسة الفنية اليدوية لتسريع استكشاف الأفكار وتوليد البوسترات والدمج البصري 3x أسرع.",
-        deliverables: ["استكشاف أفكار سريع", "دمج وتعديل الصور المعقدة", "لوحات الإلهام Moodboards", "توليد تصاميم رقمية مخصصة"]
-      }
+    toolsTitle: "الأدوات والبرامج",
+    toolsSub: "البرامج الإبداعية والأدوات الرقمية التي أعتمد عليها يومياً.",
+    tools: [
+      { name: "Adobe Photoshop", badge: "Ps", class: "ps", role: "تعديل ومعالجة الصور" },
+      { name: "Adobe Illustrator", badge: "Ai", class: "ai", role: "الفيكتور والهوية البصرية" },
+      { name: "Adobe InDesign", badge: "Id", class: "id", role: "تنسيق المطبوعات والنشر" },
+      { name: "Adobe After Effects", badge: "Ae", class: "ae", role: "الموشن جرافيك والتحريك" },
+      { name: "Figma", isFigma: true, class: "figma", role: "تصميم واجهات وتطبيقات UI/UX" },
+      { name: "Adobe XD", badge: "Xd", class: "xd", role: "النماذج الأولية والتطبيقات" },
+      { name: "Midjourney AI", isAi: true, class: "mj", role: "توليد الأفكار بالذكاء الاصطناعي" }
     ],
     processTitle: "طريقة شغلي",
     processSub: "أسلوب عمل واضح وبسيط يضمن إن المشروع يتسلم صح من أول برييف لآخر ملف.",
@@ -2038,38 +1915,33 @@ function applyTranslations() {
     }
   });
 
-  // Capabilities Section
-  const skillsH2 = document.querySelector('#capabilities .center h2');
-  if (skillsH2) skillsH2.textContent = t.capabilitiesTitle;
-  const skillsP = document.querySelector('#capabilities .center p');
-  if (skillsP) skillsP.textContent = t.capabilitiesSub;
+  // Tools & Software Section
+  const toolsTitle = document.querySelector('#capabilities .center h2');
+  if (toolsTitle) toolsTitle.textContent = t.toolsTitle;
+  const toolsSub = document.querySelector('#capabilities .center p');
+  if (toolsSub) toolsSub.textContent = t.toolsSub;
 
-  const skillBoxes = document.querySelectorAll('.skill-box');
-  skillBoxes.forEach((box, idx) => {
-    if (t.capabilities[idx]) {
-      const c = t.capabilities[idx];
-      const badge = box.querySelector('.skill-badge');
-      if (badge) badge.textContent = c.badge;
-      const h3 = box.querySelector('h3');
-      if (h3) h3.textContent = c.title;
-      const desc = box.querySelector('.skill-desc');
-      if (desc) desc.textContent = c.desc;
-
-      const groupLabels = box.querySelectorAll('.skill-group-label');
-      if (groupLabels.length >= 2) {
-        groupLabels[0].textContent = currentLang === 'ar' ? 'البرامج والأدوات' : 'Software & Tools';
-        groupLabels[1].textContent = currentLang === 'ar' ? 'أبرز المخرجات' : 'Core Deliverables';
+  const toolsGrid = document.getElementById('tools-grid');
+  if (toolsGrid && t.tools) {
+    toolsGrid.innerHTML = t.tools.map(tool => {
+      let iconHtml = '';
+      if (tool.isFigma) {
+        iconHtml = `<svg width="20" height="20" viewBox="0 0 38 57" fill="none"><path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z" fill="#1ABCFE"/><path d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z" fill="#0ACF83"/><path d="M19 0V19H28.5C33.7467 19 38 14.7467 38 9.5C38 4.25329 33.7467 0 28.5 0H19Z" fill="#FF7262"/><path d="M0 9.5C0 14.7467 4.25329 19 9.5 19H19V0H9.5C4.25329 0 0 4.25329 0 9.5Z" fill="#F24E1E"/><path d="M0 28.5C0 33.7467 4.25329 38 9.5 38H19V19H9.5C4.25329 19 0 23.2533 0 28.5Z" fill="#A259FF"/></svg>`;
+      } else if (tool.isAi) {
+        iconHtml = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>`;
+      } else {
+        iconHtml = `<span>${tool.badge}</span>`;
       }
-
-      const delivRow = box.querySelector('.skill-deliverables-row');
-      if (delivRow && c.deliverables) {
-        delivRow.innerHTML = c.deliverables.map((deliv, dIdx) => {
-          const isHl = dIdx < 2 ? ' highlight' : '';
-          return `<span class="skill-pill${isHl}">${deliv}</span>`;
-        }).join('');
-      }
-    }
-  });
+      return `
+        <div class="tool-card glossy-card">
+          <div class="tool-badge ${tool.class}">${iconHtml}</div>
+          <div class="tool-info">
+            <h3>${tool.name}</h3>
+            <span>${tool.role}</span>
+          </div>
+        </div>`;
+    }).join('');
+  }
 
   // Process Section
   document.querySelector('#process .center h2').textContent = t.processTitle;
