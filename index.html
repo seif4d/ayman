@@ -313,18 +313,151 @@
     .service-card p { font-size: 14.5px; color: var(--text-muted); line-height: 1.65; }
 
     /* ==========================================================================
-       CAPABILITIES & TOOLS
+       CAPABILITIES & TOOLS (Upgraded Rich Cards)
        ========================================================================== */
-    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .skill-box { padding: 30px; }
-    .skill-box h3 { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
-    .skill-box h3 svg { color: var(--accent); }
-    .skill-list { display: flex; flex-wrap: wrap; gap: 10px; }
-    .skill-pill {
-      font-size: 13px; font-weight: 500; padding: 6px 14px; border-radius: 6px;
-      background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); color: var(--text-muted);
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
     }
-    .skill-pill.highlight { border-color: var(--border-accent); color: var(--accent); background: var(--accent-subtle); }
+    .skill-box {
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      position: relative;
+    }
+    .skill-box-primary {
+      border-color: rgba(var(--accent-rgb), 0.35);
+      background: linear-gradient(180deg, rgba(var(--accent-rgb), 0.07) 0%, var(--bg-card) 55%);
+    }
+    .skill-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .skill-icon-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-sm);
+      background: var(--accent-subtle);
+      border: 1px solid var(--border-accent);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: var(--transition);
+    }
+    .skill-box:hover .skill-icon-badge {
+      background: var(--accent);
+      color: #040806;
+      transform: scale(1.06);
+    }
+    .skill-badge {
+      display: inline-block;
+      font-family: var(--font-code);
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      margin-bottom: 4px;
+    }
+    .skill-badge-core {
+      background: var(--accent-subtle);
+      border-color: var(--border-accent);
+      color: var(--accent);
+    }
+    .skill-header h3 {
+      font-size: 18.5px;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.25;
+    }
+    .skill-desc {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+    .skill-group-label {
+      font-family: var(--font-code);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-dim);
+      margin-top: 4px;
+    }
+    .skill-tools-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tool-tag {
+      font-family: var(--font-code);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 6px;
+      background: rgba(13, 18, 29, 0.9);
+      border: 1px solid var(--border);
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: var(--transition);
+    }
+    .tool-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+    .tool-ps .tool-dot { background: #31a8ff; }
+    .tool-ai .tool-dot { background: #ff9a00; }
+    .tool-id .tool-dot { background: #ff3366; }
+    .tool-ae .tool-dot { background: #9999ff; }
+    .tool-figma .tool-dot { background: #a259ff; }
+    .tool-xd .tool-dot { background: #ff61f6; }
+    .tool-ai-gen .tool-dot { background: #00f2fe; }
+    .tool-firefly .tool-dot { background: #f9cb28; }
+    .tool-prompt .tool-dot { background: #a855f7; }
+    
+    .tool-tag:hover {
+      border-color: var(--border-accent);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+    .skill-deliverables-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+    .skill-pill {
+      font-size: 12px;
+      font-weight: 500;
+      padding: 5px 11px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      transition: var(--transition);
+    }
+    .skill-pill.highlight {
+      border-color: rgba(var(--accent-rgb), 0.25);
+      color: var(--text);
+      background: rgba(var(--accent-rgb), 0.06);
+    }
+    .skill-pill:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
 
     /* ==========================================================================
        PROCESS FRAMEWORK
@@ -1177,45 +1310,95 @@
   <div class="wrap">
     <div class="center">
       <h2>Tools &amp; Skills</h2>
-      <p>The creative toolkit I rely on every day — organized by what I actually do, not skill-bar percentages.</p>
+      <p>A clear, disciplined breakdown of my daily creative toolkit and core deliverables.</p>
     </div>
     <div class="skills-grid">
-      <div class="glossy-card skill-box">
-        <h3>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-          Graphic Design (Core)
-        </h3>
-        <div class="skill-list">
-          <span class="skill-pill highlight">Figma</span>
-          <span class="skill-pill highlight">Adobe XD</span>
-          <span class="skill-pill">Wireframing</span>
-          <span class="skill-pill">Design Systems</span>
-          <span class="skill-pill">Micro-interactions</span>
+      <!-- Card 1: Core Graphic Design -->
+      <div class="glossy-card skill-box skill-box-primary">
+        <div class="skill-header">
+          <div class="skill-icon-badge">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <div>
+            <span class="skill-badge skill-badge-core">Primary Expertise</span>
+            <h3>Graphic &amp; Brand Design</h3>
+          </div>
+        </div>
+        <p class="skill-desc">The foundation of my daily work — from complete visual identities and packaging dielines to large-scale print production and marketing collateral.</p>
+        
+        <div class="skill-group-label">Software &amp; Tools</div>
+        <div class="skill-tools-row">
+          <span class="tool-tag tool-ps"><span class="tool-dot"></span>Photoshop</span>
+          <span class="tool-tag tool-ai"><span class="tool-dot"></span>Illustrator</span>
+          <span class="tool-tag tool-id"><span class="tool-dot"></span>InDesign</span>
+          <span class="tool-tag tool-ae"><span class="tool-dot"></span>After Effects</span>
+        </div>
+
+        <div class="skill-group-label">Core Deliverables</div>
+        <div class="skill-deliverables-row">
+          <span class="skill-pill highlight">Brand Identity Guidelines</span>
+          <span class="skill-pill highlight">Print &amp; Packaging Dielines</span>
+          <span class="skill-pill">Social Media Campaigns</span>
+          <span class="skill-pill">Typography &amp; Vectors</span>
+          <span class="skill-pill">Photo Retouching</span>
         </div>
       </div>
+
+      <!-- Card 2: UI/UX Design -->
       <div class="glossy-card skill-box">
-        <h3>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          Visual &amp; Digital Design
-        </h3>
-        <div class="skill-list">
-          <span class="skill-pill highlight">Photoshop</span>
-          <span class="skill-pill highlight">Illustrator</span>
-          <span class="skill-pill">Midjourney AI</span>
-          <span class="skill-pill">Photo Manipulation</span>
-          <span class="skill-pill">Vector Branding</span>
+        <div class="skill-header">
+          <div class="skill-icon-badge">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+          </div>
+          <div>
+            <span class="skill-badge">Complementary Skill</span>
+            <h3>UI/UX &amp; App Design</h3>
+          </div>
+        </div>
+        <p class="skill-desc">Hands-on interface design for digital products — crafting clean wireframes, mobile app screens, and interactive user journeys.</p>
+        
+        <div class="skill-group-label">Software &amp; Tools</div>
+        <div class="skill-tools-row">
+          <span class="tool-tag tool-figma"><span class="tool-dot"></span>Figma</span>
+          <span class="tool-tag tool-xd"><span class="tool-dot"></span>Adobe XD</span>
+        </div>
+
+        <div class="skill-group-label">Core Deliverables</div>
+        <div class="skill-deliverables-row">
+          <span class="skill-pill highlight">Mobile App UI Design</span>
+          <span class="skill-pill highlight">Wireframing &amp; Flow</span>
+          <span class="skill-pill">Component Design Systems</span>
+          <span class="skill-pill">Interactive Prototypes</span>
+          <span class="skill-pill">Developer Handoff</span>
         </div>
       </div>
+
+      <!-- Card 3: Modern Creative & AI Workflows -->
       <div class="glossy-card skill-box">
-        <h3>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-          UI/UX &amp; Layout
-        </h3>
-        <div class="skill-list">
-          <span class="skill-pill highlight">Figma</span>
-          <span class="skill-pill highlight">Adobe XD</span>
-          <span class="skill-pill">Wireframing</span>
-          <span class="skill-pill">UI Design</span>
+        <div class="skill-header">
+          <div class="skill-icon-badge">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+          </div>
+          <div>
+            <span class="skill-badge">Accelerated Workflow</span>
+            <h3>Creative AI &amp; Visual Art</h3>
+          </div>
+        </div>
+        <p class="skill-desc">Combining cutting-edge generative tools with manual artistry to speed up concept ideation, moodboarding, and creative exploration 3x faster.</p>
+        
+        <div class="skill-group-label">Software &amp; Tools</div>
+        <div class="skill-tools-row">
+          <span class="tool-tag tool-ai-gen"><span class="tool-dot"></span>Midjourney AI</span>
+          <span class="tool-tag tool-firefly"><span class="tool-dot"></span>Generative Fill</span>
+          <span class="tool-tag tool-prompt"><span class="tool-dot"></span>Prompt Engineering</span>
+        </div>
+
+        <div class="skill-group-label">Core Deliverables</div>
+        <div class="skill-deliverables-row">
+          <span class="skill-pill highlight">Rapid Concept Exploration</span>
+          <span class="skill-pill highlight">Complex Photo Composites</span>
+          <span class="skill-pill">Campaign Moodboards</span>
+          <span class="skill-pill">Digital Art Generation</span>
         </div>
       </div>
     </div>
@@ -1448,11 +1631,26 @@ const i18nData = {
       { title: "AI-Assisted Creative Work", desc: "Using AI tools to speed up concept exploration, image generation, and creative production without sacrificing quality." }
     ],
     capabilitiesTitle: "Tools & Skills",
-    capabilitiesSub: "The creative toolkit I rely on every day — organized by what I actually do, not skill-bar percentages.",
+    capabilitiesSub: "A clear, disciplined breakdown of my daily creative toolkit and core deliverables.",
     capabilities: [
-      { title: "Graphic Design (Core)", pills: ["Photoshop", "Illustrator", "InDesign", "After Effects", "Vector Branding"] },
-      { title: "Visual & Digital Design", pills: ["Midjourney AI", "Photo Manipulation", "Packaging Dielines", "Social Creatives", "Print Design"] },
-      { title: "UI/UX & Layout", pills: ["Figma", "Adobe XD", "Wireframing", "UI Design"] }
+      {
+        badge: "Primary Expertise",
+        title: "Graphic & Brand Design",
+        desc: "The foundation of my daily work — from complete visual identities and packaging dielines to print production and marketing collateral.",
+        deliverables: ["Brand Identity Guidelines", "Print & Packaging Dielines", "Social Media Campaigns", "Typography & Vectors", "Photo Retouching"]
+      },
+      {
+        badge: "Complementary Skill",
+        title: "UI/UX & App Design",
+        desc: "Hands-on interface design for digital products — crafting clean wireframes, mobile app screens, and interactive user journeys.",
+        deliverables: ["Mobile App UI Design", "Wireframing & Flow", "Component Design Systems", "Interactive Prototypes", "Developer Handoff"]
+      },
+      {
+        badge: "Accelerated Workflow",
+        title: "Creative AI & Visual Art",
+        desc: "Combining cutting-edge generative tools with manual artistry to speed up concept ideation, moodboarding, and creative exploration 3x faster.",
+        deliverables: ["Rapid Concept Exploration", "Complex Photo Composites", "Campaign Moodboards", "Digital Art Generation"]
+      }
     ],
     processTitle: "How I Work",
     processSub: "A simple, honest process that keeps projects on track from first brief to final delivery.",
@@ -1531,11 +1729,26 @@ const i18nData = {
       { title: "تصاميم بمساعدة الذكاء الاصطناعي", desc: "استخدام أدوات الذكاء الاصطناعي لتسريع استكشاف الأفكار، توليد الصور، والإنتاج الإبداعي من غير تقليل في الجودة." }
     ],
     capabilitiesTitle: "الأدوات والمهارات",
-    capabilitiesSub: "الأدوات اللي بستخدمها كل يوم — مرتبة على حسب اللي بعمله فعلاً.",
+    capabilitiesSub: "توزيع دقيق ومفصل لمجموعة أدواتي الإبداعية اليومية وأبرز ما أقدمه.",
     capabilities: [
-      { title: "الجرافيك (الأساسي)", pills: ["Photoshop", "Illustrator", "InDesign", "After Effects", "Vector Branding"] },
-      { title: "التصميم البصري والرقمي", pills: ["Midjourney AI", "Photo Manipulation", "Packaging Dielines", "Social Creatives", "Print Design"] },
-      { title: "UI/UX والتخطيط", pills: ["Figma", "Adobe XD", "Wireframing", "UI Design"] }
+      {
+        badge: "التخصص الأساسي",
+        title: "تصميم الجرافيك والهوية البصرية",
+        desc: "الركيزة الأساسية في شغلي اليومي — من أدلة الهوية البصرية الكاملة وخطوط قطع التغليف إلى المطبوعات والتصاميم التسويقية.",
+        deliverables: ["أدلة الهوية البصرية", "خطوط قطع المطبوعات والتغليف", "حملات السوشيال ميديا", "التايبوجرافي والفيكتور", "الدمج والمعالجة الرقمية"]
+      },
+      {
+        badge: "مهارة جانبية وتكميلية",
+        title: "تصميم واجهات وتطبيقات UI/UX",
+        desc: "تصميم واجهات وتجربة مستخدم للمواقع والتطبيقات — نماذج Wireframes أولية وشاشات تفاعلية وأنظمة مكونات Figma.",
+        deliverables: ["تصميم واجهات تطبيقات الموبايل", "الهيكلة ورسم المسارات Wireframes", "أنظمة مكونات التصميم", "النماذج التفاعلية Prototypes", "ملفات تسليم المطورين"]
+      },
+      {
+        badge: "سير عمل معزز بالذكاء الاصطناعي",
+        title: "الفن الرقمي والذكاء الاصطناعي",
+        desc: "دمج أدوات التوليد بالذكاء الاصطناعي مع اللمسة الفنية اليدوية لتسريع استكشاف الأفكار وتوليد البوسترات والدمج البصري 3x أسرع.",
+        deliverables: ["استكشاف أفكار سريع", "دمج وتعديل الصور المعقدة", "لوحات الإلهام Moodboards", "توليد تصاميم رقمية مخصصة"]
+      }
     ],
     processTitle: "طريقة شغلي",
     processSub: "أسلوب عمل واضح وبسيط يضمن إن المشروع يتسلم صح من أول برييف لآخر ملف.",
@@ -1826,21 +2039,35 @@ function applyTranslations() {
   });
 
   // Capabilities Section
-  document.querySelector('#capabilities .center h2').textContent = t.capabilitiesTitle;
-  document.querySelector('#capabilities .center p').textContent = t.capabilitiesSub;
+  const skillsH2 = document.querySelector('#capabilities .center h2');
+  if (skillsH2) skillsH2.textContent = t.capabilitiesTitle;
+  const skillsP = document.querySelector('#capabilities .center p');
+  if (skillsP) skillsP.textContent = t.capabilitiesSub;
 
   const skillBoxes = document.querySelectorAll('.skill-box');
   skillBoxes.forEach((box, idx) => {
     if (t.capabilities[idx]) {
+      const c = t.capabilities[idx];
+      const badge = box.querySelector('.skill-badge');
+      if (badge) badge.textContent = c.badge;
       const h3 = box.querySelector('h3');
-      const svg = h3.querySelector('svg').outerHTML;
-      h3.innerHTML = svg + " " + t.capabilities[idx].title;
-      
-      const skillList = box.querySelector('.skill-list');
-      skillList.innerHTML = t.capabilities[idx].pills.map((pill, pIdx) => {
-        const isHighlight = pIdx < 2 ? ' highlight' : '';
-        return `<span class="skill-pill${isHighlight}">${pill}</span>`;
-      }).join('');
+      if (h3) h3.textContent = c.title;
+      const desc = box.querySelector('.skill-desc');
+      if (desc) desc.textContent = c.desc;
+
+      const groupLabels = box.querySelectorAll('.skill-group-label');
+      if (groupLabels.length >= 2) {
+        groupLabels[0].textContent = currentLang === 'ar' ? 'البرامج والأدوات' : 'Software & Tools';
+        groupLabels[1].textContent = currentLang === 'ar' ? 'أبرز المخرجات' : 'Core Deliverables';
+      }
+
+      const delivRow = box.querySelector('.skill-deliverables-row');
+      if (delivRow && c.deliverables) {
+        delivRow.innerHTML = c.deliverables.map((deliv, dIdx) => {
+          const isHl = dIdx < 2 ? ' highlight' : '';
+          return `<span class="skill-pill${isHl}">${deliv}</span>`;
+        }).join('');
+      }
     }
   });
 
