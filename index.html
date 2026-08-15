@@ -395,13 +395,122 @@
     }
 
     /* ==========================================================================
-       PROCESS FRAMEWORK
+       PROCESS FRAMEWORK (Modern Connected Pipeline)
        ========================================================================== */
-    .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-    .process-card { padding: 32px 24px; display: flex; flex-direction: column; gap: 12px; }
-    .process-num { font-family: var(--font-code); font-size: 32px; font-weight: 700; color: var(--accent); line-height: 1; }
-    .process-card h3 { font-size: 18px; font-weight: 700; color: #fff; }
-    .process-card p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      position: relative;
+    }
+
+    .process-card {
+      padding: 28px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      position: relative;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      transition: var(--transition);
+      overflow: hidden;
+    }
+
+    .process-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .process-card:hover {
+      border-color: var(--border-accent);
+      transform: translateY(-4px);
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.4), 0 0 20px var(--accent-glow);
+      background: var(--bg-card-hover);
+    }
+
+    .process-card:hover::before {
+      opacity: 1;
+    }
+
+    .process-top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2px;
+    }
+
+    .process-num {
+      font-family: var(--font-code);
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--accent);
+      background: var(--accent-subtle);
+      border: 1px solid var(--border-accent);
+      padding: 4px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.05em;
+    }
+
+    .process-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+
+    .process-card:hover .process-icon {
+      background: var(--accent-subtle);
+      border-color: var(--border-accent);
+      color: var(--accent);
+      transform: scale(1.08);
+    }
+
+    .process-card h3 {
+      font-size: 17.5px;
+      font-weight: 700;
+      color: #fff;
+      margin: 0;
+    }
+
+    .process-card p {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin: 0;
+      flex-grow: 1;
+    }
+
+    .process-tag {
+      font-size: 11.5px;
+      font-family: var(--font-code);
+      font-weight: 600;
+      color: var(--text-dim);
+      padding-top: 12px;
+      border-top: 1px dashed var(--border);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .process-tag::before {
+      content: '✓';
+      color: var(--accent);
+      font-weight: 800;
+    }
 
     /* ==========================================================================
        TIMELINE
@@ -1242,28 +1351,52 @@
   <div class="wrap">
     <div class="center">
       <h2>How I Work</h2>
-      <p>A simple, honest process that keeps projects on track from first brief to final delivery.</p>
+      <p>A clear, transparent 4-step creative pipeline that delivers results on time.</p>
     </div>
     <div class="process-grid">
       <div class="glossy-card process-card">
-        <div class="process-num">01</div>
-        <h3>Brief</h3>
-        <p>Understanding your brand, goals, audience, and what success looks like for this project.</p>
+        <div class="process-top-row">
+          <span class="process-num">01</span>
+          <div class="process-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+          </div>
+        </div>
+        <h3>Brief &amp; Discovery</h3>
+        <p>Understanding your brand vision, target audience, objectives, and project deliverables.</p>
+        <div class="process-tag">Scope &amp; Objectives</div>
       </div>
       <div class="glossy-card process-card">
-        <div class="process-num">02</div>
-        <h3>Research</h3>
-        <p>Competitor references, moodboarding, and visual direction — so we align before a pixel is moved.</p>
+        <div class="process-top-row">
+          <span class="process-num">02</span>
+          <div class="process-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+        </div>
+        <h3>Research &amp; Direction</h3>
+        <p>Market benchmarking, moodboarding, visual exploration, and defining the core creative angle.</p>
+        <div class="process-tag">Moodboard &amp; Concept</div>
       </div>
       <div class="glossy-card process-card">
-        <div class="process-num">03</div>
-        <h3>Create</h3>
-        <p>Designing concepts, refining through feedback rounds, and producing polished final artwork.</p>
+        <div class="process-top-row">
+          <span class="process-num">03</span>
+          <div class="process-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+          </div>
+        </div>
+        <h3>Design &amp; Iteration</h3>
+        <p>Crafting bold visual concepts, presenting drafts, and fine-tuning details based on your feedback.</p>
+        <div class="process-tag">Refined Artwork</div>
       </div>
       <div class="glossy-card process-card">
-        <div class="process-num">04</div>
-        <h3>Deliver</h3>
-        <p>Final files organized and ready — print-ready exports, brand guidelines, or dev-ready assets.</p>
+        <div class="process-top-row">
+          <span class="process-num">04</span>
+          <div class="process-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+        </div>
+        <h3>Delivery &amp; Handover</h3>
+        <p>Providing clean, organized assets — print-ready exports, vector master files, or web-ready packages.</p>
+        <div class="process-tag">All Final Files</div>
       </div>
     </div>
   </div>
@@ -1476,12 +1609,12 @@ const i18nData = {
       { name: "Magnific AI", badge: "Mg", class: "mg", role: "AI Upscaling & Enhancement" }
     ],
     processTitle: "How I Work",
-    processSub: "A simple, honest process that keeps projects on track from first brief to final delivery.",
+    processSub: "A clear, transparent 4-step creative pipeline that delivers results on time.",
     process: [
-      { num: "01", title: "Brief", desc: "Understanding your brand, goals, audience, and what success looks like for this project." },
-      { num: "02", title: "Research", desc: "Competitor references, moodboarding, and visual direction — so we align before a pixel is moved." },
-      { num: "03", title: "Create", desc: "Designing concepts, refining through feedback rounds, and producing polished final artwork." },
-      { num: "04", title: "Deliver", desc: "Final files organized and ready — print-ready exports, brand guidelines, or dev-ready assets." }
+      { num: "01", title: "Brief & Discovery", desc: "Understanding your brand vision, target audience, objectives, and project deliverables.", tag: "Scope & Objectives" },
+      { num: "02", title: "Research & Direction", desc: "Market benchmarking, moodboarding, visual exploration, and defining the core creative angle.", tag: "Moodboard & Concept" },
+      { num: "03", title: "Design & Iteration", desc: "Crafting bold visual concepts, presenting drafts, and fine-tuning details based on your feedback.", tag: "Refined Artwork" },
+      { num: "04", title: "Delivery & Handover", desc: "Providing clean, organized assets — print-ready exports, vector master files, or web-ready packages.", tag: "All Final Files" }
     ],
     expTitle: "Work Experience",
     expSub: "3+ years of professional design work across agencies, brands, and freelance projects.",
@@ -1563,13 +1696,13 @@ const i18nData = {
       { name: "Midjourney AI", isAi: true, class: "mj", role: "توليد الأفكار بالذكاء الاصطناعي" },
       { name: "Magnific AI", badge: "Mg", class: "mg", role: "تحسين الدقة والتفاصيل بالـ AI" }
     ],
-    processTitle: "طريقة شغلي",
-    processSub: "أسلوب عمل واضح وبسيط يضمن إن المشروع يتسلم صح من أول برييف لآخر ملف.",
+    processTitle: "طريقة العمل",
+    processSub: "منهجية واضحة ومباشرة من 4 مراحل تضمن خروج العمل بأعلى جودة وفي الموعد.",
     process: [
-      { num: "01", title: "البريف", desc: "فهم علامتك التجارية، أهدافك، جمهورك، وإيه اللي يعتبر نجاح لهذا المشروع." },
-      { num: "02", title: "البحث", desc: "مراجعة المنافسين، تحضير Moodboard، وتحديد الاتجاه البصري — قبل ما نحرك أي بكسل." },
-      { num: "03", title: "التصميم", desc: "تصميم الكونسبت، تعديل على أساس الملاحظات، وإنتاج الشغل النهائي المصقول." },
-      { num: "04", title: "التسليم", desc: "ملفات نهائية منظمة وجاهزة — سواء للطباعة أو للسوشيال أو للمطورين." }
+      { num: "01", title: "البريف وتحديد الأهداف", desc: "فهم رؤية علامتك التجارية، الجمهور المستهدف، المتطلبات المحددة، وخطة التنفيذ.", tag: "خطة ونطاق العمل" },
+      { num: "02", title: "البحث والاتجاه البصري", desc: "دراسة السوق والمنافسين، تجميع الـ Moodboard، وبناء الاتجاه الإبداعي الأنسب للمشروع.", tag: "المودبورد والمفهوم" },
+      { num: "03", title: "التصميم والتطوير", desc: "تنفيذ أفكار التصميم باحترافية، عرض النماذج الأولية، وضبط أدق التفاصيل حسب ملاحظاتك.", tag: "التصاميم المصقولة" },
+      { num: "04", title: "التسليم النهائي", desc: "تسليم كافة الملفات جاهزة ومنظمة بدقة — ملفات مفتوحة المصدر، تصادير للطباعة أو للسوشيال.", tag: "الحزمة والملفات كاملة" }
     ],
     expTitle: "الخبرات المهنية",
     expSub: "+3 سنوات من العمل الاحترافي في وكالات وعلامات تجارية ومشاريع فريلانس.",
@@ -1880,17 +2013,32 @@ function applyTranslations() {
   }
 
   // Process Section
-  document.querySelector('#process .center h2').textContent = t.processTitle;
-  document.querySelector('#process .center p').textContent = t.processSub;
+  const processTitle = document.querySelector('#process .center h2');
+  if (processTitle) processTitle.textContent = t.processTitle;
+  const processSub = document.querySelector('#process .center p');
+  if (processSub) processSub.textContent = t.processSub;
   
-  const processCards = document.querySelectorAll('.process-card');
-  processCards.forEach((card, idx) => {
-    if (t.process[idx]) {
-      card.querySelector('.process-num').textContent = t.process[idx].num;
-      card.querySelector('h3').textContent = t.process[idx].title;
-      card.querySelector('p').textContent = t.process[idx].desc;
-    }
-  });
+  const processGrid = document.querySelector('.process-grid');
+  if (processGrid && t.process) {
+    const processIcons = [
+      `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>`,
+      `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>`,
+      `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>`,
+      `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`
+    ];
+
+    processGrid.innerHTML = t.process.map((step, idx) => `
+      <div class="glossy-card process-card">
+        <div class="process-top-row">
+          <span class="process-num">${step.num}</span>
+          <div class="process-icon">${processIcons[idx % processIcons.length]}</div>
+        </div>
+        <h3>${step.title}</h3>
+        <p>${step.desc}</p>
+        <div class="process-tag">${step.tag}</div>
+      </div>
+    `).join('');
+  }
 
   // Experience Timeline Section
   document.querySelector('#experience .center h2').textContent = t.expTitle;
