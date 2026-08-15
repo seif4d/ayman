@@ -209,134 +209,28 @@
     }
 
     /* ==========================================================================
-       HERO SECTION (Dynamic Interactive Layout)
+       HERO SECTION (Creative Centered Layout)
        ========================================================================== */
        
-    .hero { 
-      position: relative; 
-      padding: 90px 0 85px; 
-      text-align: center; 
-      overflow: hidden; 
-    }
-    
-    /* Background Dynamics & Glow Orbs */
-    .hero-bg-container {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      z-index: 1;
-      overflow: hidden;
-    }
-    
-    .hero-grid-pattern {
-      position: absolute;
-      inset: 0;
-      background-image: 
-        linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-      background-size: 44px 44px;
-      mask-image: radial-gradient(ellipse 65% 55% at 50% 42%, black 25%, transparent 80%);
-      -webkit-mask-image: radial-gradient(ellipse 65% 55% at 50% 42%, black 25%, transparent 80%);
-      opacity: 0.85;
-    }
-    
-    .hero-glow-layer {
-      position: absolute;
-      inset: 0;
-      overflow: hidden;
-      filter: blur(85px);
-      -webkit-filter: blur(85px);
-      opacity: 0.75;
-      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: transform;
-    }
-    
-    .hero-orb {
-      position: absolute;
-      border-radius: 50%;
-      opacity: 0.55;
-      mix-blend-mode: screen;
-      pointer-events: none;
-    }
-    
-    .hero-orb-1 {
-      top: 8%;
-      left: 18%;
-      width: 440px;
-      height: 440px;
-      background: radial-gradient(circle, #6366f1 0%, rgba(99, 102, 241, 0) 70%);
-      animation: floatOrb1 18s ease-in-out infinite alternate;
-    }
-    
-    .hero-orb-2 {
-      top: 20%;
-      right: 15%;
-      width: 480px;
-      height: 480px;
-      background: radial-gradient(circle, #8b5cf6 0%, rgba(139, 92, 246, 0) 70%);
-      animation: floatOrb2 22s ease-in-out infinite alternate;
-    }
-    
-    .hero-orb-3 {
-      bottom: 0%;
-      left: 35%;
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, #ec4899 0%, rgba(236, 72, 153, 0) 70%);
-      animation: floatOrb3 17s ease-in-out infinite alternate;
-    }
-    
-    .hero-orb-4 {
-      top: 45%;
-      left: 8%;
-      width: 320px;
-      height: 320px;
-      background: radial-gradient(circle, #06b6d4 0%, rgba(6, 182, 212, 0) 70%);
-      animation: floatOrb4 20s ease-in-out infinite alternate;
-    }
-    
-    @keyframes floatOrb1 {
-      0% { transform: translate(0, 0) scale(1); }
-      50% { transform: translate(50px, 35px) scale(1.12); }
-      100% { transform: translate(-35px, 60px) scale(0.92); }
-    }
-    @keyframes floatOrb2 {
-      0% { transform: translate(0, 0) scale(1); }
-      50% { transform: translate(-60px, 45px) scale(1.1); }
-      100% { transform: translate(40px, -35px) scale(0.95); }
-    }
-    @keyframes floatOrb3 {
-      0% { transform: translate(0, 0) scale(1); }
-      50% { transform: translate(45px, -45px) scale(1.15); }
-      100% { transform: translate(-50px, -25px) scale(0.88); }
-    }
-    @keyframes floatOrb4 {
-      0% { transform: translate(0, 0) scale(1); }
-      50% { transform: translate(-35px, -50px) scale(1.08); }
-      100% { transform: translate(35px, 35px) scale(0.92); }
-    }
-
+    .hero { padding: 80px 0 80px; text-align: center; }
     .hero-content {
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      max-width: 940px;
+      max-width: 920px;
       margin: 0 auto;
-      position: relative;
-      z-index: 2;
     }
-
-    /* Status Pill */
+    
     .status-pill {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      padding: 9px 20px;
+      gap: 8px;
+      padding: 8px 18px;
       border-radius: 100px;
-      background: rgba(52, 211, 153, 0.08);
-      border: 1px solid rgba(52, 211, 153, 0.28);
-      font-size: clamp(12px, 2.5vw, 13.5px);
+      background: rgba(52, 211, 153, 0.06);
+      border: 1px solid rgba(52, 211, 153, 0.25);
+      font-size: clamp(11.5px, 2.5vw, 13px);
       line-height: 1.4;
       font-weight: 500;
       color: #34d399;
@@ -344,49 +238,20 @@
       max-width: 100%;
       width: fit-content;
       box-sizing: border-box;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      box-shadow: 0 4px 20px rgba(52, 211, 153, 0.1);
-      transition: var(--transition);
-      position: relative;
     }
-    .status-pill:hover {
-      border-color: rgba(52, 211, 153, 0.5);
-      background: rgba(52, 211, 153, 0.13);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 25px rgba(52, 211, 153, 0.2);
-    }
-    
-    .status-dot-wrap {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 10px;
-      height: 10px;
-      flex-shrink: 0;
-    }
+
     .status-dot {
       width: 8px;
       height: 8px;
       border-radius: 50%;
       background: #34d399;
       box-shadow: 0 0 10px #34d399;
-      position: relative;
-      z-index: 2;
+      animation: pulse 2s infinite;
+      flex-shrink: 0;
     }
-    .status-dot-ping {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background: #34d399;
-      opacity: 0.75;
-      animation: pingRing 2s cubic-bezier(0, 0, 0.2, 1) infinite;
-    }
-    @keyframes pingRing {
-      0% { transform: scale(1); opacity: 0.8; }
-      75%, 100% { transform: scale(2.6); opacity: 0; }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.4); opacity: 0.5; }
     }
     
     .hero h1 { 
@@ -413,57 +278,10 @@
       flex-wrap: wrap; 
     }
 
-    /* Hero Quick Highlights / Stats */
-    .hero-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-top: 48px;
-      width: 100%;
-      max-width: 680px;
-    }
-    .hero-stat-card {
-      background: rgba(14, 20, 32, 0.55);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: var(--radius-md);
-      padding: 16px 20px;
-      text-align: center;
-      transition: var(--transition);
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-stat-card:hover {
-      border-color: rgba(99, 102, 241, 0.4);
-      background: rgba(22, 32, 50, 0.75);
-      transform: translateY(-4px);
-      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.4), 0 0 20px rgba(99, 102, 241, 0.15);
-    }
-    .hero-stat-num {
-      font-size: clamp(24px, 3.5vw, 32px);
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      background: var(--gradient-text);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      display: block;
-      line-height: 1.15;
-      margin-bottom: 4px;
-      font-family: var(--font-code);
-    }
-    .hero-stat-label {
-      font-size: 13px;
-      color: var(--text-muted);
-      font-weight: 500;
-      line-height: 1.35;
-    }
-
     /* MARQUEE TICKER */
     .marquee-wrap {
       width: 100%; overflow: hidden; background: rgba(13, 18, 29, 0.6); border-y: 1px solid var(--border);
       padding: 18px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin: 40px 0 0;
-      position: relative; z-index: 2;
     }
     .marquee-track { display: flex; gap: 40px; width: max-content; animation: scrollMarquee 25s linear infinite; }
     .marquee-item { font-family: var(--font-code); font-size: 13px; font-weight: 700; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.15em; display: flex; align-items: center; gap: 16px; }
@@ -1326,17 +1144,11 @@
       .logo { font-size: 16.5px; gap: 8px; }
       .logo-box { width: 32px; height: 32px; }
 
-      .hero { padding: 50px 0 32px; }
+      .hero { padding: 56px 0 36px; }
       .hero h1 { font-size: clamp(28px, 7.5vw, 42px); line-height: 1.22; margin-bottom: 16px; }
       .hero-sub { font-size: 15px; line-height: 1.65; }
       .hero-actions { width: 100%; gap: 12px; flex-direction: column; }
       .hero-actions .btn { width: 100%; justify-content: center; padding: 13px 20px; font-size: 14.5px; }
-      
-      .hero-stats { grid-template-columns: 1fr; gap: 10px; margin-top: 32px; width: 100%; }
-      .hero-stat-card { padding: 12px 16px; }
-      .hero-stat-num { font-size: 22px; margin-bottom: 2px; }
-      .hero-stat-label { font-size: 12.5px; }
-      .hero-orb { opacity: 0.4; }
       
       .status-pill {
         font-size: 11.5px; padding: 6px 14px; margin-bottom: 18px;
@@ -1582,26 +1394,10 @@
 </div>
 
 <section class="hero" id="home">
-  <!-- Dynamic Ambient Glow & Grid Layer -->
-  <div class="hero-bg-container" aria-hidden="true">
-    <div class="hero-grid-pattern"></div>
-    <div class="hero-glow-layer">
-      <div class="hero-orb hero-orb-1"></div>
-      <div class="hero-orb hero-orb-2"></div>
-      <div class="hero-orb hero-orb-3"></div>
-      <div class="hero-orb hero-orb-4"></div>
-    </div>
-  </div>
-
   <div class="wrap hero-content">
     <div class="status-pill">
-      <span class="status-dot-wrap">
-        <span class="status-dot-ping"></span>
-        <span class="status-dot"></span>
-      </span>
-      <span class="status-pill-text">Available for freelance</span>
+      <span class="status-dot"></span> Available for freelance
     </div>
-
     <h1>Building <span class="serif-accent">bold brands</span> &amp; visual stories that <span class="gradient-text">leave a mark.</span></h1>
     <p class="hero-sub">Mid-Level Graphic Designer with 3+ years crafting visual identities, social campaigns, print artwork, and marketing creatives — plus hands-on UI/UX design experience.</p>
 
@@ -1614,22 +1410,6 @@
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         <span>Download CV</span>
       </a>
-    </div>
-
-    <!-- Quick Stats Highlights -->
-    <div class="hero-stats">
-      <div class="hero-stat-card glossy-card">
-        <span class="hero-stat-num" id="stat-exp-num">3+</span>
-        <span class="hero-stat-label" id="stat-exp-label">Years Experience</span>
-      </div>
-      <div class="hero-stat-card glossy-card">
-        <span class="hero-stat-num" id="stat-proj-num">40+</span>
-        <span class="hero-stat-label" id="stat-proj-label">Projects Delivered</span>
-      </div>
-      <div class="hero-stat-card glossy-card">
-        <span class="hero-stat-num" id="stat-quality-num">100%</span>
-        <span class="hero-stat-label" id="stat-quality-label">Dedication & Quality</span>
-      </div>
     </div>
   </div>
 
@@ -2080,12 +1860,6 @@ const i18nData = {
     heroSub: "Mid-Level Graphic Designer with 3+ years crafting visual identities, social campaigns, print artwork, and marketing creatives — plus hands-on UI/UX design experience.",
     exploreBtn: "View My Work",
     downloadCvBtn: "Download CV",
-    statExpNum: "3+",
-    statExpLabel: "Years Experience",
-    statProjNum: "40+",
-    statProjLabel: "Projects Delivered",
-    statQualityNum: "100%",
-    statQualityLabel: "Dedication & Quality",
     metricsTitle: "At a Glance",
     expYearsLabel: "Years Exp.",
     projDeliveredLabel: "Projects Delivered",
@@ -2178,12 +1952,6 @@ const i18nData = {
     heroSub: "مصمم جرافيك بخبرة +3 سنوات في الهوية البصرية، تصاميم السوشيال ميديا، المطبوعات، والتسويق البصري — مع خبرة جانبية في تصميم واجهات UI/UX.",
     exploreBtn: "شوف شغلي",
     downloadCvBtn: "تحميل السيرة الذاتية",
-    statExpNum: "+3",
-    statExpLabel: "سنوات خبرة",
-    statProjNum: "+40",
-    statProjLabel: "مشروع منجز",
-    statQualityNum: "100%",
-    statQualityLabel: "التزام وجودة عالية",
     metricsTitle: "لمحة سريعة",
     expYearsLabel: "سنوات خبرة",
     projDeliveredLabel: "مشروع منجز",
@@ -2468,24 +2236,10 @@ function applyTranslations() {
   });
 
   // Hero Section
-  const statusPillText = document.querySelector('.status-pill-text');
-  if (statusPillText) statusPillText.textContent = t.statusPill;
-
-  const statExpNum = document.getElementById('stat-exp-num');
-  if (statExpNum) statExpNum.textContent = t.statExpNum;
-  const statExpLabel = document.getElementById('stat-exp-label');
-  if (statExpLabel) statExpLabel.textContent = t.statExpLabel;
-
-  const statProjNum = document.getElementById('stat-proj-num');
-  if (statProjNum) statProjNum.textContent = t.statProjNum;
-  const statProjLabel = document.getElementById('stat-proj-label');
-  if (statProjLabel) statProjLabel.textContent = t.statProjLabel;
-
-  const statQualityNum = document.getElementById('stat-quality-num');
-  if (statQualityNum) statQualityNum.textContent = t.statQualityNum;
-  const statQualityLabel = document.getElementById('stat-quality-label');
-  if (statQualityLabel) statQualityLabel.textContent = t.statQualityLabel;
-
+  const statusPill = document.querySelector('.status-pill');
+  if (statusPill && statusPill.childNodes[2]) {
+    statusPill.childNodes[2].nodeValue = " " + t.statusPill;
+  }
   const heroH1 = document.querySelector('.hero h1');
   if (heroH1) heroH1.innerHTML = t.heroTitle;
   const heroSub = document.querySelector('.hero-sub');
@@ -2635,13 +2389,12 @@ function applyTranslations() {
   if (footScrollTop) footScrollTop.textContent = t.footerScrollTop;
 }
 
-// --- Interactive Background Canvas & Constellation Mesh ---
+// --- Interactive Background Canvas ---
 const canvas = document.getElementById('interactive-canvas');
 const ctx = canvas.getContext('2d');
 let width, height, particles = [];
-const particleCount = 38;
+const particleCount = 26;
 let animId = null;
-let mousePos = { x: null, y: null };
 
 function resizeCanvas() {
   width = canvas.width = window.innerWidth;
@@ -2650,50 +2403,27 @@ function resizeCanvas() {
 window.addEventListener('resize', resizeCanvas);
 resizeCanvas();
 
-window.addEventListener('mousemove', (e) => {
-  mousePos.x = e.clientX;
-  mousePos.y = e.clientY;
-});
-window.addEventListener('mouseleave', () => {
-  mousePos.x = null;
-  mousePos.y = null;
-});
-
 class Particle {
   constructor() { this.reset(); }
   reset() {
     this.x = Math.random() * width;
     this.y = Math.random() * height;
-    this.vx = (Math.random() - 0.5) * 0.45;
-    this.vy = (Math.random() - 0.5) * 0.45;
-    this.radius = Math.random() * 1.8 + 1;
-    this.alpha = Math.random() * 0.4 + 0.15;
-    const colors = ['99, 102, 241', '139, 92, 246', '236, 72, 153', '6, 182, 212'];
-    this.color = colors[Math.floor(Math.random() * colors.length)];
+    this.vx = (Math.random() - 0.5) * 0.4;
+    this.vy = (Math.random() - 0.5) * 0.4;
+    this.radius = Math.random() * 1.5 + 1;
+    this.alpha = Math.random() * 0.35 + 0.1;
   }
   update() {
-    this.x += this.vx; 
-    this.y += this.vy;
-    
-    // Mouse gentle repulsion
-    if (mousePos.x !== null && mousePos.y !== null) {
-      const dx = this.x - mousePos.x;
-      const dy = this.y - mousePos.y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < 100 && dist > 0) {
-        const force = (100 - dist) / 100 * 0.5;
-        this.x += (dx / dist) * force;
-        this.y += (dy / dist) * force;
-      }
-    }
-
+    this.x += this.vx; this.y += this.vy;
     if (this.x < 0 || this.x > width) this.vx *= -1;
     if (this.y < 0 || this.y > height) this.vy *= -1;
   }
   draw() {
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(${this.color}, ${this.alpha})`;
+    const colors = ['99, 102, 241', '139, 92, 246', '236, 72, 153', '6, 182, 212'];
+    const color = colors[Math.floor(this.x * this.y) % colors.length];
+    ctx.fillStyle = `rgba(${color}, ${this.alpha})`;
     ctx.fill();
   }
 }
@@ -2702,43 +2432,6 @@ for (let i = 0; i < particleCount; i++) particles.push(new Particle());
 
 function animateCanvas() {
   ctx.clearRect(0, 0, width, height);
-  
-  // Draw constellation connections between nearby particles
-  for (let i = 0; i < particles.length; i++) {
-    for (let j = i + 1; j < particles.length; j++) {
-      const dx = particles[i].x - particles[j].x;
-      const dy = particles[i].y - particles[j].y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < 115) {
-        ctx.beginPath();
-        ctx.moveTo(particles[i].x, particles[i].y);
-        ctx.lineTo(particles[j].x, particles[j].y);
-        const lineAlpha = (1 - dist / 115) * 0.16;
-        ctx.strokeStyle = `rgba(139, 92, 246, ${lineAlpha})`;
-        ctx.lineWidth = 0.75;
-        ctx.stroke();
-      }
-    }
-  }
-
-  // Connect to mouse cursor
-  if (mousePos.x !== null && mousePos.y !== null) {
-    for (let i = 0; i < particles.length; i++) {
-      const dx = mousePos.x - particles[i].x;
-      const dy = mousePos.y - particles[i].y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < 130) {
-        ctx.beginPath();
-        ctx.moveTo(particles[i].x, particles[i].y);
-        ctx.lineTo(mousePos.x, mousePos.y);
-        const lineAlpha = (1 - dist / 130) * 0.28;
-        ctx.strokeStyle = `rgba(99, 102, 241, ${lineAlpha})`;
-        ctx.lineWidth = 1;
-        ctx.stroke();
-      }
-    }
-  }
-
   for (let i = 0; i < particles.length; i++) {
     particles[i].update();
     particles[i].draw();
@@ -2751,23 +2444,6 @@ document.addEventListener("visibilitychange", () => {
   else animateCanvas();
 });
 animateCanvas();
-
-// --- Hero Mouse Parallax Effect ---
-const heroSection = document.querySelector('.hero');
-const heroGlowLayer = document.querySelector('.hero-glow-layer');
-
-if (heroSection && heroGlowLayer) {
-  heroSection.addEventListener('mousemove', (e) => {
-    const rect = heroSection.getBoundingClientRect();
-    const relX = (e.clientX - rect.left) / rect.width - 0.5;
-    const relY = (e.clientY - rect.top) / rect.height - 0.5;
-    heroGlowLayer.style.transform = `translate(${relX * -30}px, ${relY * -30}px)`;
-  });
-  
-  heroSection.addEventListener('mouseleave', () => {
-    heroGlowLayer.style.transform = 'translate(0px, 0px)';
-  });
-}
 
 // --- Scroll Progress & Back to top ---
 const progressBar = document.getElementById('scroll-progress');
