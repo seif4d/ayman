@@ -93,36 +93,70 @@
     .lang-btn:hover{color:var(--text);border-color:var(--text)}
 
     /* HERO */
-    #home{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(100px,15vh,160px) 0 clamp(48px,8vh,80px);position:relative;overflow:hidden;background:var(--bg)}
-    .hero-bg-txt{position:absolute;top:50%;left:50%;transform:translate(-50%,-48%);font-size:clamp(100px,18vw,240px);font-weight:900;letter-spacing:-.06em;color:transparent;-webkit-text-stroke:1px rgba(17,17,17,0.055);white-space:nowrap;pointer-events:none;user-select:none;z-index:0;line-height:1}
+    #home{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:clamp(120px,14vh,160px) 0 clamp(48px,6vh,72px);position:relative;overflow:hidden;background:var(--bg)}
+    .hero-bg-txt{position:absolute;top:38%;left:50%;transform:translate(-50%,-50%);font-size:clamp(120px,22vw,300px);font-weight:900;letter-spacing:-.06em;color:transparent;-webkit-text-stroke:1px rgba(17,17,17,0.04);white-space:nowrap;pointer-events:none;user-select:none;z-index:0;line-height:1}
     .hero-cnt{position:relative;z-index:2}
-    .hero-ey{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:clamp(20px,4vh,36px);opacity:0;transform:translateY(20px);transition:opacity .7s var(--ease-out) .2s,transform .7s var(--ease-out) .2s}
+    .hero-layout{display:grid;grid-template-columns:1.15fr 0.85fr;gap:clamp(36px,5vw,80px);align-items:center;position:relative}
+    .hero-main-col{display:flex;flex-direction:column}
+    .hero-ey{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:clamp(18px,3vh,28px);opacity:0;transform:translateY(20px);transition:opacity .7s var(--ease-out) .2s,transform .7s var(--ease-out) .2s;flex-wrap:wrap}
     .hero-ey.in{opacity:1;transform:translateY(0)}
     .ey-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:dotP 2s ease-in-out infinite;flex-shrink:0}
     @keyframes dotP{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:.6}}
-    .hero-title{font-size:clamp(42px,7.5vw,108px);font-weight:900;letter-spacing:-.04em;line-height:1.04;color:var(--text);max-width:16em;opacity:0;transform:translateY(30px);transition:opacity .85s var(--ease-out) .35s,transform .85s var(--ease-out) .35s}
+    .ey-pill{font-size:10.5px;letter-spacing:.08em;background:rgba(17,17,17,0.05);padding:3px 10px;border-radius:100px;color:var(--text)}
+    .hero-title{font-size:clamp(36px,5.2vw,78px);font-weight:900;letter-spacing:-.04em;line-height:1.06;color:var(--text);margin-bottom:clamp(18px,3vh,26px);opacity:0;transform:translateY(30px);transition:opacity .85s var(--ease-out) .35s,transform .85s var(--ease-out) .35s}
     .hero-title.in{opacity:1;transform:translateY(0)}
     .hero-title .ac{color:var(--accent)}
-    .wrot{display:inline-block;overflow:hidden;height:1.04em;vertical-align:bottom}
+    .wrot{display:inline-block;overflow:hidden;height:1.06em;vertical-align:bottom}
     .wrot-inner{display:flex;flex-direction:column}
     .rw{display:block;transition:transform .55s var(--ease-out),opacity .55s var(--ease-out);transform:translateY(110%);opacity:0;color:var(--accent);white-space:nowrap}
     .rw.active{transform:translateY(0);opacity:1}
     .rw.leaving{transform:translateY(-110%);opacity:0}
-    .hero-sr{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;margin-top:clamp(28px,5vh,56px);flex-wrap:wrap;opacity:0;transform:translateY(20px);transition:opacity .75s var(--ease-out) .6s,transform .75s var(--ease-out) .6s}
-    .hero-sr.in{opacity:1;transform:translateY(0)}
-    .hero-desc{font-size:clamp(15px,1.5vw,18px);color:var(--text-muted);line-height:1.75;max-width:480px}
-    .hero-acts{display:flex;gap:14px;flex-shrink:0;flex-wrap:wrap}
+    .hero-desc{font-size:clamp(15px,1.35vw,17.5px);color:var(--text-muted);line-height:1.75;max-width:560px;margin-bottom:clamp(24px,3.5vh,36px);opacity:0;transform:translateY(20px);transition:opacity .75s var(--ease-out) .5s,transform .75s var(--ease-out) .5s}
+    .hero-desc.in{opacity:1;transform:translateY(0)}
+    .hero-acts{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:clamp(20px,3vh,32px);opacity:0;transform:translateY(20px);transition:opacity .75s var(--ease-out) .65s,transform .75s var(--ease-out) .65s}
+    .hero-acts.in{opacity:1;transform:translateY(0)}
     .btn-p{display:inline-flex;align-items:center;gap:10px;padding:16px 32px;border-radius:100px;background:var(--text);color:#fff;font-size:14px;font-weight:700;border:1.5px solid var(--text);transition:var(--t)}
     .btn-p:hover{background:var(--accent);border-color:var(--accent);transform:translateY(-2px)}
     .btn-p svg{transition:transform .3s var(--ease-out)}
     .btn-p:hover svg{transform:translateX(4px)}
-    .btn-s{display:inline-flex;align-items:center;gap:10px;padding:16px 32px;border-radius:100px;background:transparent;color:var(--text);font-size:14px;font-weight:600;border:1.5px solid var(--border-dark);transition:var(--t)}
+    .btn-s{display:inline-flex;align-items:center;gap:10px;padding:16px 30px;border-radius:100px;background:transparent;color:var(--text);font-size:14px;font-weight:600;border:1.5px solid var(--border-dark);transition:var(--t)}
     .btn-s:hover{border-color:var(--text);background:rgba(17,17,17,.04);transform:translateY(-2px)}
-    .hero-stats{display:flex;gap:clamp(28px,4vw,56px);margin-top:clamp(40px,6vh,70px);padding-top:clamp(24px,4vh,40px);border-top:1px solid var(--border);opacity:0;transform:translateY(20px);transition:opacity .75s var(--ease-out) .8s,transform .75s var(--ease-out) .8s}
+    .hero-trust{display:flex;align-items:center;gap:12px;font-family:var(--font-mono);font-size:11px;color:var(--text-dim);opacity:0;transform:translateY(15px);transition:opacity .7s var(--ease-out) .75s,transform .7s var(--ease-out) .75s;flex-wrap:wrap}
+    .hero-trust.in{opacity:1;transform:translateY(0)}
+    .trust-item{display:inline-flex;align-items:center;gap:6px}
+    .trust-sep{color:var(--border-dark)}
+
+    /* HERO VISUAL CARD */
+    .hero-visual-col{opacity:0;transform:translateY(30px) scale(.98);transition:opacity .9s var(--ease-out) .45s,transform .9s var(--ease-out) .45s;position:relative}
+    .hero-visual-col.in{opacity:1;transform:translateY(0) scale(1)}
+    .hcard{background:#fff;border-radius:24px;border:1px solid var(--border);box-shadow:0 30px 70px -15px rgba(17,17,17,0.08);overflow:hidden;position:relative;transition:transform .5s var(--ease-out),box-shadow .5s var(--ease-out)}
+    .hcard:hover{transform:translateY(-6px);box-shadow:0 40px 80px -15px rgba(17,17,17,0.12)}
+    .hcard-hdr{padding:14px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:var(--bg)}
+    .hcard-live{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--text);text-transform:uppercase;letter-spacing:.06em}
+    .hcard-dot{width:6px;height:6px;border-radius:50%;background:#10B981;animation:dotP 2s ease-in-out infinite}
+    .hcard-id{font-family:var(--font-mono);font-size:11px;color:var(--text-dim);letter-spacing:.08em}
+    .hcard-media{position:relative;aspect-ratio:4/4.5;overflow:hidden;background:#EAE8E3}
+    .hcard-img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .8s var(--ease-out)}
+    .hcard:hover .hcard-img{transform:scale(1.04)}
+    .hcard-badge-top{position:absolute;top:16px;right:16px;background:rgba(17,17,17,0.8);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#fff;font-family:var(--font-mono);font-size:10px;font-weight:600;padding:6px 12px;border-radius:100px;letter-spacing:.04em;display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(255,255,255,0.15)}
+    .hcard-badge-top svg{color:var(--accent)}
+    .hcard-glass-panel{position:absolute;bottom:16px;left:16px;right:72px;background:rgba(250,250,247,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.6);border-radius:14px;padding:12px 16px;box-shadow:0 12px 30px rgba(0,0,0,0.12)}
+    .hcard-gp-sub{font-family:var(--font-mono);font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:2px}
+    .hcard-gp-title{font-size:13px;font-weight:800;letter-spacing:-.02em;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .hcard-gp-meta{font-size:11px;color:var(--text-muted);margin-top:2px}
+    .hcard-btn{position:absolute;bottom:16px;right:16px;width:48px;height:48px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(255,72,0,0.35);transition:transform .3s var(--ease-out),background .3s}
+    .hcard-btn:hover{transform:scale(1.1);background:#e03f00}
+    .hcard-ftr{padding:12px 20px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;background:#fff;border-top:1px solid var(--border)}
+    .hcard-ftr-item{display:flex;flex-direction:column}
+    .hcard-ftr-lbl{font-family:var(--font-mono);font-size:9px;font-weight:600;letter-spacing:.08em;color:var(--text-dim);text-transform:uppercase}
+    .hcard-ftr-val{font-size:11.5px;font-weight:700;color:var(--text);letter-spacing:-.01em;margin-top:2px}
+
+    /* HERO STATS BAR */
+    .hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,3vw,40px);margin-top:clamp(44px,6vh,72px);padding-top:clamp(28px,4vh,40px);border-top:1px solid var(--border);opacity:0;transform:translateY(20px);transition:opacity .75s var(--ease-out) .85s,transform .75s var(--ease-out) .85s}
     .hero-stats.in{opacity:1;transform:translateY(0)}
-    .st-num{font-size:clamp(28px,3.5vw,44px);font-weight:900;letter-spacing:-.04em;color:var(--text);line-height:1}
+    .st-num{font-size:clamp(30px,3.6vw,46px);font-weight:900;letter-spacing:-.04em;color:var(--text);line-height:1}
     .st-num .sta{color:var(--accent)}
-    .st-lbl{font-size:12px;color:var(--text-muted);font-weight:500;letter-spacing:.05em;text-transform:uppercase;margin-top:5px}
+    .st-lbl{font-size:11.5px;color:var(--text-muted);font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-top:6px}
 
     /* MARQUEE */
     .mq-sec{overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg-warm);padding:18px 0}
@@ -311,7 +345,10 @@
 
     /* RESPONSIVE */
     @media(max-width:1100px){.tl-grid{grid-template-columns:repeat(3,1fr)}}
-    @media(max-width:900px){
+    @media(max-width:960px){
+      .hero-layout{grid-template-columns:1fr;gap:44px}
+      .hero-visual-col{max-width:440px;margin:0 auto;width:100%}
+      .hero-stats{grid-template-columns:repeat(2,1fr);gap:24px}
       .about-grid{grid-template-columns:1fr}
       .about-pw{max-width:420px;aspect-ratio:4/5}
       .sv-grid{grid-template-columns:repeat(2,1fr)}
@@ -330,10 +367,18 @@
       nav ul,.btn-circle,.lang-btn{display:none}
       .hamburger{display:flex}
       .mobile-nav{display:flex}
-      .hero-sr{flex-direction:column;align-items:flex-start}
-      .hero-stats{flex-wrap:wrap;gap:24px}
+      .hero-acts{flex-direction:column;align-items:stretch}
+      .hero-acts .btn-p,.hero-acts .btn-s{justify-content:center}
+      .hero-stats{grid-template-columns:repeat(2,1fr);gap:20px}
+      .trust-sep{display:none}
+      .hero-trust{flex-direction:column;align-items:flex-start;gap:6px}
+      .hcard-glass-panel{right:66px;padding:10px 12px}
+      .hcard-gp-title{font-size:12px}
     }
-    @media(max-width:480px){.tl-grid{grid-template-columns:1fr}}
+    @media(max-width:480px){
+      .tl-grid{grid-template-columns:1fr}
+      .hero-stats{grid-template-columns:1fr;gap:18px}
+    }
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}}
   </style>
 </head>
@@ -394,37 +439,94 @@
 <section id="home">
   <div class="hero-bg-txt">AYMAN</div>
   <div class="wrap hero-cnt">
-    <div class="hero-ey" id="ey">
-      <span class="ey-dot"></span>
-      <span id="ey-txt">Available for freelance &middot; Cairo, Egypt</span>
-    </div>
-    <h1 class="hero-title" id="htitle">
-      Graphic Designer.<br>
-      Brand <span class="ac">Storyteller.</span><br>
-      <span class="wrot"><span class="wrot-inner" id="wrot-inner">
-        <span class="rw active">Visual Thinker.</span>
-        <span class="rw">Identity Builder.</span>
-        <span class="rw">Creative Director.</span>
-        <span class="rw">Print Specialist.</span>
-      </span></span>
-    </h1>
-    <div class="hero-sr" id="hsr">
-      <p class="hero-desc" id="hdesc">Mid-Level Graphic Designer with 3+ years crafting bold visual identities, social campaigns, print artwork, and marketing creatives &mdash; plus hands-on UI/UX experience.</p>
-      <div class="hero-acts">
-        <a href="#projects" class="btn-p" id="hcta">
-          <span id="hcta-txt">View My Work</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
-        <a href="assets/Ayman%20Atta%20Graphic%20Designer.pdf" download target="_blank" class="btn-s" id="hcv">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          <span id="hcv-txt">Download CV</span>
-        </a>
+    <div class="hero-layout">
+      
+      <!-- Left Column: Typography & Narrative -->
+      <div class="hero-main-col">
+        <div class="hero-ey" id="ey">
+          <span class="ey-dot"></span>
+          <span id="ey-txt">Available for Selective Projects · Cairo / Remote</span>
+          <span class="ey-pill" id="ey-pill">Visual Identity · Print · Digital</span>
+        </div>
+        <h1 class="hero-title" id="htitle">
+          Shaping Iconic <span class="ac">Brands</span><br>
+          &amp; Visual Identities.<br>
+          <span class="wrot"><span class="wrot-inner" id="wrot-inner">
+            <span class="rw active">Brand Identity Systems.</span>
+            <span class="rw">Tactile Print &amp; Packaging.</span>
+            <span class="rw">High-Impact Social Campaigns.</span>
+            <span class="rw">Intuitive UI/UX Design.</span>
+          </span></span>
+        </h1>
+        <p class="hero-desc" id="hdesc">
+          Senior Visual Identity Designer with 3+ years turning ambitious visions into unforgettable brand systems, high-converting campaigns, and award-grade print — crafted to captivate and convert.
+        </p>
+        <div class="hero-acts" id="hacts">
+          <a href="#projects" class="btn-p" id="hcta">
+            <span id="hcta-txt">Explore Selected Work</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="assets/Ayman%20Atta%20Graphic%20Designer.pdf" download target="_blank" class="btn-s" id="hcv">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span id="hcv-txt">Download CV</span>
+          </a>
+        </div>
+        <div class="hero-trust" id="htrust">
+          <span class="trust-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="#FF4800" stroke="#FF4800"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> <span id="ht1">50+ Completed Projects</span></span>
+          <span class="trust-sep">/</span>
+          <span class="trust-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> <span id="ht2">&lt; 24h Response Time</span></span>
+          <span class="trust-sep">/</span>
+          <span class="trust-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> <span id="ht3">Cairo, Egypt</span></span>
+        </div>
       </div>
+
+      <!-- Right Column: Editorial Showcase Card -->
+      <div class="hero-visual-col" id="hcard-col">
+        <div class="hcard">
+          <div class="hcard-hdr">
+            <span class="hcard-live"><span class="hcard-dot"></span><span id="hcard-status">Visual Identity Specialist</span></span>
+            <span class="hcard-id">[ 01 / CREATIVE ]</span>
+          </div>
+          <div class="hcard-media">
+            <img src="assets/ayman.jpg?v=2" alt="Ayman Atta - Graphic Designer & Brand Specialist" class="hcard-img">
+            <div class="hcard-badge-top">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <span id="hcard-badge-txt">Behance Top Rated</span>
+            </div>
+            <div class="hcard-glass-panel">
+              <div class="hcard-gp-sub" id="hcard-gpsub">Featured Portfolio</div>
+              <div class="hcard-gp-title">Sutra · Numrah · Darbak</div>
+              <div class="hcard-gp-meta" id="hcard-gpmeta">Brand Identity · Packaging · UI/UX</div>
+            </div>
+            <a href="#projects" class="hcard-btn" aria-label="View Projects">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
+          </div>
+          <div class="hcard-ftr">
+            <div class="hcard-ftr-item">
+              <span class="hcard-ftr-lbl" id="hcf1">Experience</span>
+              <span class="hcard-ftr-val">3+ Years</span>
+            </div>
+            <div class="hcard-ftr-item">
+              <span class="hcard-ftr-lbl" id="hcf2">Location</span>
+              <span class="hcard-ftr-val">Cairo, EG</span>
+            </div>
+            <div class="hcard-ftr-item">
+              <span class="hcard-ftr-lbl" id="hcf3">Availability</span>
+              <span class="hcard-ftr-val" style="color:#10B981" id="hcf3-val">Open Q4 2026</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
+
+    <!-- Bottom Full-Width Stats -->
     <div class="hero-stats" id="hstats">
       <div><div class="st-num">3<span class="sta">+</span></div><div class="st-lbl" id="sl1">Years Experience</div></div>
       <div><div class="st-num">50<span class="sta">+</span></div><div class="st-lbl" id="sl2">Projects Delivered</div></div>
-      <div><div class="st-num">6</div><div class="st-lbl" id="sl3">Design Disciplines</div></div>
+      <div><div class="st-num">100<span class="sta">%</span></div><div class="st-lbl" id="sl3">Bespoke Quality</div></div>
+      <div><div class="st-num">6</div><div class="st-lbl" id="sl4">Core Disciplines</div></div>
     </div>
   </div>
 </section>
@@ -665,8 +767,8 @@
 })();
 
 function initH(){
-  var ids=['ey','htitle','hsr','hstats'],d=100;
-  ids.forEach(function(id,i){var el=document.getElementById(id);if(el)setTimeout(function(){el.classList.add('in');},d+i*140);});
+  var ids=['ey','htitle','hdesc','hacts','htrust','hcard-col','hstats'],d=80;
+  ids.forEach(function(id,i){var el=document.getElementById(id);if(el)setTimeout(function(){el.classList.add('in');},d+i*110);});
 }
 
 /* WORD ROTATOR */
@@ -770,17 +872,30 @@ function toggleLang(){
   document.getElementById('lang-btn').textContent=rtl?'English':'عربي';
   document.getElementById('ct-pill').innerHTML=rtl?'تواصل<br>معي':"Let's<br>Talk";
   if(rtl){
-    document.getElementById('ey-txt').textContent='متاح للمشاريع الحرة · القاهرة، مصر';
-    document.getElementById('htitle').innerHTML='مصمم جرافيك.<br>راوي <span class="ac">بصري.</span><br><span class="wrot"><span class="wrot-inner" id="wrot-inner"><span class="rw active">مفكّر بصري.</span><span class="rw">باني هويات.</span><span class="rw">مخرج إبداعي.</span><span class="rw">متخصص طباعة.</span></span></span>';
-    document.getElementById('hdesc').textContent='مصمم جرافيك بخبرة +3 سنوات في الهوية البصرية، تصاميم السوشيال ميديا، المطبوعات، والتسويق البصري.';
-    document.getElementById('hcta-txt').textContent='شوف شغلي';
-    document.getElementById('hcv-txt').textContent='تحميل CV';
+    document.getElementById('ey-txt').textContent='متاح للمشاريع الحرة والتكليفات الخاصة · القاهرة / عن بُعد';
+    document.getElementById('ey-pill').textContent='هوية بصرية · مطبوعات · رقمي';
+    document.getElementById('htitle').innerHTML='أصنع هويات بصرية<br>تفرض <span class="ac">حضورها</span> وتلهم جمهورك.<br><span class="wrot"><span class="wrot-inner" id="wrot-inner"><span class="rw active">أنظمة هوية متكاملة.</span><span class="rw">مطبوعات فاخرة متقنة.</span><span class="rw">حملات رقمية جذابة.</span><span class="rw">واجهات وتجارب رقمية.</span></span></span>';
+    document.getElementById('hdesc').textContent='مصمم هويات بصرية ومخرج إبداعي بخبرة +3 سنوات في تحويل الرؤى إلى علامات تجارية خالدة، حملات تسويقية عالية التحويل، ومطبوعات متقنة الصنع تجعل علامتك مستحيلة النسيان.';
+    document.getElementById('hcta-txt').textContent='استعرض أعمالي';
+    document.getElementById('hcv-txt').textContent='تحميل السيرة الذاتية (CV)';
+    document.getElementById('ht1').textContent='+50 مشروع مكتمل';
+    document.getElementById('ht2').textContent='رد سريع خلال 24 ساعة';
+    document.getElementById('ht3').textContent='القاهرة، مصر';
+    document.getElementById('hcard-status').textContent='مختص هوية بصرية';
+    document.getElementById('hcard-badge-txt').textContent='أعمال متميزة على Behance';
+    document.getElementById('hcard-gpsub').textContent='أعمال بارزة مختارة';
+    document.getElementById('hcard-gpmeta').textContent='هوية بصرية · تغليف · UI/UX';
+    document.getElementById('hcf1').textContent='الخبرة';
+    document.getElementById('hcf2').textContent='الموقع';
+    document.getElementById('hcf3').textContent='الحالة';
+    document.getElementById('hcf3-val').textContent='متاح الآن 2026';
     document.getElementById('sl1').textContent='سنوات خبرة';
     document.getElementById('sl2').textContent='مشروع منجز';
-    document.getElementById('sl3').textContent='مجالات تصميم';
+    document.getElementById('sl3').textContent='جودة وتفرد 100%';
+    document.getElementById('sl4').textContent='مجالات تصميم';
     document.getElementById('ab-lbl-txt').textContent='نبذة عني';
     document.getElementById('ab-h').innerHTML='راوي بصري.<br>باني علامات تجارية.<br><span style="color:var(--accent)">مبدع بطبعه.</span>';
-    document.getElementById('ab-bio').textContent='أنا مصمم جرافيك من مستوى متوسط، مقيم في القاهرة، مصر. أعمل في مجال التصميم منذ أكتر من 3 سنوات.';
+    document.getElementById('ab-bio').textContent='أنا مصمم جرافيك ومختص هويات بصرية، مقيم في القاهرة، مصر. أعمل في مجال التصميم منذ أكثر من 3 سنوات في بناء الهويات والعلامات التجارية المتميزة.';
     document.getElementById('sk-ttl').textContent='مهاراتي الأساسية';
     document.getElementById('sk-tags').innerHTML=['تصميم الهوية البصرية','تصاميم السوشيال ميديا','المطبوعات والتغليف','أنظمة الهوية البصرية','تصميم UI/UX','سير العمل بالذكاء الاصطناعي'].map(function(s){return '<span class="tag">'+s+'</span>';}).join('');
     document.getElementById('sv-ttl').innerHTML='تصميم يحقق<br><span class="ac">نتائج حقيقية.</span>';
@@ -792,21 +907,37 @@ function toggleLang(){
     document.getElementById('ex-ttl').innerHTML='+3 سنوات من<br>العمل الاحترافي<br><span class="ac">في التصميم.</span>';
     document.getElementById('ex-clbl').textContent='وظائف تصميم';
     document.getElementById('wk-ttl').innerHTML='الشغل<br>يتكلم عن <span class="ac">نفسه.</span>';
-    document.getElementById('ct-ttl').innerHTML='عندك مشروع؟;<br>كلمني <span class="ac">هنا.</span>';
+    document.getElementById('ct-ttl').innerHTML='عندك مشروع؟<br>كلمني <span class="ac">هنا.</span>';
     document.getElementById('ct-it').textContent='خلينا نبني حاجة استثنائية مع بعض.';
     document.getElementById('ct-id').textContent='سواء هوية بصرية، حملة سوشيال ميديا، مطبوعات، أو أي حاجة تانية — ابعتلي رسالة ونتكلم.';
     document.getElementById('sc-chips').innerHTML=['هوية بصرية','تصاميم سوشيال','مطبوعات وتغليف','تصميم UI/UX'].map(function(c,i){return '<button type="button" class="chip'+(i===0?' selected':'')+'" onclick="tChip(this)">'+c+'</button>';}).join('');
     document.getElementById('sub-txt').textContent='ابعت رسالة';
     document.getElementById('ft-copy').innerHTML='&copy; 2026 أيمن عطا. جميع الحقوق محفوظة.';
   } else {
-    document.getElementById('ey-txt').textContent='Available for freelance · Cairo, Egypt';
-    document.getElementById('htitle').innerHTML='Graphic Designer.<br>Brand <span class="ac">Storyteller.</span><br><span class="wrot"><span class="wrot-inner" id="wrot-inner"><span class="rw active">Visual Thinker.</span><span class="rw">Identity Builder.</span><span class="rw">Creative Director.</span><span class="rw">Print Specialist.</span></span></span>';
-    document.getElementById('hdesc').textContent='Mid-Level Graphic Designer with 3+ years crafting bold visual identities, social campaigns, print artwork, and marketing creatives — plus hands-on UI/UX experience.';
-    document.getElementById('hcta-txt').textContent='View My Work';document.getElementById('hcv-txt').textContent='Download CV';
-    document.getElementById('sl1').textContent='Years Experience';document.getElementById('sl2').textContent='Projects Delivered';document.getElementById('sl3').textContent='Design Disciplines';
+    document.getElementById('ey-txt').textContent='Available for Selective Projects · Cairo / Remote';
+    document.getElementById('ey-pill').textContent='Visual Identity · Print · Digital';
+    document.getElementById('htitle').innerHTML='Shaping Iconic <span class="ac">Brands</span><br>&amp; Visual Identities.<br><span class="wrot"><span class="wrot-inner" id="wrot-inner"><span class="rw active">Brand Identity Systems.</span><span class="rw">Tactile Print &amp; Packaging.</span><span class="rw">High-Impact Social Campaigns.</span><span class="rw">Intuitive UI/UX Design.</span></span></span>';
+    document.getElementById('hdesc').textContent='Senior Visual Identity Designer with 3+ years turning ambitious visions into unforgettable brand systems, high-converting campaigns, and award-grade print — crafted to captivate and convert.';
+    document.getElementById('hcta-txt').textContent='Explore Selected Work';
+    document.getElementById('hcv-txt').textContent='Download CV';
+    document.getElementById('ht1').textContent='50+ Completed Projects';
+    document.getElementById('ht2').textContent='< 24h Response Time';
+    document.getElementById('ht3').textContent='Cairo, Egypt';
+    document.getElementById('hcard-status').textContent='Visual Identity Specialist';
+    document.getElementById('hcard-badge-txt').textContent='Behance Top Rated';
+    document.getElementById('hcard-gpsub').textContent='Featured Portfolio';
+    document.getElementById('hcard-gpmeta').textContent='Brand Identity · Packaging · UI/UX';
+    document.getElementById('hcf1').textContent='Experience';
+    document.getElementById('hcf2').textContent='Location';
+    document.getElementById('hcf3').textContent='Availability';
+    document.getElementById('hcf3-val').textContent='Open Q4 2026';
+    document.getElementById('sl1').textContent='Years Experience';
+    document.getElementById('sl2').textContent='Projects Delivered';
+    document.getElementById('sl3').textContent='Bespoke Quality';
+    document.getElementById('sl4').textContent='Core Disciplines';
     document.getElementById('ab-lbl-txt').textContent='About Me';
     document.getElementById('ab-h').innerHTML='Visual Storyteller.<br>Brand Builder.<br><span style="color:var(--accent)">Creative at heart.</span>';
-    document.getElementById('ab-bio').textContent="I'm a Mid-Level Graphic Designer based in Cairo, Egypt, with 3+ years turning brand visions into sharp visual realities.";
+    document.getElementById('ab-bio').textContent="I'm a Visual Identity Designer based in Cairo, Egypt, with 3+ years turning brand visions into unforgettable visual identities and high-performing digital creatives.";
     document.getElementById('sk-ttl').textContent='Core Skills';
     document.getElementById('sk-tags').innerHTML=['Brand Identity Design','Social Media Creatives','Print & Packaging','Visual Identity Systems','UI/UX Design','AI-Assisted Workflows'].map(function(s){return '<span class="tag">'+s+'</span>';}).join('');
     document.getElementById('sv-ttl').innerHTML='Design that<br>delivers <span class="ac">results.</span>';
