@@ -33,14 +33,14 @@
     .wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(20px,5vw,80px)}
 
     /* PRELOADER */
-    #preloader{position:fixed;inset:0;z-index:99999;overflow:hidden;display:flex;flex-direction:column}
+    #preloader{position:fixed;inset:0;z-index:99999;overflow:hidden;display:flex;flex-direction:column;background:#111111}
     .pre-curtain{position:absolute;width:100%;height:50.2%;left:0;will-change:transform}
-    .pct-o{top:0;background:var(--accent);z-index:1;transition:transform .92s var(--ease-in) 90ms}
-    .pcb-o{bottom:0;background:var(--accent);z-index:1;transition:transform .92s var(--ease-in) 90ms}
-    .pct-b{top:0;background:#111;z-index:2;transition:transform .88s var(--ease-in)}
-    .pcb-b{bottom:0;background:#111;z-index:2;transition:transform .88s var(--ease-in)}
-    #preloader.splitting .pct-o,.pct-b{transform:translateY(-100%)}
-    #preloader.splitting .pcb-o,.pcb-b{transform:translateY(100%)}
+    .pct-o{top:0;background:#161616;z-index:1;transition:transform .92s var(--ease-in) 90ms}
+    .pcb-o{bottom:0;background:#161616;z-index:1;transition:transform .92s var(--ease-in) 90ms}
+    .pct-b{top:0;background:#111111;z-index:2;transition:transform .88s var(--ease-in)}
+    .pcb-b{bottom:0;background:#111111;z-index:2;transition:transform .88s var(--ease-in)}
+    #preloader.splitting .pct-o,#preloader.splitting .pct-b{transform:translateY(-100%)}
+    #preloader.splitting .pcb-o,#preloader.splitting .pcb-b{transform:translateY(100%)}
     #pre-stage{position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;pointer-events:none}
     .pre-brand{display:inline-flex;align-items:center;gap:clamp(3px,.5vw,7px);font-size:clamp(52px,9vw,88px);font-weight:900;letter-spacing:-.04em;line-height:1;margin-bottom:clamp(20px,3.5vh,36px)}
     .pre-char-box{display:inline-flex;overflow:hidden;height:1.15em;line-height:1.15em;vertical-align:middle;position:relative}
