@@ -89,40 +89,63 @@
     .mobile-nav.open{transform:translateY(0)}
     .mobile-nav a{display:block;font-size:clamp(32px,8vw,56px);font-weight:900;letter-spacing:-.04em;color:var(--text);padding:16px 0;border-bottom:1px solid var(--border);transition:color .2s}
     .mobile-nav a:hover{color:var(--accent)}
-    .lang-btn{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);background:transparent;border:1.5px solid var(--border-dark);padding:7px 14px;border-radius:100px;transition:var(--t)}
-    .lang-btn:hover{color:var(--text);border-color:var(--text)}
+
 
     /* HERO */
-    #home{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(100px,15vh,160px) 0 clamp(48px,8vh,80px);position:relative;overflow:hidden;background:var(--bg)}
-    .hero-bg-txt{position:absolute;top:50%;left:50%;transform:translate(-50%,-48%);font-size:clamp(100px,18vw,240px);font-weight:900;letter-spacing:-.06em;color:transparent;-webkit-text-stroke:1px rgba(17,17,17,0.055);white-space:nowrap;pointer-events:none;user-select:none;z-index:0;line-height:1}
+    #home{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(100px,15vh,160px) 0 clamp(60px,9vh,100px);position:relative;overflow:hidden;background:var(--bg)}
+
+    /* Subtle ghost text */
+    .hero-bg-txt{position:absolute;top:50%;left:50%;transform:translate(-50%,-48%);font-size:clamp(100px,18vw,260px);font-weight:900;letter-spacing:-.06em;color:transparent;-webkit-text-stroke:1px rgba(17,17,17,0.055);white-space:nowrap;pointer-events:none;user-select:none;z-index:0;line-height:1}
+
+    /* Accent blob top-right — light version */
+    #home::after{content:'';position:absolute;top:-10%;right:-5%;width:clamp(360px,45vw,680px);height:clamp(360px,45vw,680px);border-radius:50%;background:radial-gradient(circle,rgba(255,72,0,.07) 0%,rgba(255,72,0,.02) 50%,transparent 70%);z-index:0;pointer-events:none;animation:blobPulse 7s ease-in-out infinite}
+    #home::before{content:none}
+    @keyframes blobPulse{0%,100%{transform:scale(1);opacity:.8}50%{transform:scale(1.1) translate(-15px,15px);opacity:1}}
+
+    .hero-blob2{display:none}
+    .hero-line{display:none}
+
     .hero-cnt{position:relative;z-index:2}
-    .hero-ey{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:clamp(20px,4vh,36px);opacity:0;transform:translateY(20px);transition:opacity .7s var(--ease-out) .2s,transform .7s var(--ease-out) .2s}
+
+    /* Eyebrow pill */
+    .hero-ey{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:11.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:clamp(20px,4vh,36px);opacity:0;transform:translateY(20px);transition:opacity .7s var(--ease-out) .2s,transform .7s var(--ease-out) .2s;background:rgba(17,17,17,.04);border:1px solid var(--border-dark);padding:8px 18px;border-radius:100px}
     .hero-ey.in{opacity:1;transform:translateY(0)}
-    .ey-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:dotP 2s ease-in-out infinite;flex-shrink:0}
+    .ey-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:dotP 2s ease-in-out infinite;flex-shrink:0;box-shadow:0 0 8px rgba(255,72,0,.4)}
     @keyframes dotP{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:.6}}
-    .hero-title{font-size:clamp(42px,7.5vw,108px);font-weight:900;letter-spacing:-.04em;line-height:1.04;color:var(--text);max-width:16em;opacity:0;transform:translateY(30px);transition:opacity .85s var(--ease-out) .35s,transform .85s var(--ease-out) .35s}
+
+    /* Hero Title */
+    .hero-title{font-size:clamp(44px,7.8vw,116px);font-weight:900;letter-spacing:-.04em;line-height:1.02;color:var(--text);max-width:16em;opacity:0;transform:translateY(30px);transition:opacity .85s var(--ease-out) .35s,transform .85s var(--ease-out) .35s}
     .hero-title.in{opacity:1;transform:translateY(0)}
     .hero-title .ac{color:var(--accent)}
-    .wrot{display:inline-block;overflow:hidden;height:1.04em;vertical-align:bottom}
-    .wrot-inner{display:flex;flex-direction:column}
-    .rw{display:block;transition:transform .55s var(--ease-out),opacity .55s var(--ease-out);transform:translateY(110%);opacity:0;color:var(--accent);white-space:nowrap}
-    .rw.active{transform:translateY(0);opacity:1}
-    .rw.leaving{transform:translateY(-110%);opacity:0}
+    .hero-title .dim{color:var(--text-dim)}
+
+    /* Typewriter cursor */
+    #tw-text{color:var(--accent)}
+    .tw-cursor{color:var(--accent);font-weight:900;animation:cursorBlink .85s step-end infinite;margin-left:1px}
+    @keyframes cursorBlink{0%,100%{opacity:1}50%{opacity:0}}
+
+    /* Sub row */
     .hero-sr{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;margin-top:clamp(28px,5vh,56px);flex-wrap:wrap;opacity:0;transform:translateY(20px);transition:opacity .75s var(--ease-out) .6s,transform .75s var(--ease-out) .6s}
     .hero-sr.in{opacity:1;transform:translateY(0)}
     .hero-desc{font-size:clamp(15px,1.5vw,18px);color:var(--text-muted);line-height:1.75;max-width:480px}
     .hero-acts{display:flex;gap:14px;flex-shrink:0;flex-wrap:wrap}
+
+    /* CTA Buttons */
     .btn-p{display:inline-flex;align-items:center;gap:10px;padding:16px 32px;border-radius:100px;background:var(--text);color:#fff;font-size:14px;font-weight:700;border:1.5px solid var(--text);transition:var(--t)}
     .btn-p:hover{background:var(--accent);border-color:var(--accent);transform:translateY(-2px)}
     .btn-p svg{transition:transform .3s var(--ease-out)}
     .btn-p:hover svg{transform:translateX(4px)}
     .btn-s{display:inline-flex;align-items:center;gap:10px;padding:16px 32px;border-radius:100px;background:transparent;color:var(--text);font-size:14px;font-weight:600;border:1.5px solid var(--border-dark);transition:var(--t)}
     .btn-s:hover{border-color:var(--text);background:rgba(17,17,17,.04);transform:translateY(-2px)}
-    .hero-stats{display:flex;gap:clamp(28px,4vw,56px);margin-top:clamp(40px,6vh,70px);padding-top:clamp(24px,4vh,40px);border-top:1px solid var(--border);opacity:0;transform:translateY(20px);transition:opacity .75s var(--ease-out) .8s,transform .75s var(--ease-out) .8s}
+
+    /* Stats */
+    .hero-stats{display:flex;gap:0;margin-top:clamp(40px,6vh,70px);padding-top:clamp(24px,4vh,40px);border-top:1px solid var(--border);opacity:0;transform:translateY(20px);transition:opacity .75s var(--ease-out) .8s,transform .75s var(--ease-out) .8s}
     .hero-stats.in{opacity:1;transform:translateY(0)}
-    .st-num{font-size:clamp(28px,3.5vw,44px);font-weight:900;letter-spacing:-.04em;color:var(--text);line-height:1}
+    .hero-stat-item{padding-right:clamp(28px,4vw,56px);margin-right:clamp(28px,4vw,56px);border-right:1px solid var(--border)}
+    .hero-stat-item:last-child{border-right:none;padding-right:0;margin-right:0}
+    .st-num{font-size:clamp(28px,3.5vw,48px);font-weight:900;letter-spacing:-.04em;color:var(--text);line-height:1}
     .st-num .sta{color:var(--accent)}
-    .st-lbl{font-size:12px;color:var(--text-muted);font-weight:500;letter-spacing:.05em;text-transform:uppercase;margin-top:5px}
+    .st-lbl{font-size:11.5px;color:var(--text-muted);font-weight:500;letter-spacing:.08em;text-transform:uppercase;margin-top:6px}
 
     /* MARQUEE */
     .mq-sec{overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg-warm);padding:18px 0}
@@ -327,7 +350,7 @@
       .sv-grid,.pr-steps,.pj-grid{grid-template-columns:1fr}
       .tl-grid{grid-template-columns:repeat(2,1fr)}
       .form-row{grid-template-columns:1fr}
-      nav ul,.btn-circle,.lang-btn{display:none}
+      nav ul,.btn-circle{display:none}
       .hamburger{display:flex}
       .mobile-nav{display:flex}
       .hero-sr{flex-direction:column;align-items:flex-start}
@@ -375,7 +398,6 @@
       </ul>
     </nav>
     <div style="display:flex;align-items:center;gap:14px">
-      <button class="lang-btn" id="lang-btn" onclick="toggleLang()">&#1593;&#1585;&#1576;&#1610;</button>
       <a href="#contact" class="btn-circle" id="ct-pill">Let's<br>Talk</a>
       <button class="hamburger" id="hbg"><span></span><span></span><span></span></button>
     </div>
@@ -392,27 +414,24 @@
 
 <!-- HERO -->
 <section id="home">
+  <div class="hero-blob2"></div>
+  <div class="hero-line"></div>
   <div class="hero-bg-txt">AYMAN</div>
   <div class="wrap hero-cnt">
     <div class="hero-ey" id="ey">
       <span class="ey-dot"></span>
-      <span id="ey-txt">Available for freelance &middot; Cairo, Egypt</span>
+      <span id="ey-txt">Open to Freelance</span>
     </div>
     <h1 class="hero-title" id="htitle">
-      Graphic Designer.<br>
-      Brand <span class="ac">Storyteller.</span><br>
-      <span class="wrot"><span class="wrot-inner" id="wrot-inner">
-        <span class="rw active">Visual Thinker.</span>
-        <span class="rw">Identity Builder.</span>
-        <span class="rw">Creative Director.</span>
-        <span class="rw">Print Specialist.</span>
-      </span></span>
+      I Turn Ideas<br>
+      Into <span class="ac">Bold</span> Visual<br>
+      <span id="tw-text" class="ac"></span><span class="tw-cursor" id="tw-cur">|</span>
     </h1>
     <div class="hero-sr" id="hsr">
-      <p class="hero-desc" id="hdesc">Mid-Level Graphic Designer with 3+ years crafting bold visual identities, social campaigns, print artwork, and marketing creatives &mdash; plus hands-on UI/UX experience.</p>
+      <p class="hero-desc" id="hdesc">Graphic Designer obsessed with craft &mdash; building brand identities, social campaigns, and print experiences that don&rsquo;t just look good, they leave a mark.</p>
       <div class="hero-acts">
         <a href="#projects" class="btn-p" id="hcta">
-          <span id="hcta-txt">View My Work</span>
+          <span id="hcta-txt">See My Work</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
         <a href="assets/Ayman%20Atta%20Graphic%20Designer.pdf" download target="_blank" class="btn-s" id="hcv">
@@ -422,9 +441,9 @@
       </div>
     </div>
     <div class="hero-stats" id="hstats">
-      <div><div class="st-num">3<span class="sta">+</span></div><div class="st-lbl" id="sl1">Years Experience</div></div>
-      <div><div class="st-num">50<span class="sta">+</span></div><div class="st-lbl" id="sl2">Projects Delivered</div></div>
-      <div><div class="st-num">6</div><div class="st-lbl" id="sl3">Design Disciplines</div></div>
+      <div class="hero-stat-item"><div class="st-num">3<span class="sta">+</span></div><div class="st-lbl" id="sl1">Years Experience</div></div>
+      <div class="hero-stat-item"><div class="st-num">50<span class="sta">+</span></div><div class="st-lbl" id="sl2">Projects Delivered</div></div>
+      <div class="hero-stat-item"><div class="st-num">6</div><div class="st-lbl" id="sl3">Design Disciplines</div></div>
     </div>
   </div>
 </section>
@@ -667,19 +686,44 @@
 function initH(){
   var ids=['ey','htitle','hsr','hstats'],d=100;
   ids.forEach(function(id,i){var el=document.getElementById(id);if(el)setTimeout(function(){el.classList.add('in');},d+i*140);});
+  setTimeout(startTypewriter, 900);
 }
 
-/* WORD ROTATOR */
-(function(){
-  var idx=0;
-  setInterval(function(){
-    var ws=document.querySelectorAll('.rw');if(!ws.length)return;
-    ws[idx].classList.remove('active');ws[idx].classList.add('leaving');
-    idx=(idx+1)%ws.length;ws[idx].classList.add('active');
-    var prev=(idx-1+ws.length)%ws.length;
-    setTimeout(function(){ws[prev].classList.remove('leaving');},600);
-  },2800);
-})();
+/* TYPEWRITER EFFECT */
+var TW={
+  words:['Identities.','Experiences.','Statements.','Stories.'],
+  idx:0, timer:null, running:false
+};
+function startTypewriter(){
+  TW.idx=0; TW.running=true;
+  clearTimeout(TW.timer);
+  var el=document.getElementById('tw-text');
+  if(el)el.textContent='';
+  TW.timer=setTimeout(function(){twType(0);},300);
+}
+function twType(ci){
+  var el=document.getElementById('tw-text');
+  if(!el)return;
+  var w=TW.words[TW.idx];
+  el.textContent=w.slice(0,ci);
+  if(ci<w.length){
+    TW.timer=setTimeout(function(){twType(ci+1);},90);
+  } else {
+    TW.timer=setTimeout(function(){twErase(w.length);},2000);
+  }
+}
+function twErase(len){
+  var el=document.getElementById('tw-text');
+  if(!el)return;
+  var w=TW.words[TW.idx];
+  el.textContent=w.slice(0,len);
+  if(len>0){
+    TW.timer=setTimeout(function(){twErase(len-1);},45);
+  } else {
+    TW.idx=(TW.idx+1)%TW.words.length;
+    TW.timer=setTimeout(function(){twType(0);},280);
+  }
+}
 
 /* SCROLL */
 (function(){
@@ -703,8 +747,7 @@ document.getElementById('hbg').addEventListener('click',function(){mob=!mob;this
 function closeMob(){mob=false;document.getElementById('hbg').classList.remove('open');document.getElementById('mob-nav').classList.remove('open');document.body.style.overflow='';}
 
 /* PROJECTS */
-var lang='en';
-var PD={en:[
+var PD=[
   {title:"SUTRA — Eid Mystery Box Campaign",cat:"Social Media",img:"https://mir-s3-cdn-cf.behance.net/projects/404/fbeba5251835225.Y3JvcCw4MDgsNjMyLDAsMA.jpg",link:"https://www.behance.net/gallery/251835225/SUTRA-Eid-Mystery-Box-Campaign-2026",impact:"40%+ boost in social engagement.",desc:"A high-impact seasonal campaign for SUTRA featuring creative mystery box visuals and engaging digital marketing collateral."},
   {title:"Eid Mubarak — Social Media Designs",cat:"Social Media",img:"https://mir-s3-cdn-cf.behance.net/projects/404/6be1cd222789347.Y3JvcCw4MDgsNjMyLDAsMA.jpg",link:"https://www.behance.net/gallery/222789347/Eid-Mubarak-Social-Media-Designs",impact:"Festive post collection with Islamic aesthetic motifs.",desc:"A series of celebratory Eid Mubarak social media creatives combining elegant Arabic typography and festive seasonal branding."},
   {title:"Eid Adha — Greeting Visual Artwork",cat:"Social Media",img:"https://mir-s3-cdn-cf.behance.net/projects/404/7623f0147484721.67a92c1d4e0cf.png",link:"https://www.behance.net/gallery/147484721/-Eid-Adha",impact:"Custom Arabic calligraphy composition.",desc:"Creative holiday greeting visual for Eid Adha featuring custom Arabic calligraphy and warm golden lighting."},
@@ -715,32 +758,30 @@ var PD={en:[
   {title:"Medad — Digital Reader Mobile UI/UX",cat:"UI/UX Design",img:"https://mir-s3-cdn-cf.behance.net/projects/404/c4ce56229634631.Y3JvcCw4MDgsNjMyLDAsMA.jpg",link:"https://www.behance.net/gallery/229634631/Medad-Mobile-Application-UIX-Design-(Free-Template)",impact:"Typography readability and distraction-free reading modes.",desc:"Sleek mobile reading app featuring clean typography, custom night mode, and fluid user journeys."},
   {title:"Creative Print &amp; Packaging Series",cat:"Print Design",img:"https://mir-s3-cdn-cf.behance.net/projects/404/066403231799977.Y3JvcCw4MDgsNjMyLDAsMA.jpg",link:"https://www.behance.net/ayman3tta",impact:"Prepress ready dielines for high-precision print production.",desc:"High-resolution print production artwork including posters, packaging dielines, and corporate collateral."},
   {title:"Corporate Pitch Deck &amp; Presentation",cat:"Presentations",img:"https://mir-s3-cdn-cf.behance.net/projects/404/51c0bd232561629.Y3JvcCw4MDgsNjMyLDAsMA.jpg",link:"https://www.behance.net/ayman3tta",impact:"Executive storytelling slides for investor pitches.",desc:"Modern, high-converting presentation slides and pitch deck design built for business storytelling."}
-],ar:[
-  {title:"حملة صندوق المفاجآت — SUTRA",cat:"Social Media",img:"https://mir-s3-cdn-cf.behance.net/projects/404/fbeba5251835225.Y3JvcCw4MDgsNjMyLDAsMA.jpg",link:"https://www.behance.net/gallery/251835225/SUTRA-Eid-Mystery-Box-Campaign-2026",impact:"زيادة التفاعل 40%+ عبر الأصول البصرية.",desc:"حملة إعلانية موسمية عالية التأثير لعلامة SUTRA."},
-  {title:"تصاميم سوشيال — عيد مبارك",cat:"Social Media",img:"https://mir-s3-cdn-cf.behance.net/projects/404/6be1cd222789347.Y3JvcCw4MDgsNjMyLDAsMA.jpg",link:"https://www.behance.net/gallery/222789347/Eid-Mubarak-Social-Media-Designs",impact:"سلسلة تصاميم موسمية بهوية بصرية إسلامية.",desc:"مجموعة بوستات وتصاميم تهنئة عيد الفطر والأضحى."},
-  {title:"تصميم تهنئة عيد الأضحى",cat:"Social Media",img:"https://mir-s3-cdn-cf.behance.net/projects/404/7623f0147484721.67a92c1d4e0cf.png",link:"https://www.behance.net/gallery/147484721/-Eid-Adha",impact:"خط عربي احتفالي مخصص.",desc:"عمل فني رقمي لتهنئة عيد الأضحى."},
-  {title:"تطبيق نومرة NUMRAH — UI/UX",cat:"UI/UX Design",img:"https://mir-s3-cdn-cf.behance.net/projects/404/04f1ca246701515.Y3JvcCw4MDgsNjMyLDAsMg.jpg",link:"https://www.behance.net/gallery/246701515/NUMRAH-MOBILE-APP-UI-UX-DESIGN",internalLink:"projects/NUMRAH.html",impact:"مسارات مستخدم سلسة ونظام UI داكن.",desc:"تصميم واجهات وتجربة مستخدم لتطبيق موبايل."},
-  {title:"دليل الهوية — دربك سيل",cat:"Branding",img:"https://mir-s3-cdn-cf.behance.net/projects/404/066403231799977.Y3JvcCw4MDgsNjMyLDAsMA.jpg",link:"https://www.behance.net/gallery/231799977/Darbak-Sale-Brand-Guideline",impact:"قواعد بصرية موحدة.",desc:"دليل هوية بصرية متكامل لـ Darbak Sale."},
-  {title:"دليل المعايير البصرية — نومرة",cat:"Branding",img:"https://mir-s3-cdn-cf.behance.net/projects/404/51c0bd232561629.Y3JvcCw4MDgsNjMyLDAsMA.jpg",link:"https://www.behance.net/gallery/232561629/Numrah-Brand-Guidelines",impact:"دليل شامل لتطبيقات العلامة.",desc:"نظام هوية بصرية ودليل تطبيقات."},
-  {title:"تطبيق سهلة Sahlah — UI/UX",cat:"UI/UX Design",img:"https://mir-s3-cdn-cf.behance.net/projects/404/f2af61158574229.Y3JvcCwxMzk5LDEwOTUsMCww.png",link:"https://www.behance.net/gallery/158574229/Sahlah-Food-Delivery-App-(UIUX)-Free-Template",impact:"تدفق دفع محسّن.",desc:"تصميم واجهات حديث لطلب الطعام."},
-  {title:"تطبيق مداد Medad — UI/UX",cat:"UI/UX Design",img:"https://mir-s3-cdn-cf.behance.net/projects/404/c4ce56229634631.Y3JvcCw4MDgsNjMyLDAsMA.jpg",link:"https://www.behance.net/gallery/229634631/Medad-Mobile-Application-UIX-Design-(Free-Template)",impact:"قابلية قراءة مرتفعة.",desc:"تجربة تطبيق قراءة رقمية."},
-  {title:"سلسلة تصاميم مطبوعات",cat:"Print Design",img:"https://mir-s3-cdn-cf.behance.net/projects/404/066403231799977.Y3JvcCw4MDgsNjMyLDAsMA.jpg",link:"https://www.behance.net/ayman3tta",impact:"خطوط قطع جاهزة.",desc:"أعمال طباعية عالية الدقة."},
-  {title:"عرض تقديمي وبيتش ديك احترافي",cat:"Presentations",img:"https://mir-s3-cdn-cf.behance.net/projects/404/51c0bd232561629.Y3JvcCw4MDgsNjMyLDAsMA.jpg",link:"https://www.behance.net/ayman3tta",impact:"شرائح سردية للمستثمرين.",desc:"تصميم شرائح عرض احترافي عالي التحويل."}
-]};
-var CATS={en:["All","UI/UX Design","Branding","Social Media","Print Design","Presentations"],ar:["الكل","UI/UX Design","Branding","Social Media","Print Design","Presentations"]};
+];
+var CATS=["All","UI/UX Design","Branding","Social Media","Print Design","Presentations"];
 var curFilter='All';
 
 function renderPJ(){
-  var data=PD[lang],cats=CATS[lang],all=lang==='ar'?'الكل':'All';
-  if(curFilter==='All'||curFilter==='الكل')curFilter=all;
   var fe=document.getElementById('filters');fe.innerHTML='';
-  cats.forEach(function(c){var b=document.createElement('button');b.className='filter-btn'+(c===curFilter?' active':'');b.textContent=c;b.onclick=function(){curFilter=c;document.querySelectorAll('.filter-btn').forEach(function(x){x.classList.remove('active');});this.classList.add('active');renderGrid(data,c,all);};fe.appendChild(b);});
-  renderGrid(data,curFilter,all);
+  CATS.forEach(function(c){
+    var b=document.createElement('button');
+    b.className='filter-btn'+(c===curFilter?' active':'');
+    b.textContent=c;
+    b.onclick=function(){
+      curFilter=c;
+      document.querySelectorAll('.filter-btn').forEach(function(x){x.classList.remove('active');});
+      this.classList.add('active');
+      renderGrid(c);
+    };
+    fe.appendChild(b);
+  });
+  renderGrid(curFilter);
 }
 
-function renderGrid(data,filter,all){
+function renderGrid(filter){
   var g=document.getElementById('proj-grid');g.innerHTML='';
-  var fd=filter===all?data:data.filter(function(p){return p.cat===filter;});
+  var fd=filter==='All'?PD:PD.filter(function(p){return p.cat===filter;});
   fd.forEach(function(p,i){
     var c=document.createElement('div');c.className='pj-card reveal';c.style.transitionDelay=(i*.06)+'s';
     c.innerHTML='<div class="pj-iw"><img src="'+p.img+'" alt="'+p.title+'" loading="lazy"><div class="pj-ov"><div class="pj-oi"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div></div></div><div class="pj-inf"><div class="pj-cat">'+p.cat+'</div><div class="pj-ttl">'+p.title+'</div><div class="pj-imp">'+p.impact+'</div></div>';
@@ -762,70 +803,6 @@ document.getElementById('modal').addEventListener('click',function(e){if(e.targe
 document.addEventListener('keydown',function(e){if(e.key==='Escape')clM();});
 function clM(){document.getElementById('modal').classList.remove('active');document.body.style.overflow='';}
 
-/* LANG */
-function toggleLang(){
-  lang=lang==='en'?'ar':'en';
-  var rtl=lang==='ar';
-  document.documentElement.lang=lang;document.documentElement.dir=rtl?'rtl':'ltr';
-  document.getElementById('lang-btn').textContent=rtl?'English':'عربي';
-  document.getElementById('ct-pill').innerHTML=rtl?'تواصل<br>معي':"Let's<br>Talk";
-  if(rtl){
-    document.getElementById('ey-txt').textContent='متاح للمشاريع الحرة · القاهرة، مصر';
-    document.getElementById('htitle').innerHTML='مصمم جرافيك.<br>راوي <span class="ac">بصري.</span><br><span class="wrot"><span class="wrot-inner" id="wrot-inner"><span class="rw active">مفكّر بصري.</span><span class="rw">باني هويات.</span><span class="rw">مخرج إبداعي.</span><span class="rw">متخصص طباعة.</span></span></span>';
-    document.getElementById('hdesc').textContent='مصمم جرافيك بخبرة +3 سنوات في الهوية البصرية، تصاميم السوشيال ميديا، المطبوعات، والتسويق البصري.';
-    document.getElementById('hcta-txt').textContent='شوف شغلي';
-    document.getElementById('hcv-txt').textContent='تحميل CV';
-    document.getElementById('sl1').textContent='سنوات خبرة';
-    document.getElementById('sl2').textContent='مشروع منجز';
-    document.getElementById('sl3').textContent='مجالات تصميم';
-    document.getElementById('ab-lbl-txt').textContent='نبذة عني';
-    document.getElementById('ab-h').innerHTML='راوي بصري.<br>باني علامات تجارية.<br><span style="color:var(--accent)">مبدع بطبعه.</span>';
-    document.getElementById('ab-bio').textContent='أنا مصمم جرافيك من مستوى متوسط، مقيم في القاهرة، مصر. أعمل في مجال التصميم منذ أكتر من 3 سنوات.';
-    document.getElementById('sk-ttl').textContent='مهاراتي الأساسية';
-    document.getElementById('sk-tags').innerHTML=['تصميم الهوية البصرية','تصاميم السوشيال ميديا','المطبوعات والتغليف','أنظمة الهوية البصرية','تصميم UI/UX','سير العمل بالذكاء الاصطناعي'].map(function(s){return '<span class="tag">'+s+'</span>';}).join('');
-    document.getElementById('sv-ttl').innerHTML='تصميم يحقق<br><span class="ac">نتائج حقيقية.</span>';
-    document.getElementById('sv-sub').textContent='من الهوية البصرية لحملات السوشيال والمطبوعات.';
-    document.getElementById('tl-ttl').innerHTML='مجموعة<br>الأدوات الإبداعية.';
-    document.getElementById('tl-sub').textContent='البرامج الإبداعية والأدوات الرقمية التي أعتمد عليها يومياً.';
-    document.getElementById('pr-ttl').innerHTML='خط إنتاج<br>إبداعي واضح.';
-    document.getElementById('pr-sub').textContent='منهجية واضحة من 4 مراحل تضمن خروج العمل بأعلى جودة.';
-    document.getElementById('ex-ttl').innerHTML='+3 سنوات من<br>العمل الاحترافي<br><span class="ac">في التصميم.</span>';
-    document.getElementById('ex-clbl').textContent='وظائف تصميم';
-    document.getElementById('wk-ttl').innerHTML='الشغل<br>يتكلم عن <span class="ac">نفسه.</span>';
-    document.getElementById('ct-ttl').innerHTML='عندك مشروع؟<br>كلمني <span class="ac">هنا.</span>';
-    document.getElementById('ct-it').textContent='خلينا نبني حاجة استثنائية مع بعض.';
-    document.getElementById('ct-id').textContent='سواء هوية بصرية، حملة سوشيال ميديا، مطبوعات، أو أي حاجة تانية — ابعتلي رسالة ونتكلم.';
-    document.getElementById('sc-chips').innerHTML=['هوية بصرية','تصاميم سوشيال','مطبوعات وتغليف','تصميم UI/UX'].map(function(c,i){return '<button type="button" class="chip'+(i===0?' selected':'')+'" onclick="tChip(this)">'+c+'</button>';}).join('');
-    document.getElementById('sub-txt').textContent='ابعت رسالة';
-    document.getElementById('ft-copy').innerHTML='&copy; 2026 أيمن عطا. جميع الحقوق محفوظة.';
-  } else {
-    document.getElementById('ey-txt').textContent='Available for freelance · Cairo, Egypt';
-    document.getElementById('htitle').innerHTML='Graphic Designer.<br>Brand <span class="ac">Storyteller.</span><br><span class="wrot"><span class="wrot-inner" id="wrot-inner"><span class="rw active">Visual Thinker.</span><span class="rw">Identity Builder.</span><span class="rw">Creative Director.</span><span class="rw">Print Specialist.</span></span></span>';
-    document.getElementById('hdesc').textContent='Mid-Level Graphic Designer with 3+ years crafting bold visual identities, social campaigns, print artwork, and marketing creatives — plus hands-on UI/UX experience.';
-    document.getElementById('hcta-txt').textContent='View My Work';document.getElementById('hcv-txt').textContent='Download CV';
-    document.getElementById('sl1').textContent='Years Experience';document.getElementById('sl2').textContent='Projects Delivered';document.getElementById('sl3').textContent='Design Disciplines';
-    document.getElementById('ab-lbl-txt').textContent='About Me';
-    document.getElementById('ab-h').innerHTML='Visual Storyteller.<br>Brand Builder.<br><span style="color:var(--accent)">Creative at heart.</span>';
-    document.getElementById('ab-bio').textContent="I'm a Mid-Level Graphic Designer based in Cairo, Egypt, with 3+ years turning brand visions into sharp visual realities.";
-    document.getElementById('sk-ttl').textContent='Core Skills';
-    document.getElementById('sk-tags').innerHTML=['Brand Identity Design','Social Media Creatives','Print & Packaging','Visual Identity Systems','UI/UX Design','AI-Assisted Workflows'].map(function(s){return '<span class="tag">'+s+'</span>';}).join('');
-    document.getElementById('sv-ttl').innerHTML='Design that<br>delivers <span class="ac">results.</span>';
-    document.getElementById('sv-sub').textContent='From brand identities to social campaigns and print production — creative work that converts.';
-    document.getElementById('tl-ttl').innerHTML='The creative<br>toolkit.';document.getElementById('tl-sub').textContent='The core creative software and design tools I rely on daily.';
-    document.getElementById('pr-ttl').innerHTML='A clear creative<br>pipeline.';document.getElementById('pr-sub').textContent='A transparent 4-step creative process that delivers results on time — every project.';
-    document.getElementById('ex-ttl').innerHTML='3+ Years of<br>Professional<br><span class="ac">Design Work.</span>';document.getElementById('ex-clbl').textContent='Design Roles';
-    document.getElementById('wk-ttl').innerHTML='The work<br>speaks for <span class="ac">itself.</span>';
-    document.getElementById('ct-ttl').innerHTML='Got a project?<br>Let\'s <span class="ac">talk.</span>';
-    document.getElementById('ct-it').textContent="Let's create something remarkable together.";
-    document.getElementById('ct-id').textContent="Whether it's a brand identity, social campaign, print job, or something else — drop me a line.";
-    document.getElementById('sc-chips').innerHTML=['Brand Identity','Social Media','Print & Packaging','UI/UX Design'].map(function(c,i){return '<button type="button" class="chip'+(i===0?' selected':'')+'" onclick="tChip(this)">'+c+'</button>';}).join('');
-    document.getElementById('sub-txt').textContent='Send Message';
-    document.getElementById('ft-copy').innerHTML='&copy; 2026 Ayman Atta. All rights reserved.';
-  }
-  curFilter=lang==='ar'?'الكل':'All';
-  renderPJ();
-}
-
 /* FORM */
 function tChip(el){el.classList.toggle('selected');}
 function handleSub(e){
@@ -834,7 +811,7 @@ function handleSub(e){
   var chips=Array.from(document.querySelectorAll('.chip.selected')).map(function(c){return c.textContent;}).join(', ');
   var body='Project Type: '+(chips||'General')+'\n\n'+msg;
   window.location.href='mailto:aymanatta71@gmail.com?subject=Project Inquiry from '+encodeURIComponent(name)+'&body='+encodeURIComponent(body);
-  showToast(lang==='ar'?'جاري فتح تطبيق البريد...':'Opening mail client...');
+  showToast('Opening mail client...');
   e.target.reset();
 }
 function showToast(msg){var t=document.getElementById('toast');document.getElementById('toast-txt').textContent=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show');},3500);}
