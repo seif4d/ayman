@@ -383,6 +383,14 @@
       .tl-inf{display:flex;flex-direction:column;align-items:center;text-align:center}
       .tl-inf h3{font-size:11px;line-height:1.25;font-weight:700;text-align:center}
       .tl-inf span{display:none !important}
+      .ct-links{display:grid !important;grid-template-columns:repeat(2,1fr) !important;gap:10px !important}
+      .ct-li{display:flex;align-items:center;gap:10px;padding:12px 10px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08) !important;border-radius:12px;transition:var(--t);min-width:0}
+      .ct-li:first-child{border-top:1px solid rgba(255,255,255,.08) !important}
+      .ct-li:hover,.ct-li:active{background:rgba(255,255,255,.08);border-color:var(--accent) !important;padding-left:10px}
+      .ct-lic{width:38px;height:38px;border-radius:10px;flex-shrink:0}
+      .ct-lic svg{width:18px;height:18px}
+      .ct-lv{font-size:11.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+      .ct-la{display:none}
     }
     @media(max-width:640px){
       .pr-steps{grid-template-columns:repeat(2,1fr) !important}
@@ -433,6 +441,11 @@
       .tl-bdg{width:35px;height:35px;font-size:12px;border-radius:8px}
       .tl-bdg svg{width:15px;height:15px}
       .tl-inf h3{font-size:10px;letter-spacing:-.02em}
+      .ct-links{gap:8px !important}
+      .ct-li{padding:10px 8px;gap:8px;border-radius:10px}
+      .ct-lic{width:34px;height:34px;border-radius:8px}
+      .ct-lic svg{width:16px;height:16px}
+      .ct-lv{font-size:10.5px}
     }
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}}
   </style>
