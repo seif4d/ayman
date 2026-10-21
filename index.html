@@ -610,11 +610,19 @@
         <div class="sec-lbl reveal"><span id="wk-lbl">Selected Work</span></div>
         <h2 class="sec-title reveal" style="transition-delay:.1s" id="wk-ttl">The work<br>speaks for <span class="ac">itself.</span></h2>
       </div>
+      <div id="figure" style="width: 400px; max-width: 100%"></div>
     </div>
     <div class="filters" id="filters"></div>
     <div class="pj-grid" id="proj-grid"></div>
   </div>
 </section>
+
+<script type="module">
+  import { riffle } from "https://esm.sh/@lucasmarkes/hairline";
+
+  const fig = document.getElementById("figure");
+  if (fig) riffle(fig);
+</script>
 
 <!-- CONTACT -->
 <section id="contact">
