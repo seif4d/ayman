@@ -250,8 +250,12 @@
 
     /* PROJECTS */
     #projects{background:var(--bg-warm)}
-    .pj-hdr{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;margin-bottom:clamp(24px,4vh,40px);flex-wrap:wrap}
-    .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:clamp(32px,5vh,48px)}
+    .pj-top{display:flex;align-items:center;justify-content:space-between;gap:clamp(28px,4vw,60px);margin-bottom:clamp(32px,5vh,48px);flex-wrap:wrap}
+    .pj-left{flex:1;min-width:min(100%,320px)}
+    .pj-left .sec-title{margin-bottom:clamp(20px,3vh,32px)}
+    .filters{display:flex;gap:8px;flex-wrap:wrap}
+    .pj-figure-wrap{flex-shrink:0;width:clamp(280px,24vw,340px);max-width:100%;display:flex;align-items:center;justify-content:center}
+    #figure{width:100%;max-width:100%}
     .filter-btn{padding:9px 20px;border-radius:100px;border:1.5px solid var(--border-dark);background:transparent;color:var(--text-muted);font-size:13px;font-weight:600;transition:var(--t)}
     .filter-btn:hover,.filter-btn.active{background:var(--text);border-color:var(--text);color:#fff}
     .filter-btn.active:hover{background:var(--accent);border-color:var(--accent)}
@@ -605,14 +609,16 @@
 <!-- PROJECTS -->
 <section id="projects">
   <div class="wrap">
-    <div class="pj-hdr">
-      <div>
+    <div class="pj-top">
+      <div class="pj-left">
         <div class="sec-lbl reveal"><span id="wk-lbl">Selected Work</span></div>
         <h2 class="sec-title reveal" style="transition-delay:.1s" id="wk-ttl">The work<br>speaks for <span class="ac">itself.</span></h2>
+        <div class="filters" id="filters"></div>
       </div>
-      <div id="figure" style="width: 400px; max-width: 100%"></div>
+      <div class="pj-figure-wrap">
+        <div id="figure"></div>
+      </div>
     </div>
-    <div class="filters" id="filters"></div>
     <div class="pj-grid" id="proj-grid"></div>
   </div>
 </section>
