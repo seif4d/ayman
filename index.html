@@ -238,6 +238,8 @@
     .ex-item:first-child{border-top:1px solid var(--border)}
     .ex-item:hover{padding-left:8px}
     .ex-role{font-size:clamp(17px,1.8vw,22px);font-weight:800;letter-spacing:-.03em;line-height:1.25;margin-bottom:6px}
+    .br-mob{display:none}
+    @media(min-width:769px){.ex-role-sutra{white-space:nowrap}}
     .ex-org{font-size:14px;color:var(--text-muted);font-weight:500}
     .ex-org .ao{color:var(--accent);font-weight:700}
     .ex-org a.ao{display:inline-flex;align-items:center;gap:4px;text-decoration:none;transition:opacity .2s}
@@ -401,6 +403,8 @@
       .sub-btn{padding:12px 20px;font-size:13.5px;gap:8px}
       .sub-btn svg{width:15px;height:15px}
       #back-top{bottom:16px;right:16px;width:40px;height:40px}
+      .br-mob{display:block}
+      .nowrap-mob{white-space:nowrap}
     }
     @media(max-width:640px){
       .pr-steps{grid-template-columns:repeat(2,1fr) !important}
@@ -670,7 +674,7 @@
         <div class="ex-item reveal"><div><div class="ex-role">Graphic Designer</div><div class="ex-org"><a href="https://luxe-e.com" target="_blank" rel="noopener" class="ao">Luxe Events &amp; Exhibitions <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a></div></div><div class="ex-meta"><div class="ex-dates">Jul 2026 &ndash; Present</div><span class="ex-type">Remote</span></div></div>
         <div class="ex-item reveal" style="transition-delay:.07s">
           <div>
-            <div class="ex-role"><span style="white-space:nowrap">Mid-Level Graphic</span><br>Designer</div>
+            <div class="ex-role ex-role-sutra"><span class="nowrap-mob">Mid-Level Graphic</span> <br class="br-mob">Designer</div>
             <div class="ex-org"><a href="https://sutrastores.com" target="_blank" rel="noopener" class="ao">SUTRA <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a></div>
           </div>
           <div class="ex-meta" style="display:flex;flex-direction:row;gap:20px;align-items:flex-start;justify-content:flex-end;flex-wrap:wrap">
