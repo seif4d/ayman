@@ -373,6 +373,7 @@
       .pj-grid{grid-template-columns:repeat(2,1fr)}
       .ct-grid{grid-template-columns:1fr}
       .tl-hdr,.pr-hdr{grid-template-columns:1fr}
+      .pj-figure-wrap{display:none !important}
     }
     @media(max-width:640px){
       .sv-grid,.pr-steps,.pj-grid{grid-template-columns:1fr}
@@ -647,7 +648,9 @@
   import { riffle } from "https://esm.sh/@lucasmarkes/hairline";
 
   const fig = document.getElementById("figure");
-  if (fig) riffle(fig);
+  if (fig && window.matchMedia("(min-width: 901px)").matches) {
+    riffle(fig);
+  }
 </script>
 
 <!-- CONTACT -->
