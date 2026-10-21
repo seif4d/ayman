@@ -385,7 +385,13 @@
       .tl-inf span{display:none !important}
     }
     @media(max-width:640px){
-      .sv-grid,.pr-steps,.pj-grid{grid-template-columns:1fr}
+      .pr-steps,.pj-grid{grid-template-columns:1fr}
+      .sv-grid{grid-template-columns:repeat(2,1fr) !important}
+      .sv-item{padding:22px 16px;gap:12px}
+      .sv-ic{width:40px;height:40px}
+      .sv-ic svg{width:19px;height:19px}
+      .sv-nm{font-size:15px;line-height:1.25}
+      .sv-ds{font-size:12px;line-height:1.55}
       .form-row{grid-template-columns:1fr}
       nav ul,.btn-circle{display:none}
       .hamburger{display:flex}
@@ -394,6 +400,12 @@
       .hero-stats{flex-wrap:wrap;gap:24px}
     }
     @media(max-width:480px){
+      .sv-grid{grid-template-columns:repeat(2,1fr) !important}
+      .sv-item{padding:16px 12px;gap:10px}
+      .sv-ic{width:36px;height:36px}
+      .sv-ic svg{width:17px;height:17px}
+      .sv-nm{font-size:13.5px}
+      .sv-ds{font-size:11px;line-height:1.45}
       .tl-card{padding:10px 2px;gap:6px}
       .tl-bdg{width:35px;height:35px;font-size:12px;border-radius:8px}
       .tl-bdg svg{width:15px;height:15px}
