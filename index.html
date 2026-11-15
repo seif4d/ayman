@@ -163,7 +163,7 @@
     .reveal.in{opacity:1;transform:translateY(0)}
 
     /* ABOUT */
-    #about{background:var(--bg)}
+    #about{background:var(--bg);padding-bottom:clamp(36px,5vh,52px)}
     .about-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(40px,7vw,100px);align-items:center}
     .about-pw{position:relative;aspect-ratio:3/4;border-radius:16px;overflow:hidden;background:var(--bg-warm)}
     .about-pw img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .8s var(--ease-out)}
@@ -178,7 +178,7 @@
     .tag:hover{background:var(--accent);border-color:var(--accent);color:#fff}
 
     /* SERVICES */
-    #services{background:var(--bg-warm)}
+    #services{background:var(--bg-warm);padding-top:clamp(40px,5vh,60px)}
     .sv-hdr{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;margin-bottom:clamp(40px,6vh,64px);flex-wrap:wrap}
     .sv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
     .sv-item{background:var(--bg-warm);padding:clamp(28px,4vw,48px) clamp(24px,3.5vw,40px);display:flex;flex-direction:column;gap:16px;transition:background .3s;position:relative;overflow:hidden}
@@ -249,6 +249,17 @@
     .ex-meta{text-align:right}
     .ex-dates{font-family:var(--font-mono);font-size:12px;color:var(--text-dim);font-weight:500;white-space:nowrap}
     .ex-type{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 10px;border-radius:100px;background:rgba(17,17,17,.06);color:var(--text-muted);margin-top:6px}
+
+    /* EXPERIENCE BRANDS MARQUEE */
+    .ex-brands{margin:0;padding:clamp(8px,1.4vh,12px) 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg-warm)}
+    .ex-marquee{position:relative;width:100%;overflow:hidden;padding:2px 0;mask-image:linear-gradient(to right,transparent 0%,#000 8%,#000 92%,transparent 100%);-webkit-mask-image:linear-gradient(to right,transparent 0%,#000 8%,#000 92%,transparent 100%)}
+    .ex-marquee-track{display:flex;align-items:center;gap:clamp(36px,5vw,72px);width:max-content;animation:exMarqueeScroll 30s linear infinite;will-change:transform}
+    .ex-marquee:hover .ex-marquee-track{animation-play-state:paused}
+    @keyframes exMarqueeScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+    .ex-brand-item{display:inline-flex;align-items:center;justify-content:center;padding:4px 10px;text-decoration:none;flex-shrink:0;-webkit-user-select:none;user-select:none;transition:transform .3s var(--ease-out)}
+    .ex-brand-item:hover{transform:scale(1.08)}
+    .ex-brand-img{height:clamp(26px,2.6vw,34px);max-width:clamp(120px,12vw,160px);width:auto;object-fit:contain;filter:none;opacity:1;transition:transform .3s var(--ease-out)}
+    .ex-brand-img.is-badge{height:clamp(34px,3.2vw,44px);max-width:clamp(34px,3.2vw,44px)}
 
     /* PROJECTS */
     #projects{background:var(--bg-warm)}
@@ -538,6 +549,48 @@
       box-shadow:0 24px 50px rgba(0,0,0,0.75), 0 0 32px rgba(0, 229, 255, 0.45);
     }
 
+    /* SUTRA CREATIVE DECK COVER */
+    .sutra-deck-wrap{
+      width:100%;
+      height:100%;
+      background:
+        radial-gradient(circle at 35% 25%, rgba(255, 72, 0, 0.22), transparent 55%),
+        radial-gradient(circle at 80% 80%, rgba(37, 99, 235, 0.26), transparent 55%),
+        #080912;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+      overflow:hidden;
+      padding:10px;
+      box-sizing:border-box;
+    }
+    .sutra-deck-wrap .td-back-left{
+      border-color:rgba(255, 72, 0, 0.45);
+    }
+    .sutra-deck-wrap .td-back-right{
+      border-color:rgba(59, 130, 246, 0.5);
+    }
+    .sutra-deck-wrap .td-front{
+      border-color:rgba(255, 255, 255, 0.7);
+      box-shadow:0 16px 36px rgba(0,0,0,0.65), 0 0 24px rgba(255, 72, 0, 0.22);
+    }
+    .pj-card:hover .sutra-deck-wrap .td-back-left{
+      transform:scale(0.96) translateX(-72%) rotate(-7deg);
+      box-shadow:0 20px 42px rgba(255, 72, 0, 0.45);
+      border-color:rgba(255, 90, 20, 0.8);
+    }
+    .pj-card:hover .sutra-deck-wrap .td-back-right{
+      transform:scale(0.96) translateX(72%) rotate(7deg);
+      box-shadow:0 20px 42px rgba(59, 130, 246, 0.45);
+      border-color:rgba(96, 165, 250, 0.85);
+    }
+    .pj-card:hover .sutra-deck-wrap .td-front{
+      transform:scale(1.04) translateY(-3px);
+      border-color:#ff4800;
+      box-shadow:0 24px 50px rgba(0,0,0,0.75), 0 0 32px rgba(255, 72, 0, 0.5);
+    }
+
     /* MODAL GALLERY */
     .modal-thumbs{
       position:absolute;
@@ -675,6 +728,11 @@
       .mq-track{gap:28px}
       .mq-item{gap:14px;font-size:11px;letter-spacing:.1em}
       .mq-dot{font-size:14px}
+      .ex-brands{margin:0;padding:8px 0}
+      .ex-brand-item{padding:2px 6px}
+      .ex-brand-img{height:22px;max-width:96px;filter:none;opacity:1}
+      .ex-brand-img.is-badge{height:28px;max-width:28px}
+      .ex-marquee-track{gap:24px;animation-duration:22s}
     }
     @media(max-width:640px){
       .pr-steps{grid-template-columns:repeat(2,1fr) !important}
@@ -870,8 +928,106 @@
         </div>
       </div>
     </div>
+    <div style="margin-top:clamp(28px,4vh,40px);padding-top:clamp(16px,2.5vh,24px);border-top:1px solid var(--border)">
+      <div class="sec-lbl reveal" style="margin-bottom:0"><span>Brands &amp; Collaborations</span></div>
+    </div>
   </div>
 </section>
+
+<!-- BRANDS & CLIENTS MARQUEE -->
+<div class="ex-brands reveal" style="transition-delay:.15s">
+  <div class="ex-marquee" aria-label="Companies and brands I've worked with">
+    <div class="ex-marquee-track" id="ex-marquee-track">
+        <!-- Set 1 -->
+        <a href="https://sutra-stores.com" target="_blank" rel="noopener" class="ex-brand-item" title="SUTRA" aria-label="SUTRA">
+          <img src="assets/logos/sutra.png" alt="SUTRA" class="ex-brand-img" loading="lazy">
+        </a>
+        <a href="https://luxe-e.com" target="_blank" rel="noopener" class="ex-brand-item" title="Luxe Events &amp; Exhibitions" aria-label="Luxe Events &amp; Exhibitions">
+          <img src="assets/logos/luxe.png" alt="Luxe Events &amp; Exhibitions" class="ex-brand-img" loading="lazy">
+        </a>
+        <a href="https://transitioneg.com" target="_blank" rel="noopener" class="ex-brand-item" title="Transition Agency" aria-label="Transition Agency">
+          <img src="assets/logos/transition.png" alt="Transition Agency" class="ex-brand-img" loading="lazy">
+        </a>
+        <a href="https://mdc.com.jo" target="_blank" rel="noopener" class="ex-brand-item" title="Mulhem Digital Creativity" aria-label="Mulhem Digital Creativity">
+          <img src="assets/logos/mulhem.png" alt="Mulhem Digital Creativity" class="ex-brand-img" loading="lazy">
+        </a>
+        <a href="https://numrahjo.com/ar" target="_blank" rel="noopener" class="ex-brand-item" title="Numrah" aria-label="Numrah">
+          <img src="assets/logos/numrah.png" alt="Numrah" class="ex-brand-img" loading="lazy">
+        </a>
+        <a href="https://relaxed-wear.com/" target="_blank" rel="noopener" class="ex-brand-item" title="RELAXED" aria-label="RELAXED">
+          <img src="assets/logos/relaxed.png" alt="RELAXED" class="ex-brand-img" loading="lazy">
+        </a>
+        <div class="ex-brand-item" title="Nile Academy" aria-label="Nile Academy">
+          <img src="assets/logos/nile-academy.png" alt="Nile Academy" class="ex-brand-img is-badge" loading="lazy">
+        </div>
+        <a href="https://sutra-stores.com" target="_blank" rel="noopener" class="ex-brand-item" title="SUTRA" aria-label="SUTRA">
+          <img src="assets/logos/sutra.png" alt="SUTRA" class="ex-brand-item" loading="lazy">
+        </a>
+        <a href="https://luxe-e.com" target="_blank" rel="noopener" class="ex-brand-item" title="Luxe Events &amp; Exhibitions" aria-label="Luxe Events &amp; Exhibitions">
+          <img src="assets/logos/luxe.png" alt="Luxe Events &amp; Exhibitions" class="ex-brand-img" loading="lazy">
+        </a>
+        <a href="https://transitioneg.com" target="_blank" rel="noopener" class="ex-brand-item" title="Transition Agency" aria-label="Transition Agency">
+          <img src="assets/logos/transition.png" alt="Transition Agency" class="ex-brand-img" loading="lazy">
+        </a>
+        <a href="https://mdc.com.jo" target="_blank" rel="noopener" class="ex-brand-item" title="Mulhem Digital Creativity" aria-label="Mulhem Digital Creativity">
+          <img src="assets/logos/mulhem.png" alt="Mulhem Digital Creativity" class="ex-brand-img" loading="lazy">
+        </a>
+        <a href="https://numrahjo.com/ar" target="_blank" rel="noopener" class="ex-brand-item" title="Numrah" aria-label="Numrah">
+          <img src="assets/logos/numrah.png" alt="Numrah" class="ex-brand-img" loading="lazy">
+        </a>
+        <a href="https://relaxed-wear.com/" target="_blank" rel="noopener" class="ex-brand-item" title="RELAXED" aria-label="RELAXED">
+          <img src="assets/logos/relaxed.png" alt="RELAXED" class="ex-brand-img" loading="lazy">
+        </a>
+        <div class="ex-brand-item" title="Nile Academy" aria-label="Nile Academy">
+          <img src="assets/logos/nile-academy.png" alt="Nile Academy" class="ex-brand-img is-badge" loading="lazy">
+        </div>
+        <!-- Set 2 (Identical for seamless infinite scroll) -->
+        <a href="https://sutra-stores.com" target="_blank" rel="noopener" class="ex-brand-item" title="SUTRA" aria-label="SUTRA">
+          <img src="assets/logos/sutra.png" alt="SUTRA" class="ex-brand-img" loading="lazy">
+        </a>
+        <a href="https://luxe-e.com" target="_blank" rel="noopener" class="ex-brand-item" title="Luxe Events &amp; Exhibitions" aria-label="Luxe Events &amp; Exhibitions">
+          <img src="assets/logos/luxe.png" alt="Luxe Events &amp; Exhibitions" class="ex-brand-img" loading="lazy">
+        </a>
+        <a href="https://transitioneg.com" target="_blank" rel="noopener" class="ex-brand-item" title="Transition Agency" aria-label="Transition Agency">
+          <img src="assets/logos/transition.png" alt="Transition Agency" class="ex-brand-img" loading="lazy">
+        </a>
+        <a href="https://mdc.com.jo" target="_blank" rel="noopener" class="ex-brand-item" title="Mulhem Digital Creativity" aria-label="Mulhem Digital Creativity">
+          <img src="assets/logos/mulhem.png" alt="Mulhem Digital Creativity" class="ex-brand-img" loading="lazy">
+        </a>
+        <a href="https://numrahjo.com/ar" target="_blank" rel="noopener" class="ex-brand-item" title="Numrah" aria-label="Numrah">
+          <img src="assets/logos/numrah.png" alt="Numrah" class="ex-brand-img" loading="lazy">
+        </a>
+        <a href="https://relaxed-wear.com/" target="_blank" rel="noopener" class="ex-brand-item" title="RELAXED" aria-label="RELAXED">
+          <img src="assets/logos/relaxed.png" alt="RELAXED" class="ex-brand-img" loading="lazy">
+        </a>
+        <div class="ex-brand-item" title="Nile Academy" aria-label="Nile Academy">
+          <img src="assets/logos/nile-academy.png" alt="Nile Academy" class="ex-brand-img is-badge" loading="lazy">
+        </div>
+        <a href="https://sutra-stores.com" target="_blank" rel="noopener" class="ex-brand-item" title="SUTRA" aria-label="SUTRA">
+          <img src="assets/logos/sutra.png" alt="SUTRA" class="ex-brand-img" loading="lazy">
+        </a>
+        <a href="https://luxe-e.com" target="_blank" rel="noopener" class="ex-brand-item" title="Luxe Events &amp; Exhibitions" aria-label="Luxe Events &amp; Exhibitions">
+          <img src="assets/logos/luxe.png" alt="Luxe Events &amp; Exhibitions" class="ex-brand-img" loading="lazy">
+        </a>
+        <a href="https://transitioneg.com" target="_blank" rel="noopener" class="ex-brand-item" title="Transition Agency" aria-label="Transition Agency">
+          <img src="assets/logos/transition.png" alt="Transition Agency" class="ex-brand-img" loading="lazy">
+        </a>
+        <a href="https://mdc.com.jo" target="_blank" rel="noopener" class="ex-brand-item" title="Mulhem Digital Creativity" aria-label="Mulhem Digital Creativity">
+          <img src="assets/logos/mulhem.png" alt="Mulhem Digital Creativity" class="ex-brand-img" loading="lazy">
+        </a>
+        <a href="https://numrahjo.com/ar" target="_blank" rel="noopener" class="ex-brand-item" title="Numrah" aria-label="Numrah">
+          <img src="assets/logos/numrah.png" alt="Numrah" class="ex-brand-img" loading="lazy">
+        </a>
+        <a href="https://relaxed-wear.com/" target="_blank" rel="noopener" class="ex-brand-item" title="RELAXED" aria-label="RELAXED">
+          <img src="assets/logos/relaxed.png" alt="RELAXED" class="ex-brand-img" loading="lazy">
+        </a>
+        <div class="ex-brand-item" title="Nile Academy" aria-label="Nile Academy">
+          <img src="assets/logos/nile-academy.png" alt="Nile Academy" class="ex-brand-img is-badge" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- SERVICES -->
 <section id="services">
@@ -949,7 +1105,7 @@
         <div class="ex-item reveal" style="transition-delay:.07s">
           <div>
             <div class="ex-role ex-role-sutra"><span class="nowrap-mob">Mid-Level Graphic</span> <br class="br-mob">Designer</div>
-            <div class="ex-org"><a href="https://sutrastores.com" target="_blank" rel="noopener" class="ao">SUTRA <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a></div>
+            <div class="ex-org"><a href="https://sutra-stores.com" target="_blank" rel="noopener" class="ao">SUTRA <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a></div>
           </div>
           <div class="ex-meta" style="display:flex;flex-direction:row;gap:20px;align-items:flex-start;justify-content:flex-end;flex-wrap:wrap">
             <div style="text-align:right">
@@ -1160,6 +1316,12 @@ var PD=[
     cat:"Social Media",
     img:"assets/projects/trx/trx-3.jpg",
     coverDeck:true,
+    deckClass:"trx-deck-wrap",
+    deckCards:[
+      "assets/projects/trx/trx-1.jpg",
+      "assets/projects/trx/trx-4.jpg",
+      "assets/projects/trx/trx-3.jpg"
+    ],
     hideBehance:true,
     images:[
       "assets/projects/trx/trx-3.jpg",
@@ -1170,6 +1332,29 @@ var PD=[
     ],
     impact:"Futuristic visual storytelling &amp; high-tech B2B campaign.",
     desc:"A high-impact enterprise campaign designed for TRX ERP Solutions. Combining 3D holographic data visualisations, sleek dark glassmorphism interfaces, and cinematic business storytelling to communicate seamless operational growth and smart enterprise automation."
+  },
+  {
+    title:"SUTRA — 999 Campaign (Move Different)",
+    cat:"Social Media",
+    img:"assets/projects/sutra-999/sutra-5.jpg",
+    coverDeck:true,
+    deckClass:"sutra-deck-wrap",
+    deckCards:[
+      "assets/projects/sutra-999/sutra-4.jpg",
+      "assets/projects/sutra-999/sutra-6.jpg",
+      "assets/projects/sutra-999/sutra-5.jpg"
+    ],
+    hideBehance:true,
+    images:[
+      "assets/projects/sutra-999/sutra-5.jpg",
+      "assets/projects/sutra-999/sutra-1.jpg",
+      "assets/projects/sutra-999/sutra-6.jpg",
+      "assets/projects/sutra-999/sutra-2.jpg",
+      "assets/projects/sutra-999/sutra-3.jpg",
+      "assets/projects/sutra-999/sutra-4.jpg"
+    ],
+    impact:"Nationwide fashion campaign &amp; high-impact offer.",
+    desc:"A bold, high-energy fashion campaign created for SUTRA's nationwide 'أي طقم بـ 999 ج' (Move Different) promotion. Featuring iconic Abbey Road-inspired urban compositions, retro cathode-ray television aesthetics, and cinematic street photography celebrating youth culture and modern apparel."
   },
   {title:"SUTRA — Eid Mystery Box Campaign",cat:"Social Media",img:"https://mir-s3-cdn-cf.behance.net/projects/404/fbeba5251835225.Y3JvcCw4MDgsNjMyLDAsMA.jpg",link:"https://www.behance.net/gallery/251835225/SUTRA-Eid-Mystery-Box-Campaign-2026",impact:"40%+ boost in social engagement.",desc:"A high-impact seasonal campaign for SUTRA featuring creative mystery box visuals and engaging digital marketing collateral."},
   {title:"Eid Mubarak — Social Media Designs",cat:"Social Media",img:"https://mir-s3-cdn-cf.behance.net/projects/404/6be1cd222789347.Y3JvcCw4MDgsNjMyLDAsMA.jpg",link:"https://www.behance.net/gallery/222789347/Eid-Mubarak-Social-Media-Designs",impact:"Festive post collection with Islamic aesthetic motifs.",desc:"A series of celebratory Eid Mubarak social media creatives combining elegant Arabic typography and festive seasonal branding."},
@@ -1211,11 +1396,15 @@ function renderGrid(filter){
     var c=document.createElement('div');c.className='pj-card reveal';c.style.transitionDelay=(i*.06)+'s';
     var coverHtml='';
     if(p.coverDeck){
-      coverHtml='<div class="trx-deck-wrap">'+
+      var wrapClass=p.deckClass||'trx-deck-wrap';
+      var dLeft=(p.deckCards&&p.deckCards[0])||'assets/projects/trx/trx-1.jpg';
+      var dRight=(p.deckCards&&p.deckCards[1])||'assets/projects/trx/trx-4.jpg';
+      var dFront=(p.deckCards&&p.deckCards[2])||p.img||'assets/projects/trx/trx-3.jpg';
+      coverHtml='<div class="'+wrapClass+'">'+
         '<div class="trx-deck">'+
-          '<div class="td-card td-back-left"><img src="assets/projects/trx/trx-1.jpg" alt="TRX" loading="lazy"></div>'+
-          '<div class="td-card td-back-right"><img src="assets/projects/trx/trx-4.jpg" alt="TRX" loading="lazy"></div>'+
-          '<div class="td-card td-front"><img src="assets/projects/trx/trx-3.jpg" alt="TRX" loading="lazy"></div>'+
+          '<div class="td-card td-back-left"><img src="'+dLeft+'" alt="'+p.title+'" loading="lazy"></div>'+
+          '<div class="td-card td-back-right"><img src="'+dRight+'" alt="'+p.title+'" loading="lazy"></div>'+
+          '<div class="td-card td-front"><img src="'+dFront+'" alt="'+p.title+'" loading="lazy"></div>'+
         '</div>'+
       '</div>';
     }else{
@@ -1370,7 +1559,82 @@ function handleSub(e){
 }
 function showToast(msg){var t=document.getElementById('toast');document.getElementById('toast-txt').textContent=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show');},3500);}
 
-window.addEventListener('DOMContentLoaded',function(){renderPJ();});
+/* ===================================================
+   WORK EXPERIENCE / CLIENT LOGOS
+   To add more logos in the future:
+   1. Place your logo image in: assets/logos/your-logo.png
+   2. Add an item to this EXPERIENCE_LOGOS array:
+      {
+        name: "Company Name",
+        img: "assets/logos/your-logo.png",
+        url: "https://website.com", // optional link or leave as ""
+        isBadge: false // optional: set to true if logo is square/circular
+      }
+   =================================================== */
+var EXPERIENCE_LOGOS = [
+  {
+    name: "SUTRA",
+    img: "assets/logos/sutra.png",
+    url: "https://sutra-stores.com"
+  },
+  {
+    name: "Luxe Events & Exhibitions",
+    img: "assets/logos/luxe.png",
+    url: "https://luxe-e.com"
+  },
+  {
+    name: "Transition Agency",
+    img: "assets/logos/transition.png",
+    url: "https://transitioneg.com"
+  },
+  {
+    name: "Mulhem Digital Creativity",
+    img: "assets/logos/mulhem.png",
+    url: "https://mdc.com.jo"
+  },
+  {
+    name: "Numrah",
+    img: "assets/logos/numrah.png",
+    url: "https://numrahjo.com/ar"
+  },
+  {
+    name: "RELAXED",
+    img: "assets/logos/relaxed.png",
+    url: "https://relaxed-wear.com/"
+  },
+  {
+    name: "Nile Academy",
+    img: "assets/logos/nile-academy.png",
+    url: "",
+    isBadge: true
+  }
+];
+
+function initExperienceMarquee() {
+  var track = document.getElementById('ex-marquee-track');
+  if (!track || !EXPERIENCE_LOGOS || !EXPERIENCE_LOGOS.length) return;
+
+  function makeCard(item) {
+    var tag = item.url ? 'a' : 'div';
+    var hrefAttr = item.url ? ' href="' + item.url + '" target="_blank" rel="noopener"' : '';
+    var badgeClass = item.isBadge ? ' is-badge' : '';
+    return '<' + tag + hrefAttr + ' class="ex-brand-item" title="' + item.name + '" aria-label="' + item.name + '">' +
+      '<img src="' + item.img + '" alt="' + item.name + '" class="ex-brand-img' + badgeClass + '" loading="lazy">' +
+    '</' + tag + '>';
+  }
+
+  var reps = Math.max(2, Math.ceil(8 / EXPERIENCE_LOGOS.length));
+  var oneSet = '';
+  for (var r = 0; r < reps; r++) {
+    for (var i = 0; i < EXPERIENCE_LOGOS.length; i++) {
+      oneSet += makeCard(EXPERIENCE_LOGOS[i]);
+    }
+  }
+
+  track.innerHTML = oneSet + oneSet;
+}
+
+window.addEventListener('DOMContentLoaded',function(){renderPJ();initExperienceMarquee();});
 </script>
 </body>
 </html>
