@@ -284,20 +284,71 @@
     .reveal{opacity:0;transform:translateY(28px);transition:opacity .75s var(--ease-out),transform .75s var(--ease-out)}
     .reveal.in{opacity:1;transform:translateY(0)}
 
-    /* ABOUT */
-    #about{background:var(--bg);padding-bottom:clamp(20px,3vh,36px)}
-    .about-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(40px,7vw,100px);align-items:center}
-    .about-pw{position:relative;aspect-ratio:3/4;border-radius:16px;overflow:hidden;background:var(--bg-warm)}
-    .about-pw img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .8s var(--ease-out)}
-    .about-pw:hover img{transform:scale(1.04)}
-    .about-pw::before{content:'';position:absolute;top:-12px;right:-12px;width:60px;height:60px;border-radius:12px;background:var(--accent);z-index:2}
-    .about-pw::after{content:'';position:absolute;bottom:-12px;left:-12px;width:40px;height:40px;border-radius:8px;border:3px solid var(--text);z-index:2}
-    .about-h{font-size:clamp(28px,3.8vw,52px);font-weight:900;letter-spacing:-.04em;line-height:1.1;margin-bottom:clamp(20px,3.5vh,32px)}
-    .about-bio{font-size:clamp(15px,1.4vw,17px);color:var(--text-muted);line-height:1.8;margin-bottom:clamp(24px,4vh,40px);max-width:520px}
-    .sk-title{font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text);margin-bottom:14px}
-    .tags{display:flex;flex-wrap:wrap;gap:8px}
-    .tag{padding:7px 16px;border-radius:100px;border:1.5px solid var(--border-dark);font-size:13px;font-weight:600;color:var(--text);transition:var(--t);cursor:default}
-    .tag:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+    /* ABOUT (v3) — designer pass */
+    #about{background:var(--bg);padding-bottom:clamp(20px,3vh,36px);position:relative;overflow:hidden}
+    .ab3{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(40px,6vw,96px);align-items:center}
+
+    .idw{position:relative;display:flex;flex-direction:column;align-items:center;padding-bottom:24px}
+    .id-strap{width:34px;height:clamp(90px,14vh,140px);background:var(--accent);position:relative;overflow:hidden;display:flex;justify-content:center;box-shadow:inset -6px 0 10px -6px rgba(0,0,0,.25)}
+    .id-strap span{writing-mode:vertical-rl;font-family:var(--font-mono);font-size:9.5px;font-weight:700;letter-spacing:.3em;color:#fff;white-space:nowrap;animation:strapRun 9s linear infinite}
+    @keyframes strapRun{from{transform:translateY(-50%)}to{transform:translateY(0)}}
+    .id-swing{transform-origin:50% -10px;animation:idSwing 5s ease-in-out infinite;margin-top:-4px}
+    .idw:hover .id-swing{animation-play-state:paused}
+    @keyframes idSwing{0%,100%{transform:rotate(-2.5deg)}50%{transform:rotate(2.5deg)}}
+    .id-clip{width:46px;height:30px;margin:0 auto -14px;position:relative;z-index:3;border-radius:6px 6px 10px 10px;background:linear-gradient(180deg,#e9e9ea,#9c9ca1 55%,#d4d4d7);box-shadow:0 4px 8px rgba(0,0,0,.25)}
+    .id-clip::after{content:'';position:absolute;left:50%;bottom:-10px;width:18px;height:16px;transform:translateX(-50%);border:3px solid #a7a7ab;border-top:none;border-radius:0 0 10px 10px}
+    .id-tilt{perspective:1200px}
+    .id-card{position:relative;width:clamp(260px,24vw,330px);aspect-ratio:.64;transform-style:preserve-3d;transition:transform .9s var(--ease-out);cursor:pointer}
+    .id-card.flip{transform:rotateY(180deg)}
+    .id-face{position:absolute;inset:0;border-radius:20px;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden;box-shadow:0 40px 70px -28px rgba(17,17,17,.5),0 0 0 1px rgba(17,17,17,.06)}
+    .id-front{background:#fff;display:flex;flex-direction:column;padding:14px 14px 16px}
+    .id-front::before{content:'';position:absolute;top:10px;left:50%;width:46px;height:8px;border-radius:8px;transform:translateX(-50%);background:var(--bg-warm);box-shadow:inset 0 1px 2px rgba(0,0,0,.2)}
+    .id-top{display:flex;align-items:center;justify-content:space-between;margin-top:14px;padding:0 2px}
+    .id-top img{height:20px;width:auto}
+    .id-top span{font-family:var(--font-mono);font-size:9px;font-weight:700;letter-spacing:.18em;color:var(--accent)}
+    .id-ph{position:relative;margin-top:10px;flex:1;min-height:0;border-radius:14px;overflow:hidden;background:#1d2a4a}
+    .id-ph img{width:100%;height:100%;object-fit:cover;object-position:50% 14%;transition:transform .8s var(--ease-out)}
+    .idw:hover .id-ph img{transform:scale(1.05)}
+    .id-ph .holo{position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.35) 45%,rgba(255,180,120,.25) 50%,transparent 62%);background-size:250% 100%;mix-blend-mode:screen;animation:holo 4.5s ease-in-out infinite}
+    @keyframes holo{0%,100%{background-position:100% 0}50%{background-position:0 0}}
+    .id-ph .stamp{position:absolute;right:8px;bottom:8px;padding:4px 9px;border-radius:100px;background:rgba(255,255,255,.92);font-size:10.5px;font-weight:700;display:flex;align-items:center;gap:6px}
+    .id-ph .stamp i{width:7px;height:7px;border-radius:50%;background:#16a34a}
+    .id-name{margin-top:12px;font-size:clamp(20px,1.8vw,24px);font-weight:800;letter-spacing:-.035em;line-height:1}
+    .id-role{font-family:var(--font-serif);font-style:italic;font-size:16px;color:var(--accent);margin-top:3px}
+    .id-meta{display:flex;justify-content:space-between;align-items:flex-end;margin-top:10px;padding-top:10px;border-top:1px dashed var(--border-dark)}
+    .id-meta small{display:block;font-family:var(--font-mono);font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-dim)}
+    .id-meta b{font-size:12px;font-weight:700}
+    .id-bar{width:72px;height:26px;background:repeating-linear-gradient(90deg,var(--text) 0 2px,transparent 2px 3px,var(--text) 3px 4px,transparent 4px 7px,var(--text) 7px 10px,transparent 10px 11px)}
+    .id-back{transform:rotateY(180deg);background:radial-gradient(circle at 20% 15%,rgba(255,255,255,.18),transparent 45%),var(--accent);color:#fff;display:flex;flex-direction:column;justify-content:space-between;padding:30px 22px 22px}
+    .id-back::before{content:'';position:absolute;top:10px;left:50%;width:46px;height:8px;border-radius:8px;transform:translateX(-50%);background:rgba(0,0,0,.18)}
+    .id-back .big{font-size:clamp(30px,2.8vw,38px);font-weight:800;letter-spacing:-.045em;line-height:1}
+    .id-back .big em{font-family:var(--font-serif);font-weight:400;font-style:italic;display:block}
+    .id-back ul{list-style:none;font-size:13px;font-weight:600;display:flex;flex-direction:column;gap:6px}
+    .id-back ul li::before{content:'\2726  ';opacity:.7}
+    .id-back a{display:inline-flex;align-items:center;justify-content:space-between;gap:10px;padding:6px 6px 6px 16px;border-radius:100px;background:#111;color:#fff;font-size:13px;font-weight:700}
+    .id-back a span{width:30px;height:30px;border-radius:50%;background:#fff;color:var(--accent);display:flex;align-items:center;justify-content:center}
+    .id-hint{margin-top:22px;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-dim);display:flex;align-items:center;gap:8px}
+    .id-hint svg{animation:spin 6s linear infinite}
+
+    .ab3-h{font-size:clamp(32px,3.8vw,56px);font-weight:800;letter-spacing:-.045em;line-height:1.08;margin-bottom:clamp(16px,2.5vh,24px)}
+    .ab3-h .pill{display:inline-block;vertical-align:middle;width:1.9em;height:.92em;border-radius:100px;overflow:hidden;margin:-.1em .06em 0;box-shadow:0 6px 16px -6px rgba(17,17,17,.35);transform:rotate(-3deg);transition:transform .4s var(--ease-out),width .5s var(--ease-out)}
+    .ab3-h .pill+.pill,.ab3-h .p2{transform:rotate(3deg)}
+    .ab3-h .pill img{width:100%;height:100%;object-fit:cover}
+    .ab3-h .pill:hover{transform:rotate(0) scale(1.08);width:2.4em}
+    .ab3-h .ac{color:var(--accent);font-family:var(--font-serif);font-style:italic;font-weight:400;letter-spacing:-.02em}
+    .ab3-bio{font-size:clamp(15px,1.3vw,17.5px);color:var(--text-muted);line-height:1.75;max-width:520px}
+    .ab3-now{display:flex;align-items:center;gap:clamp(14px,2vw,24px);flex-wrap:wrap;margin-top:clamp(22px,3.5vh,32px);padding-top:clamp(18px,3vh,24px);border-top:1px solid var(--border)}
+    .ab3-now span{font-family:var(--font-mono);font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--text-dim)}
+    .ab3-now img{height:24px;width:auto;mix-blend-mode:multiply;opacity:.85;transition:opacity .3s,transform .3s}
+    .ab3-now a:hover img{opacity:1;transform:translateY(-2px)}
+
+    @media(max-width:900px){.ab3{grid-template-columns:1fr}.idw{order:0}}
+    @media(max-width:640px){
+      .id-strap{height:70px;width:28px}
+      .id-card{width:240px}
+      .ab3-h{font-size:clamp(30px,8.6vw,40px)}
+    }
+    @media(prefers-reduced-motion:reduce){.id-swing,.id-strap span,.id-ph .holo{animation:none}}
 
     /* SERVICES */
     #services{background:var(--bg-warm);padding-top:clamp(28px,3vh,44px)}
@@ -1093,26 +1144,51 @@
 <!-- ABOUT -->
 <section id="about">
   <div class="wrap">
-    <div class="about-grid">
-      <div class="about-pw reveal">
-        <img src="assets/ayman.jpg?v=2" alt="Ayman Atta" loading="lazy">
+    <div class="ab3">
+      <div class="idw reveal">
+        <div class="id-strap" aria-hidden="true"><span>AYMAN ATTA &bull; DESIGNER &bull; AYMAN ATTA &bull; DESIGNER &bull; AYMAN ATTA &bull; DESIGNER &bull; AYMAN ATTA &bull; DESIGNER &bull;</span></div>
+        <div class="id-swing">
+          <div class="id-clip" aria-hidden="true"></div>
+          <div class="id-tilt">
+            <div class="id-card" id="id-card" role="button" tabindex="0" aria-label="Designer pass — click to flip">
+              <div class="id-face id-front">
+                <div class="id-top"><img src="assets/logo-dark.png" alt="Ayman Atta"><span>DESIGNER PASS</span></div>
+                <div class="id-ph">
+                  <img src="assets/ayman.jpg?v=2" alt="Portrait of Ayman Atta" loading="lazy">
+                  <div class="holo" aria-hidden="true"></div>
+                  <span class="stamp"><i></i>Open to work</span>
+                </div>
+                <div class="id-name">Ayman Atta</div>
+                <div class="id-role">Graphic Designer</div>
+                <div class="id-meta">
+                  <div><small>Since</small><b>2021</b></div>
+                  <div><small>Based</small><b>Cairo, EG</b></div>
+                  <div class="id-bar" aria-hidden="true"></div>
+                </div>
+              </div>
+              <div class="id-face id-back">
+                <div class="big">All-access <em>to great design.</em></div>
+                <ul><li>Brand identity</li><li>Social campaigns</li><li>Print &amp; packaging</li><li>UI/UX design</li></ul>
+                <a href="#contact" onclick="event.stopPropagation()">Let's work together <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="id-hint" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg>Tap the pass to flip</div>
       </div>
+
       <div class="reveal" style="transition-delay:.15s">
         <div class="sec-lbl" id="ab-lbl"><span id="ab-lbl-txt">About Me</span></div>
-        <h2 class="about-h" id="ab-h">Visual Storyteller.<br>Brand Builder.<br><span class="ac">Creative at heart.</span></h2>
-        <p class="about-bio" id="ab-bio">I'm a Mid-Level Graphic Designer based in Cairo, Egypt, with 3+ years turning brand visions into sharp visual realities. My core work covers brand identity, social media creatives, print production, and marketing design &mdash; I also bring UI/UX skills to projects that need it. Every piece I create is built to communicate clearly and look unforgettable.</p>
-        <div class="sk-title" id="sk-ttl">Core Skills</div>
-        <div class="tags" id="sk-tags">
-          <span class="tag">Brand Identity Design</span>
-          <span class="tag">Social Media Creatives</span>
-          <span class="tag">Print &amp; Packaging</span>
-          <span class="tag">Visual Identity Systems</span>
-          <span class="tag">UI/UX Design</span>
-          <span class="tag">AI-Assisted Workflows</span>
+        <h2 class="ab3-h" id="ab-h">Hi, I'm Ayman. I craft <span class="pill"><img src="assets/projects/luxe/luxe-7.jpg" alt="" loading="lazy"></span> identities &amp; <span class="pill p2"><img src="assets/projects/sutra-999/sutra-5.jpg" alt="" loading="lazy"></span> campaigns people <span class="ac">remember.</span></h2>
+        <p class="ab3-bio" id="ab-bio">A Cairo-based graphic designer with 3+ years in brand identity, social media, print and marketing design &mdash; plus UI/UX when a project needs it. Every piece is built to communicate clearly and look unforgettable.</p>
+        <div class="ab3-now">
+          <span>Currently at</span>
+          <a href="https://luxe-e.com" target="_blank" rel="noopener" aria-label="Luxe Events &amp; Exhibitions"><img src="assets/logos/luxe.png" alt="Luxe Events &amp; Exhibitions"></a>
+          <a href="https://sutra-stores.com" target="_blank" rel="noopener" aria-label="SUTRA"><img src="assets/logos/sutra.png" alt="SUTRA"></a>
         </div>
       </div>
     </div>
-    <div style="margin-top:clamp(28px,4vh,40px);padding-top:clamp(16px,2.5vh,24px);border-top:1px solid var(--border)">
+    <div style="margin-top:clamp(36px,5vh,56px);padding-top:clamp(16px,2.5vh,24px);border-top:1px solid var(--border)">
       <div class="sec-lbl reveal" style="margin-bottom:0"><span>Brands &amp; Collaborations</span></div>
     </div>
   </div>
@@ -1413,6 +1489,21 @@ function runCounters(){
   var board=document.getElementById('cv-board');
   function open(){if(typeof PD==='undefined')return;var pr=PD[S[i].pj];if(pr.page){window.location.href=pr.page;}else if(typeof openM==='function'){openM(pr);}}
   if(board){board.addEventListener('click',open);board.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}});}
+})();
+
+/* ABOUT: designer pass (flip + tilt) */
+(function(){
+  var card=document.getElementById('id-card');if(!card)return;
+  var flipped=false;
+  function flip(){flipped=!flipped;card.classList.toggle('flip',flipped);card.style.transform='';}
+  card.addEventListener('click',flip);
+  card.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();flip();}});
+  if(!window.matchMedia('(hover:hover) and (pointer:fine)').matches)return;
+  card.addEventListener('mousemove',function(e){
+    var r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+    card.style.transform=(flipped?'rotateY(180deg) ':'')+'rotateY('+(x*14)+'deg) rotateX('+(-y*10)+'deg)';
+  });
+  card.addEventListener('mouseleave',function(){card.style.transform='';});
 })();
 
 /* SCROLL */
