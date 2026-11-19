@@ -45,3 +45,25 @@
     .cvr-meta.tr{top:3cqw;bottom:auto}
     .cvr-trx .cvr-meta{right:6cqw;bottom:5.5cqw}
     @container (max-width:280px){.cvr-meta{display:none}.cvr-trx .hud{display:none}}
+
+    /* LUXE: the brand X as a stage, posters floating like exhibition panels */
+    .cvr-luxe{background:radial-gradient(circle at 0% 100%,rgba(232,128,120,.75),transparent 50%),radial-gradient(circle at 100% 0%,rgba(110,60,140,.55),transparent 55%),linear-gradient(160deg,#3b1d52,#24112f)}
+    .cvr-luxe .xb{position:absolute;left:50%;top:50%;width:150%;height:13cqw;transition:transform 1s var(--ease-out)}
+    .cvr-luxe .xa{background:linear-gradient(90deg,rgba(241,236,230,.0),rgba(241,236,230,.22) 20%,rgba(241,236,230,.22) 80%,rgba(241,236,230,0));transform:translate(-50%,-50%) rotate(36deg)}
+    .cvr-luxe .xc{background:linear-gradient(90deg,rgba(242,165,122,0),rgba(242,165,122,.75) 18%,rgba(242,165,122,.75) 46%,rgba(241,236,230,.22) 54%,rgba(241,236,230,.22) 82%,rgba(241,236,230,0));transform:translate(-50%,-50%) rotate(-36deg)}
+    .pj-card:hover .cvr-luxe .xa{transform:translate(-50%,-50%) rotate(40deg)}
+    .pj-card:hover .cvr-luxe .xc{transform:translate(-50%,-50%) rotate(-40deg)}
+    .cvr-luxe .pn{position:absolute;top:47%;left:50%;aspect-ratio:3/4;border-radius:1cqw;overflow:hidden;box-shadow:0 3.5cqw 6cqw -2cqw rgba(20,5,30,.75),0 0 0 1px rgba(255,255,255,.18);transition:transform .9s var(--ease-out)}
+    .cvr-luxe .l1{width:24cqw;transform:translate(-50%,-50%) translate(-27cqw,3cqw) rotate(-6deg);z-index:2;animation:luxeF 6s ease-in-out infinite}
+    .cvr-luxe .l2{width:30cqw;transform:translate(-50%,-50%);z-index:3;animation:luxeF 6s ease-in-out -2s infinite}
+    .cvr-luxe .l3{width:24cqw;transform:translate(-50%,-50%) translate(27cqw,3cqw) rotate(6deg);z-index:2;animation:luxeF 6s ease-in-out -4s infinite}
+    @keyframes luxeF{0%,100%{translate:0 0}50%{translate:0 -1.2cqw}}
+    .pj-card:hover .cvr-luxe .l1{transform:translate(-50%,-50%) translate(-31cqw,1cqw) rotate(-10deg)}
+    .pj-card:hover .cvr-luxe .l2{transform:translate(-50%,-50%) scale(1.05)}
+    .pj-card:hover .cvr-luxe .l3{transform:translate(-50%,-50%) translate(31cqw,1cqw) rotate(10deg)}
+    .cvr-luxe .ltag{position:absolute;left:4cqw;bottom:3.4cqw;z-index:6;color:#fff;font-size:max(9px,2.6cqw);font-weight:700;letter-spacing:-.01em;white-space:nowrap}
+    .cvr-luxe .ltag em{font-family:var(--font-serif);font-style:italic;font-weight:400;color:#F2A57A;font-size:1.25em;margin-left:.3em}
+    .cvr-luxe .spot{position:absolute;inset:-20%;background:conic-gradient(from 200deg at 15% -5%,transparent 0deg,rgba(255,220,240,.18) 12deg,transparent 26deg);pointer-events:none;z-index:4;animation:luxeSpot 7s ease-in-out infinite alternate}
+    @keyframes luxeSpot{to{transform:rotate(8deg)}}
+    @media(prefers-reduced-motion:reduce){.cvr-luxe .pn,.cvr-luxe .spot{animation:none}}
+    @container (max-width:280px){.cvr-luxe .ltag{display:none}}

@@ -128,3 +128,4 @@ img{max-width:100%;display:block}
   .lb .pv,.lb .nx{top:auto;bottom:14px;transform:none}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+.cs-gal.r34 button{aspect-ratio:3/4}
