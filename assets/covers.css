@@ -1,0 +1,47 @@
+
+    /* ===== CREATIVE PROJECT COVERS ===== */
+    .pj-iw.has-cvr{background:#0a0a0a;container-type:inline-size}
+    .cvr{position:absolute;inset:0;overflow:hidden}
+    .cvr img{width:100%;height:100%;object-fit:cover;display:block}
+    .cvr-meta{position:absolute;right:3cqw;bottom:2.6cqw;z-index:7;font-family:var(--font-mono);font-size:max(8px,2.1cqw);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+
+    /* TRX: reflective 3D screens on a holo grid */
+    .cvr-trx{background:radial-gradient(ellipse 55% 45% at 50% 32%,rgba(57,213,255,.28),transparent 70%),radial-gradient(circle at 88% 95%,rgba(139,92,246,.45),transparent 45%),radial-gradient(circle at 8% 90%,rgba(57,213,255,.18),transparent 40%),#050817}
+    .cvr-trx .floor{position:absolute;left:-60%;right:-60%;bottom:-6%;height:52%;background-image:linear-gradient(rgba(57,213,255,.4) 1px,transparent 1px),linear-gradient(90deg,rgba(57,213,255,.4) 1px,transparent 1px);background-size:5cqw 5cqw;transform:perspective(30cqw) rotateX(64deg);transform-origin:50% 0;-webkit-mask-image:linear-gradient(to bottom,transparent 0%,#000 35%,#000 70%,transparent);mask-image:linear-gradient(to bottom,transparent 0%,#000 35%,#000 70%,transparent);animation:trxFloor 3s linear infinite}
+    @keyframes trxFloor{to{background-position:0 5cqw}}
+    .cvr-trx .word{position:absolute;top:2%;left:50%;transform:translateX(-50%);font-size:34cqw;font-weight:900;letter-spacing:-.05em;line-height:.9;color:transparent;-webkit-text-stroke:1px rgba(57,213,255,.3);white-space:nowrap;pointer-events:none}
+    .cvr-trx .stage{position:absolute;inset:0;perspective:90cqw;transform-style:preserve-3d}
+    .cvr-trx .sc{position:absolute;left:50%;top:44%;width:23cqw;aspect-ratio:4/5;border-radius:1.4cqw;overflow:hidden;border:1px solid rgba(57,213,255,.55);box-shadow:0 0 5cqw -1cqw rgba(57,213,255,.55);-webkit-box-reflect:below .8cqw linear-gradient(transparent 55%,rgba(255,255,255,.28));transition:transform .8s var(--ease-out),box-shadow .5s}
+    .cvr-trx .s1{transform:translate(-50%,-50%) translateX(-25cqw) rotateY(40deg) scale(.86);border-color:rgba(139,92,246,.6)}
+    .cvr-trx .s2{transform:translate(-50%,-50%) translateZ(3cqw);z-index:2}
+    .cvr-trx .s3{transform:translate(-50%,-50%) translateX(25cqw) rotateY(-40deg) scale(.86)}
+    .pj-card:hover .cvr-trx .s1{transform:translate(-50%,-50%) translateX(-29cqw) rotateY(26deg) scale(.9)}
+    .pj-card:hover .cvr-trx .s2{transform:translate(-50%,-50%) translateZ(7cqw) translateY(-1.5cqw);box-shadow:0 0 7cqw 0 rgba(57,213,255,.6)}
+    .pj-card:hover .cvr-trx .s3{transform:translate(-50%,-50%) translateX(29cqw) rotateY(-26deg) scale(.9)}
+    .cvr-trx .scan{position:absolute;left:0;right:0;height:18%;top:-20%;background:linear-gradient(to bottom,transparent,rgba(57,213,255,.14),transparent);animation:trxScan 4.5s ease-in-out infinite;pointer-events:none;z-index:4}
+    @keyframes trxScan{0%{top:-20%}60%,100%{top:105%}}
+    .cvr-trx .hud{position:absolute;inset:3.2cqw;pointer-events:none;z-index:5;-webkit-mask:linear-gradient(#000 0 0) top left/3cqw 3cqw no-repeat,linear-gradient(#000 0 0) top right/3cqw 3cqw no-repeat,linear-gradient(#000 0 0) bottom left/3cqw 3cqw no-repeat,linear-gradient(#000 0 0) bottom right/3cqw 3cqw no-repeat;mask:linear-gradient(#000 0 0) top left/3cqw 3cqw no-repeat,linear-gradient(#000 0 0) top right/3cqw 3cqw no-repeat,linear-gradient(#000 0 0) bottom left/3cqw 3cqw no-repeat,linear-gradient(#000 0 0) bottom right/3cqw 3cqw no-repeat;border:2px solid rgba(57,213,255,.7)}
+
+    /* SUTRA: retro posters, giant 999 and crossing promo tapes */
+    .cvr-sutra{background:radial-gradient(circle at 26% 18%,rgba(255,110,30,.42),transparent 55%),radial-gradient(circle at 90% 100%,rgba(37,99,235,.28),transparent 45%),linear-gradient(160deg,#2b1910,#0f0907)}
+    .cvr-sutra .big{position:absolute;right:-3%;top:-16%;font-size:52cqw;font-weight:900;letter-spacing:-.07em;line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(255,190,140,.26);pointer-events:none}
+    .cvr-sutra .ps{position:absolute;top:44%;left:50%;aspect-ratio:4/5;padding:.9cqw .9cqw 3.2cqw;background:#f4ede4;border-radius:.6cqw;box-shadow:0 3cqw 6cqw -2cqw rgba(0,0,0,.7);transition:transform .8s var(--ease-out)}
+    .cvr-sutra .ps img{border-radius:.3cqw}
+    .cvr-sutra .p1{width:24cqw;transform:translate(-50%,-50%) translate(-27cqw,2cqw) rotate(-11deg);z-index:2}
+    .cvr-sutra .p2{width:28cqw;transform:translate(-50%,-50%) rotate(2deg);z-index:3}
+    .cvr-sutra .p3{width:24cqw;transform:translate(-50%,-50%) translate(27cqw,3cqw) rotate(9deg);z-index:2}
+    .pj-card:hover .cvr-sutra .p1{transform:translate(-50%,-50%) translate(-30cqw,0) rotate(-15deg)}
+    .pj-card:hover .cvr-sutra .p2{transform:translate(-50%,-50%) translateY(-2cqw) rotate(-1deg) scale(1.04)}
+    .pj-card:hover .cvr-sutra .p3{transform:translate(-50%,-50%) translate(30cqw,1cqw) rotate(13deg)}
+    .cvr-sutra .tape{position:absolute;left:-15%;right:-15%;overflow:hidden;white-space:nowrap;padding:1.1cqw 0;box-shadow:0 1.5cqw 3cqw -1cqw rgba(0,0,0,.6)}
+    .cvr-sutra .tape .tw{display:inline-flex;animation:sutraTape 14s linear infinite}
+    .cvr-sutra .tape span{display:inline-block;font-size:max(9px,3.2cqw);font-weight:900;letter-spacing:.04em;text-transform:uppercase;padding-right:3cqw}
+    .cvr-sutra .t1{bottom:11%;transform:rotate(-6deg);background:var(--accent);color:#fff;z-index:5}
+    .cvr-sutra .t2{bottom:19%;transform:rotate(4deg);background:#111;color:#f4ede4;z-index:1}
+    .cvr-sutra .t2 .tw{animation-direction:reverse;animation-duration:18s}
+    @keyframes sutraTape{to{transform:translateX(-50%)}}
+    .cvr-sutra .crt{position:absolute;inset:0;z-index:6;pointer-events:none;background:repeating-linear-gradient(to bottom,rgba(0,0,0,.18) 0 1px,transparent 1px 3px);mix-blend-mode:multiply;opacity:.55}
+    @media(prefers-reduced-motion:reduce){.cvr-trx .floor,.cvr-trx .scan,.cvr-sutra .tape .tw{animation:none}}
+    .cvr-meta.tr{top:3cqw;bottom:auto}
+    .cvr-trx .cvr-meta{right:6cqw;bottom:5.5cqw}
+    @container (max-width:280px){.cvr-meta{display:none}.cvr-trx .hud{display:none}}
