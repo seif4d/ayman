@@ -67,3 +67,92 @@
     @keyframes luxeSpot{to{transform:rotate(8deg)}}
     @media(prefers-reduced-motion:reduce){.cvr-luxe .pn,.cvr-luxe .spot{animation:none}}
     @container (max-width:280px){.cvr-luxe .ltag{display:none}}
+
+    /* MASDR: glass modules orbiting the campaign, magenta highlight pill */
+    .cvr-masdr{background:radial-gradient(circle at 92% 0%,rgba(224,21,122,.55),transparent 45%),radial-gradient(circle at 0% 55%,rgba(110,214,208,.28),transparent 40%),linear-gradient(170deg,#2a1a44,#170d26)}
+    .cvr-masdr .orb{position:absolute;left:50%;top:50%;width:86cqw;height:30cqw;border-radius:50%;border:1px solid rgba(255,255,255,.22);transform:translate(-50%,-50%) rotate(-8deg);pointer-events:none}
+    .cvr-masdr .orb.o2{width:100cqw;height:38cqw;border-color:rgba(110,214,208,.22);border-style:dashed;animation:mOrb 40s linear infinite}
+    @keyframes mOrb{to{transform:translate(-50%,-50%) rotate(352deg)}}
+    .cvr-masdr .mp{position:absolute;top:48%;left:50%;aspect-ratio:4/5;border-radius:1.2cqw;overflow:hidden;box-shadow:0 3cqw 6cqw -2cqw rgba(10,0,20,.8),0 0 0 1px rgba(255,255,255,.14);transition:transform .9s var(--ease-out)}
+    .cvr-masdr .m1{width:22cqw;transform:translate(-50%,-50%) translate(-25cqw,2cqw) rotate(-7deg);z-index:2;filter:brightness(.85)}
+    .cvr-masdr .m2{width:28cqw;transform:translate(-50%,-50%);z-index:3}
+    .cvr-masdr .m3{width:22cqw;transform:translate(-50%,-50%) translate(25cqw,2cqw) rotate(7deg);z-index:2;filter:brightness(.85)}
+    .pj-card:hover .cvr-masdr .m1{transform:translate(-50%,-50%) translate(-29cqw,0) rotate(-11deg)}
+    .pj-card:hover .cvr-masdr .m2{transform:translate(-50%,-50%) scale(1.05)}
+    .pj-card:hover .cvr-masdr .m3{transform:translate(-50%,-50%) translate(29cqw,0) rotate(11deg)}
+    .cvr-masdr .gl{position:absolute;z-index:5;display:flex;align-items:center;gap:.9cqw;padding:1cqw 1.6cqw;border-radius:1.4cqw;background:rgba(255,255,255,.12);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.28);color:#fff;font-size:max(8px,2.1cqw);font-weight:700;white-space:nowrap;box-shadow:0 0 3cqw -1cqw rgba(224,21,122,.7);animation:mFloat 5s ease-in-out infinite}
+    .cvr-masdr .gl i{font-style:normal;color:#6ED6D0}
+    .cvr-masdr .g1{left:6%;top:24%}
+    .cvr-masdr .g2{right:6%;top:30%;animation-delay:-1.5s}
+    .cvr-masdr .g3{left:9%;bottom:30%;animation-delay:-3s}
+    .cvr-masdr .g4{right:8%;bottom:24%;animation-delay:-4s}
+    @keyframes mFloat{0%,100%{translate:0 0}50%{translate:0 -1cqw}}
+    .cvr-masdr .hl{position:absolute;left:4cqw;bottom:3.4cqw;z-index:6;font-size:max(9px,2.9cqw);font-weight:800;letter-spacing:-.01em;color:#fff;white-space:nowrap}
+    .cvr-masdr .hl b{color:#6ED6D0;font-weight:800}
+    .cvr-masdr .hl span{display:inline-block;margin-left:.4em;padding:.15em .55em;border-radius:.5em;background:#E0157A}
+    @media(prefers-reduced-motion:reduce){.cvr-masdr .orb,.cvr-masdr .gl{animation:none}}
+    @container (max-width:280px){.cvr-masdr .gl,.cvr-masdr .hl{display:none}}
+
+    /* LUXE STATIONERY: product conveyor — two tilted rows of mockups gliding past */
+    .cvr-lst{background:radial-gradient(circle at 50% 50%,#ffffff 0%,#efe9f2 60%,#e2d8e8 100%)}
+    .cvr-lst .rows{position:absolute;left:-20%;right:-20%;top:50%;transform:translateY(-50%) rotate(-8deg);display:flex;flex-direction:column;gap:2.2cqw}
+    .cvr-lst .row{display:flex;width:max-content;gap:2.2cqw;animation:lstRun 38s linear infinite}
+    .cvr-lst .row.r2{animation-direction:reverse;animation-duration:44s}
+    .pj-card:hover .cvr-lst .row{animation-duration:20s}
+    .pj-card:hover .cvr-lst .row.r2{animation-duration:24s}
+    @keyframes lstRun{to{transform:translateX(-50%)}}
+    .cvr-lst .tl{width:30cqw;aspect-ratio:4/3;border-radius:1.4cqw;overflow:hidden;flex-shrink:0;box-shadow:0 1.6cqw 3cqw -1.4cqw rgba(46,26,71,.45)}
+    .cvr-lst .fade{position:absolute;inset:0;z-index:4;pointer-events:none;background:linear-gradient(90deg,#e8e0ec 0%,transparent 14%,transparent 86%,#e8e0ec 100%)}
+    .cvr-lst .badge{position:absolute;left:50%;top:50%;z-index:6;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:.6cqw;padding:2.4cqw 4cqw;border-radius:2.4cqw;background:#2E1A47;color:#fff;box-shadow:0 3cqw 6cqw -2cqw rgba(46,26,71,.7),0 0 0 .5cqw rgba(201,139,128,.9);text-align:center;transition:transform .6s var(--ease-out)}
+    .pj-card:hover .cvr-lst .badge{transform:translate(-50%,-50%) scale(1.05) rotate(-2deg)}
+    .cvr-lst .badge b{font-size:max(12px,4.4cqw);font-weight:800;letter-spacing:-.03em;line-height:1}
+    .cvr-lst .badge b i{font-style:normal;color:#C98B80}
+    .cvr-lst .badge small{font-family:var(--font-mono);font-size:max(7px,1.7cqw);letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+    .cvr-lst .cvr-meta{color:#2E1A47;background:rgba(255,255,255,.88);padding:.7cqw 1.4cqw;border-radius:100px}
+    @media(prefers-reduced-motion:reduce){.cvr-lst .row{animation:none}}
+
+    /* ROX: national-day "media wall" — roll-up, billboard and square in one checker-framed stage */
+    .cvr-rox{background:radial-gradient(circle at 80% 100%,rgba(232,170,90,.55),transparent 50%),radial-gradient(circle at 10% 0%,rgba(30,122,70,.6),transparent 55%),linear-gradient(170deg,#0d3a28,#071a13)}
+    .cvr-rox .chk{position:absolute;inset:0;pointer-events:none;z-index:1;
+      background:conic-gradient(#1E9E57 25%,transparent 0 50%,#1E9E57 0 75%,transparent 0) 0 0/2.4cqw 2.4cqw;
+      -webkit-mask:linear-gradient(#000 0 0) top/100% 4.8cqw no-repeat,linear-gradient(#000 0 0) bottom/100% 4.8cqw no-repeat;
+      mask:linear-gradient(#000 0 0) top/100% 4.8cqw no-repeat,linear-gradient(#000 0 0) bottom/100% 4.8cqw no-repeat;opacity:.55}
+    .cvr-rox .rm{position:absolute;z-index:3;overflow:hidden;border-radius:.8cqw;box-shadow:0 3cqw 5cqw -2cqw rgba(0,0,0,.75),0 0 0 1px rgba(255,255,255,.18);transition:transform .9s var(--ease-out)}
+    .cvr-rox .rm img{width:100%;height:100%;object-fit:cover}
+    .cvr-rox .tall{left:7%;top:12%;width:19cqw;aspect-ratio:1/2;height:auto;transform:rotate(-4deg)}
+    .cvr-rox .bb{left:31%;top:22%;width:46cqw;aspect-ratio:2/1;z-index:4}
+    .cvr-rox .sq{right:5%;top:40%;width:20cqw;aspect-ratio:.9;transform:rotate(5deg)}
+    .cvr-rox .bb::after{content:'';position:absolute;left:50%;top:100%;width:1.2cqw;height:12cqw;background:linear-gradient(#3b3b3b,#1a1a1a);transform:translateX(-50%)}
+    .cvr-rox .bb{overflow:visible}
+    .cvr-rox .bb img{border-radius:.8cqw}
+    .cvr-rox .bb .glow{position:absolute;inset:-1px;border-radius:.8cqw;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.35) 50%,transparent 65%);background-size:250% 100%;animation:roxSheen 4.5s ease-in-out infinite;pointer-events:none}
+    @keyframes roxSheen{0%,100%{background-position:110% 0}50%{background-position:-10% 0}}
+    .pj-card:hover .cvr-rox .tall{transform:rotate(-8deg) translate(-1.5cqw,-1cqw)}
+    .pj-card:hover .cvr-rox .bb{transform:translateY(-1.5cqw) scale(1.04)}
+    .pj-card:hover .cvr-rox .sq{transform:rotate(9deg) translate(1.5cqw,-1cqw)}
+    .cvr-rox .ttl{position:absolute;left:50%;bottom:7.5cqw;z-index:6;transform:translateX(-50%);direction:rtl;white-space:nowrap;padding:.9cqw 2.4cqw;border-radius:.6cqw;background:#0b2f22;border:.35cqw solid #1E9E57;color:#fff;font-family:'Segoe UI',Tahoma,'Noto Kufi Arabic',sans-serif;font-weight:900;font-size:max(11px,3.6cqw);line-height:1.2;box-shadow:0 0 0 .5cqw rgba(11,47,34,.8)}
+    .cvr-rox .fmt{position:absolute;left:4cqw;top:6.4cqw;z-index:6;display:flex;gap:.8cqw}
+    .cvr-rox .fmt span{font-family:var(--font-mono);font-size:max(7px,1.6cqw);font-weight:600;letter-spacing:.06em;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);padding:.4cqw 1cqw;border-radius:100px}
+    .cvr-rox .cvr-meta{top:6.4cqw;bottom:auto}
+    @media(prefers-reduced-motion:reduce){.cvr-rox .bb .glow{animation:none}}
+    @container (max-width:280px){.cvr-rox .fmt{display:none}}
+    .pj-iw .cvr-rox .fmt{display:none}
+
+    /* LUXE PROFILE: a presentation player — slides stacked like a deck, with a live player bar */
+    .cvr-deck{background:radial-gradient(circle at 15% 100%,rgba(232,128,120,.6),transparent 50%),radial-gradient(circle at 90% 0%,rgba(120,70,160,.55),transparent 55%),linear-gradient(160deg,#2c1640,#140a1e)}
+    .cvr-deck .sl{position:absolute;left:50%;top:44%;width:62cqw;aspect-ratio:16/9;border-radius:1.2cqw;overflow:hidden;box-shadow:0 3cqw 6cqw -2cqw rgba(0,0,0,.75),0 0 0 1px rgba(255,255,255,.14);transition:transform .9s var(--ease-out),opacity .6s}
+    .cvr-deck .sl img{width:100%;height:100%;object-fit:cover}
+    .cvr-deck .s3{transform:translate(-50%,-50%) translate(12cqw,-9cqw) scale(.78);opacity:.55}
+    .cvr-deck .s2{transform:translate(-50%,-50%) translate(6cqw,-4.5cqw) scale(.89);opacity:.8}
+    .cvr-deck .s1{transform:translate(-50%,-50%);z-index:3}
+    .pj-card:hover .cvr-deck .s3{transform:translate(-50%,-50%) translate(18cqw,-11cqw) scale(.78) rotate(4deg)}
+    .pj-card:hover .cvr-deck .s2{transform:translate(-50%,-50%) translate(9cqw,-6cqw) scale(.89) rotate(2deg)}
+    .pj-card:hover .cvr-deck .s1{transform:translate(-50%,-50%) translate(-3cqw,2cqw) rotate(-2deg)}
+    .cvr-deck .bar{position:absolute;left:50%;bottom:6cqw;z-index:5;transform:translateX(-50%);width:62cqw;display:flex;align-items:center;gap:1.6cqw;padding:1.2cqw 1.8cqw;border-radius:100px;background:rgba(255,255,255,.12);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.22);color:#fff}
+    .cvr-deck .bar i{font-style:normal;font-size:max(8px,2.2cqw);line-height:1}
+    .cvr-deck .bar .pl{width:4.6cqw;height:4.6cqw;border-radius:50%;background:#E8A07A;color:#2c1640;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .cvr-deck .bar .tr{flex:1;height:.6cqw;border-radius:1cqw;background:rgba(255,255,255,.25);overflow:hidden}
+    .cvr-deck .bar .tr b{display:block;height:100%;width:30%;background:#E8A07A;animation:deckProg 6s linear infinite}
+    @keyframes deckProg{from{width:4%}to{width:100%}}
+    .cvr-deck .bar span{font-family:var(--font-mono);font-size:max(7px,1.8cqw);font-weight:600;white-space:nowrap}
+    @media(prefers-reduced-motion:reduce){.cvr-deck .bar .tr b{animation:none}}
